@@ -65,7 +65,7 @@ body{
     @extend %flex-prop;
     margin: 5em;
     height: fit-content;
-    background-color: rgb(64 63 63 / 0.69);
+    background-color: rgba(64, 63, 63, 0.69);
     @extend %border;
 
 }
@@ -88,7 +88,7 @@ body{
     @extend %flex-prop;
     width: 100%;
     flex-flow: column;
-    background-color: rgb(12 12 12 / 90%);
+    background-color: rgb(12, 12, 12 / 90%);
     color: antiquewhite;
     z-index: 1;
     margin: -3em 0 0 0;
@@ -195,7 +195,7 @@ img {
 #champion-detail-description-container, #champion-detail-description-full {
     @extend %flex-prop;
 	height: fit-content;
-    background-color: rgb(29 29 29);
+    background-color: rgb(29, 29, 29);
     color: antiquewhite;
     margin: 1em 28% 5em;
     padding: 2em;
@@ -216,7 +216,7 @@ img {
 }
 #champion-detail-abilities-container {
 	height: fit-content;
-	background-color: rgb(29 29 29);
+	background-color: rgb(29, 29, 29);
 	padding: 2em 1em;
 	color: antiquewhite;
 	font-family: Aleo;
