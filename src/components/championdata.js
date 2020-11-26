@@ -97,13 +97,6 @@ class ChampionData extends React.Component {
                     })
                 });
             }
-            const mami = () => {
-                d.getElementById("champion-card-1").addEventListener('click',function (){
-                    console.log("Follow the fox! 🦊");
-                })
-            }
-            mami();
-
             // console.log(AllData[2].key[0]);
         }
         return([

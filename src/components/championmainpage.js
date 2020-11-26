@@ -5,6 +5,11 @@ class ChampionCards extends React.Component {
         document.getElementById("champion-info-panel").style.display = "block";
         document.getElementsByTagName("body")[0].style.overflow = "hidden";
     }
+    mami = () => {
+        document.getElementById("champion-card-1").addEventListener('click',function (){
+            console.log("Follow the fox! 🦊");
+        })
+    }
     render() {
         //eslint-disable-next-line
         String.prototype.capitalize = function() {
@@ -20,7 +25,8 @@ class ChampionCards extends React.Component {
                     {/* <div className = "champion-card-title">{champion.title.capitalize()}</div> */}
                 </div>
             </div>
-        )
+        ),
+        this.mami()
     ])
     }
 }
