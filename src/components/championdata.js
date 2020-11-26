@@ -7,7 +7,7 @@ import ChampionDetailPanel from './championdetailpanel';
 class ChampionData extends React.Component {
     constructor(){
         super();
-        this.state = { api: [], cards: [], AllData: [] }
+        this.state = { api: [], cards: [] }
     }
     async componentDidMount() {
         const response = await fetch(ChampionAPI);
@@ -27,8 +27,7 @@ class ChampionData extends React.Component {
         let AllData = [];
         const d = document;
         
-        window.onload = async () => {
-            this.setState({AllData: AllData});
+        const LoadAllAPI = async function() {
             for (let i = 0; i < cards.length; i++) {
                 const response = await fetch("http://ddragon.leagueoflegends.com/cdn/10.23.1/data/en_US/champion/" + cards[i].id + ".json");
                 const json = await response.json();
@@ -99,9 +98,10 @@ class ChampionData extends React.Component {
             }
             // console.log(AllData[2].key[0]);
         }
+        LoadAllAPI();
         return([
             <ChampionCards cards = {this.state.cards}/>,
-            <ChampionDetailPanel AllData = {this.state.AllData}/>
+            <ChampionDetailPanel />
         ])
     }
 
