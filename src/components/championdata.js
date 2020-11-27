@@ -51,7 +51,7 @@ class ChampionData extends React.Component {
                     }
                 }
                 d.getElementById("champion-card-" + i).addEventListener('click',function (){
-                    d.getElementsByTagName("title")[0].innerText = AllData[i].name + ' - ' + AllData[i].title.capitalize();
+                    d.getElementsByTagName("title")[0].innerText = AllData[i].name + ' - ' + AllData[i].title;
                     d.getElementById("champBgImg").src = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + AllData[i].id + '_0.jpg';
                     d.getElementById("champImg").src = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + AllData[i].id + '_0.jpg';
                     d.getElementById("champion-detail-name").innerHTML = AllData[i].name;

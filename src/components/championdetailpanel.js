@@ -10,7 +10,7 @@ class ChampionDetailPanel extends React.Component {
         document.getElementById("showBtn").style.display = "none";
     }
     ResetInfo = () => {
-        document.getElementsByTagName("title")[0].innerText = "League Library - React App";
+        document.getElementsByTagName("title")[0].innerText = "League Library";
         document.getElementsByTagName("body")[0].style.overflow = "auto";
         document.getElementById("champion-info-panel").scrollTop = 0;
         document.getElementById("champion-detail-description-full").style.display = "none";
