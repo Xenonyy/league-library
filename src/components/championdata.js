@@ -38,6 +38,9 @@ class ChampionData extends React.Component {
                     if (AllData[i].key > 100) {
                         d.getElementById("champion-detail-abilities-video").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
                         d.getElementById("champion-detail-abilities-video-source-webm").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
+                    } else if (AllData[i].key === "1") {
+                        d.getElementById("champion-detail-abilities-video").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/000" + AllData[i].key + "/ability_000" + AllData[i].key + "_" + ability +"1.webm";
+                        d.getElementById("champion-detail-abilities-video-source-webm").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/000" + AllData[i].key + "/ability_000" + AllData[i].key + "_" + ability +"1.webm";
                     } else if (AllData[i].key.length < 3) {
                         d.getElementById("champion-detail-abilities-video").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
                         d.getElementById("champion-detail-abilities-video-source-webm").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
@@ -96,7 +99,7 @@ class ChampionData extends React.Component {
                     })
                 });
             }
-            // console.log(AllData[2].key[0]);
+            // console.log(AllData);
         }
         LoadAllAPI();
         return([
