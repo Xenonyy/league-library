@@ -35,19 +35,15 @@ class ChampionData extends React.Component {
                     AllData.push(json.data[key]);
                 });
                 function ChampionKeyVideo(ability) {
-                    if (AllData[i].key > 100) {
+                    if (AllData[i].key.length === 3) {
                         d.getElementById("champion-detail-abilities-video").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
                         d.getElementById("champion-detail-abilities-video-source-webm").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
-                    } else if (AllData[i].key.length < 3) {
-                        d.getElementById("champion-detail-abilities-video").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
-                        d.getElementById("champion-detail-abilities-video-source-webm").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0" + AllData[i].key + "/ability_0" + AllData[i].key + "_" + ability +"1.webm";
-                        let url = d.getElementById("champion-detail-abilities-video-source-webm").src;
-                        const regex = "/0";
-                        const regex2 = "_0";
-                        url = url.replace(regex, "/00");
-                        url = url.replace(regex2, "_00");
-                        d.getElementById("champion-detail-abilities-video").src = url;
-                        d.getElementById("champion-detail-abilities-video-source-webm").src = url;
+                    } else if (AllData[i].key.length === 2) {
+                        d.getElementById("champion-detail-abilities-video").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/00" + AllData[i].key + "/ability_00" + AllData[i].key + "_" + ability +"1.webm";
+                        d.getElementById("champion-detail-abilities-video-source-webm").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/00" + AllData[i].key + "/ability_00" + AllData[i].key + "_" + ability +"1.webm";
+                    } else if (AllData[i].key.length === 1) {
+                        d.getElementById("champion-detail-abilities-video").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/000" + AllData[i].key + "/ability_000" + AllData[i].key + "_" + ability +"1.webm";
+                        d.getElementById("champion-detail-abilities-video-source-webm").src = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/000" + AllData[i].key + "/ability_000" + AllData[i].key + "_" + ability +"1.webm";
                     }
                 }
                 d.getElementById("champion-card-" + i).addEventListener('click',function (){
