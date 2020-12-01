@@ -36,6 +36,7 @@ body{
     letter-spacing: 0.35px;
     font-weight: 400;
     margin: 0 auto;
+    overflow: visible;
 }
 .non-selectable {
     user-select: none;
@@ -282,4 +283,22 @@ img {
     width: 100%;
     min-height: 15em;
     @extend %border-abilities;
+}
+
+// Adjustments for  GSAP animations //
+#champion-info-panel {
+    transform: translateY(-200px);
+    opacity: 0;
+}
+.abilities-container {
+    transform: translateY(200px);
+    opacity: 0;
+}
+#champion-detail-abilities-description {
+    transform: translateX(-200px);
+    opacity: 0;
+}
+#champion-detail-abilities-video-container {
+    transform: translateX(200px);
+    opacity: 0;
 }
