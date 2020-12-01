@@ -1,8 +1,27 @@
 import React from 'react';
+import { gsap } from "gsap";
+// import { ScrollTrigger } from 'gsap/all';
 
 class ChampionDetailPanel extends React.Component {
-    ClosePanel = () => {
-        document.getElementById("champion-info-panel").style.display = "none";
+    t1 = gsap.timeline({})
+    ClosePanelAnimation = () => {
+        gsap.to("#champion-info-panel", { duration:0.25, y: -200, autoAlpha: 0 })
+        gsap.to(".abilities-container", { translateY: 200, autoAlpha:0 })
+    }
+    ScrollAnim = () => {
+        // gsap.registerPlugin(ScrollTrigger);
+        this.t1.resume()
+        this.t1.to(".abilities-container", {
+            // scrollTrigger: {
+            //     trigger: "#champion-abilities-qwer-container",
+            //     toggleActions: "restart pause pause pause"
+            // },
+            translateY: 0,
+            stagger: 0.15,
+            duration: 1,
+            autoAlpha: 1
+        })
+        this.t1.addPause()
     }
     OpenInfo = () => {
         document.getElementById("champion-detail-description-full").style.display = "contents";
@@ -19,10 +38,34 @@ class ChampionDetailPanel extends React.Component {
         document.getElementById("champion-detail-abilities-extra-detail-container").style.display = "none";
         document.getElementById("champion-detail-abilities-video").pause();
     }
+    ExtraPanelAnim = () => {
+        gsap.to("#champion-detail-abilities-description", {
+            x: 0,
+            duration: 1,
+            autoAlpha: 1
+        })
+        gsap.to("#champion-detail-abilities-video-container", {
+            x: 0,
+            duration: 1,
+            autoAlpha: 1
+        })
+    }
+    MouseLeave = () => {
+        gsap.to("#champion-detail-abilities-description", { 
+            x: -200,
+            duration: 0.5,
+            autoAlpha: 0
+        })
+        gsap.to("#champion-detail-abilities-video-container", {
+            x: 200,
+            duration: 0.5,
+            autoAlpha: 0
+        })
+    }
     render() {
         return(
-            <div id ="champion-info-panel" style = {{display: "none"}}>
-                <button className = "close-button" onClick = {() => {this.ResetInfo(); this.ClosePanel()}}>X</button>
+            <div id ="champion-info-panel" style = {{display: "none"}} onScroll = { () => {this.ScrollAnim();}}>
+                <button className = "close-button" onClick = {() => {this.ClosePanelAnimation(); this.ResetInfo(); this.MouseLeave()}}>X</button>
                 <div id = "champion-detail-image" className = "non-selectable">
                     <img id = "champBgImg" alt = "Background Splash"/>
                     <img id = "champImg" alt = "Splash Art"/>
@@ -37,23 +80,23 @@ class ChampionDetailPanel extends React.Component {
                 <div id = "champion-detail-abilities-container">
                     <span id = "abilities-text">Abilities</span>
                     <div id = "champion-detail-abilities-qwer-container">
-                        <div id = "champion-detail-abilities-p-container" className = "abilities-container">
+                        <div id = "champion-detail-abilities-p-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
                             <img id = "champion-detail-abilities-p" alt = "Passive ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-p-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-q-container" className = "abilities-container">
+                        <div id = "champion-detail-abilities-q-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
                             <img id = "champion-detail-abilities-q" alt = "Q ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-q-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-w-container" className = "abilities-container">
+                        <div id = "champion-detail-abilities-w-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
                             <img id = "champion-detail-abilities-w" alt = "W ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-w-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-e-container" className = "abilities-container">
+                        <div id = "champion-detail-abilities-e-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
                             <img id = "champion-detail-abilities-e" alt = "E ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-e-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-r-container" className = "abilities-container">
+                        <div id = "champion-detail-abilities-r-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
                             <img id = "champion-detail-abilities-r" alt = "R ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-r-name" className = "abilities-name"></span>
                         </div>
