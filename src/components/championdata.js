@@ -90,6 +90,13 @@ class ChampionData extends React.Component {
                         d.getElementById("champion-detail-abilities-description").innerHTML = AllData[i].spells[3].description;
                         ChampionKeyVideo("R");
                     })
+                    d.getElementById("champion-detail-abilities-video").addEventListener('mouseenter', function() {
+                        this.muted = false;
+                    })
+                    d.getElementById("champion-detail-abilities-video").addEventListener('mouseleave', function() {
+                        this.muted = true;
+                    })
+                    
                 });
             }
             // console.log(AllData[2].key[0]);
