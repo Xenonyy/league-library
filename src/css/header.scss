@@ -1,0 +1,83 @@
+.header {
+    width: 100%;
+    height: 4em;
+    position: fixed;
+    background-color: black;
+    z-index: 2;
+    // outline: #d67db5 1px solid;
+    outline: coral 1px solid;
+}
+#header-icon {
+    @extend %flex-prop;
+    height: 100%;
+    width: 15%;
+    position: absolute;
+    transform: scale(0.75);
+}
+#header-text {
+    @extend %flex-prop;
+    color: antiquewhite;
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    font-size: 1rem;
+    font-style: oblique;
+}
+#header-email {
+    @extend %flex-prop;
+    // color: antiquewhite;
+    color: #b82669;
+    justify-content: flex-end;
+    align-items: center;
+    width: 93%;
+    height: 100%;
+    position: absolute;
+}
+#header-github {
+    @extend %flex-prop;
+    justify-content: flex-end;
+    align-items: center;
+    width: 98%;
+    height: 100%;
+    position: absolute;
+}
+#github-icon {
+    transform: scale(0.5);
+    left: -4em;
+    position: relative;
+    filter: invert(1);
+    // SECOND OPTION
+    // filter: contrast(0.6);
+    // transform: scale(0.8);
+}
+#email-icon {
+    transform: scale(0.5);
+    left: -17em;
+    position: relative;
+    filter: invert(1);
+}
+
+
+@media (hover: hover) { /* Only works if the deivce supports hover state*/
+    a:after {    
+        background: none repeat scroll 0 0 transparent;
+        bottom: 3px;
+        content: close-quote;
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: #fff;
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+    }
+    a:after {
+        background-color: #d67db5;
+        transition: width 0.5s ease 0s, left 0.5s ease 0s;
+
+    }
+    a:hover:after {
+        width: 100%; 
+        left: 0;
+    }
+}
