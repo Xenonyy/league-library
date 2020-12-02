@@ -23,7 +23,9 @@ $champ-font: Capriola;
 
 @import 'header';
 @import 'infopanel';
-@import 'gsap';
+@import 'gsap.css';
+@import 'footer';
+@import 'dropdown';
 
 
 // Styling
@@ -49,9 +51,8 @@ img {
     @extend %flex-prop;
 }
 a {
-    color: #b82669;
+    color: #d67db5;
     text-decoration: none;
-    position: absolute;
 }
 .non-selectable {
     user-select: none;
