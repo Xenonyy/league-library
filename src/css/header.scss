@@ -29,7 +29,7 @@
     color: #d67db5;
     justify-content: flex-end;
     align-items: center;
-    width: 90%;
+    left: 75%;
     height: 100%;
     position: absolute;
 }
@@ -37,7 +37,7 @@
     @extend %flex-prop;
     justify-content: flex-end;
     align-items: center;
-    width: 95%;
+    left: 92%;
     height: 100%;
     position: absolute;
 }
