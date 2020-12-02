@@ -63,7 +63,7 @@ class ChampionDetailPanel extends React.Component {
         })
     }
     render() {
-        return(
+        return([
             <div id ="champion-info-panel" style = {{display: "none"}} onScroll = { () => {this.ScrollAnim();}}>
                 <button className = "close-button" onClick = {() => {this.ClosePanelAnimation(); this.ResetInfo(); this.MouseLeave()}}>X</button>
                 <div id = "champion-detail-image" className = "non-selectable">
@@ -110,8 +110,8 @@ class ChampionDetailPanel extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            </div>, this.ClosePanelAnimation()
+        ])
     }
 }
 
