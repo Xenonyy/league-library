@@ -16,7 +16,7 @@
 }
 #header-text {
     @extend %flex-prop;
-    color: antiquewhite;
+    color: whitesmoke;
     position: absolute;
     width: 25%;
     height: 100%;
@@ -25,11 +25,11 @@
 }
 #header-email {
     @extend %flex-prop;
-    // color: antiquewhite;
-    color: #b82669;
+    // color: whitesmoke;
+    color: #d67db5;
     justify-content: flex-end;
     align-items: center;
-    width: 93%;
+    width: 90%;
     height: 100%;
     position: absolute;
 }
@@ -37,7 +37,7 @@
     @extend %flex-prop;
     justify-content: flex-end;
     align-items: center;
-    width: 98%;
+    width: 95%;
     height: 100%;
     position: absolute;
 }
@@ -72,12 +72,17 @@
         width: 0;
     }
     a:after {
-        background-color: #d67db5;
+        background-color: #b82669;
         transition: width 0.5s ease 0s, left 0.5s ease 0s;
 
     }
     a:hover:after {
-        width: 100%; 
+        width: 100%;
         left: 0;
+    }
+    .dropdown-content a:hover:after {
+        width: 90%;
+        left: 15px;
+        bottom: 8px;
     }
 }

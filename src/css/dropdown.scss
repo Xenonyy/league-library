@@ -1,0 +1,44 @@
+.dropbtn {
+    border: none;
+    z-index: 3;
+    filter: invert(1);
+    transform: scale(1.2);
+    background: none;
+}
+  
+/* The container <div> - needed to position the dropdown content */
+#header-dropdown {
+    position: absolute;
+    @extend %flex-prop;
+    justify-content: flex-end;
+    height: 108%;
+    left: 95%;
+    padding: 20px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #292929;
+    width: max-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 7em;
+    border-radius: 10px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    border-radius: 10px;
+    color: whitesmoke;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+    z-index: 3;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #d67db5; color: whitesmoke;}
+
+/* Show the dropdown menu on hover */
+#header-dropdown:hover .dropdown-content {display: block;}
