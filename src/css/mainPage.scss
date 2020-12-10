@@ -137,3 +137,29 @@ a {
     -o-transform: scale(1.12);
     transform: scale(1.12);
 }
+
+
+// Support for different screen sizes
+@media only screen and (min-width: 500px) and (max-width: 1440px) {
+    html {font-size: 0.9rem;}
+    .champion-card {transform: scale(0.8); margin: 0;}
+    #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly;}
+    .abilities-container {margin: 0.5em 0.5em 1em 0.5em}
+    #champion-detail-abilities-container {padding: 2em 0;}
+    #champion-detail-abilities-video-container {width: 70%; margin: 1em 0; justify-content: center; padding: 0;}
+    .champion-detail-abilities-videos {width: 70%; min-height: 17em;}
+    #champImg {transform: scale(0.9);}
+    #champion-detail-description-container {margin: 1em 20% 5em;}
+}
+@media only screen and (min-width: 200px) and (max-width: 499px) {
+    /*todo*/
+}
+
+
+/************************ Browser support **********************/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+}
+@-moz-document url-prefix() {
+
+}
