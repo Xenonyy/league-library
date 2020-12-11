@@ -21,12 +21,6 @@ $champ-font: Capriola;
     border-radius: 2px;
 }
 
-@import 'header';
-@import 'infopanel';
-@import 'gsap.css';
-@import 'footer';
-@import 'dropdown';
-
 
 // Styling
 * {
@@ -63,10 +57,10 @@ a {
     height: 10%;
 }
 ::-webkit-scrollbar-track {
-    background: #946f64;
+    background: #50322be0;
 }
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 .title {
     @extend %flex-prop;
@@ -138,6 +132,11 @@ a {
     transform: scale(1.12);
 }
 
+@import 'header';
+@import 'infopanel';
+@import 'gsap.css';
+@import 'footer';
+@import 'dropdown';
 
 // Support for different screen sizes
 @media only screen and (min-width: 500px) and (max-width: 1440px) {
@@ -152,7 +151,58 @@ a {
     #champion-detail-description-container {margin: 1em 20% 5em;}
 }
 @media only screen and (min-width: 200px) and (max-width: 499px) {
-    /*todo*/
+    html {font-size: 0.6rem; width: fit-content;}
+    body {line-height: 1.5em;}
+    .title {font-size: 4rem; margin: 2em 0 1em;}
+    .champion-container {margin: 1em; padding: 1em;}
+    .champion-card {margin: 1em; width: 40%;}
+    .champion-card-name {margin: -4em 0 0 0; font-size: 0.9rem;}
+    .champion-loading {height: inherit; width: inherit;}
+    img[alt="Loading Art"] {width: 250%; height: 40%;}
+    #header-container {width: 98%;}
+    #header-icon {left: 0%; width: auto; transform: scale(0.9);}
+    #header-email {transform: scale(0.8);}
+    #header-github {transform: scale(0.8);}
+    #header-dropdown {padding: 1px; transform: scale(0.8);}
+    .dropbtn {padding: 0.5em 0.25em 0.5em 0.25em; transform: scale(0.8);}
+    #champion-detail-image {height: 70%;}
+    #champImg {transform: scale(0.5);}
+    #champion-detail-name {height: 5%; font-size: 4rem;}
+    #champion-detail-title {font-size: 1.5rem;}
+    #champion-detail-description-container {margin: 1em 8% 5em;}
+    #champion-detail-description, #champion-detail-description-full {font-size: 0.85rem;}
+    #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly; width: fit-content; margin: 1em;}
+    .abilities-container {margin: 0.5em 0.5em 0 0;}
+    .champion-detail-ability {padding: 0.5em 1.1em; transform: scale(0.4);}
+    #champion-detail-abilities-description {width: 80%; margin: 1em;}
+    #champion-detail-abilities-video-container {width: 100%; margin: 0; padding: 0;}
+    .abilities-name {font-size: 0.9rem;}
+}
+// MOBILE LANDSCAPE MODE
+@media screen and (orientation:landscape) and (min-device-width: 200px) and (max-device-width: 900px) {
+    html {font-size: 0.8rem;}
+    body {line-height: 1.5em;}
+    #header-dropdown {padding: 5px;}
+    .dropbtn {padding: 0.5em; transform: scale(1);}
+    .title {font-size: 4rem; margin: 2em 0 1em;}
+    .champion-container {margin: 1em; padding: 1em;}
+    .champion-card {margin: 1em; width: 30%;}
+    .champion-loading {height: inherit; width: inherit;}
+    img[alt="Loading Art"] {width: 333%; height: 40%;}
+    #champion-detail-image {height: 70%;}
+    #champImg {transform: scale(1.3);}
+    #champion-detail-name {height: 10%; font-size: 3rem;}
+    #champion-detail-title {font-size: 1rem;}
+    #champion-detail-description-container {margin: 1em 10% 5em;}
+    #champion-detail-description, #champion-detail-description-full {font-size: 0.85rem;}
+    #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly; width: fit-content; margin: 1em;}
+    .abilities-container {margin: 1em 0.5em;}
+    .champion-detail-ability {padding: 0.5em 2em; transform: scale(0.8);}
+    .abilities-name {font-size: 0.9rem;}
+    #champion-detail-abilities-description {width: 80%; margin: 1em;}
+    #champion-detail-abilities-video-container {width: 80%; margin: 0; padding: 0;}
+    .champion-detail-abilities-videos {width: 70%;min-height: 10em;}
+    ::-webkit-scrollbar {width: 4px;}
 }
 
 
