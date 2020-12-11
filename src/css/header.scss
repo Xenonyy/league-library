@@ -61,31 +61,29 @@ img[alt~="league-icon"] {
 }
 
 
-@media (hover: hover) { /* Only works if the deivce supports hover state*/
-    a:after {    
-        background: none repeat scroll 0 0 transparent;
-        bottom: 3px;
-        content: close-quote;
-        display: block;
-        height: 2px;
-        left: 50%;
-        position: absolute;
-        background: #fff;
-        transition: width 0.3s ease 0s, left 0.3s ease 0s;
-        width: 0;
-    }
-    a:after {
-        background-color: #b82669;
-        transition: width 0.5s ease 0s, left 0.5s ease 0s;
+a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 3px;
+    content: close-quote;
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+a:after {
+    background-color: #b82669;
+    transition: width 0.5s ease 0s, left 0.5s ease 0s;
 
-    }
-    a:hover:after {
-        width: 100%;
-        left: 0;
-    }
-    .dropdown-content a:hover:after {
-        width: 90%;
-        left: 15px;
-        bottom: 8px;
-    }
+}
+a:hover:after {
+    width: 100%;
+    left: 0;
+}
+.dropdown-content a:hover:after {
+    width: 90%;
+    left: 15px;
+    bottom: 8px;
 }
