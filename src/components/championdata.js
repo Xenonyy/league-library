@@ -69,26 +69,31 @@ class ChampionData extends React.Component {
                         d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
                         d.getElementById("champion-detail-abilities-description").innerHTML = AllData[i].passive.description;
                         ChampionKeyVideo("P");
+                        d.getElementById("champion-detail-ability-name-phone").innerText = "P - " + AllData[i].passive.name;
                     })
                     d.getElementById("champion-detail-abilities-q-container").addEventListener('mouseenter', function() {
                         d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
                         d.getElementById("champion-detail-abilities-description").innerHTML = AllData[i].spells[0].description;
                         ChampionKeyVideo("Q");
+                        d.getElementById("champion-detail-ability-name-phone").innerText = "Q - " + AllData[i].spells[0].name;
                     })
                     d.getElementById("champion-detail-abilities-w-container").addEventListener('mouseenter', function() {
                         d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
                         d.getElementById("champion-detail-abilities-description").innerHTML = AllData[i].spells[1].description;
                         ChampionKeyVideo("W");
+                        d.getElementById("champion-detail-ability-name-phone").innerText = "W - " + AllData[i].spells[1].name;
                     })
                     d.getElementById("champion-detail-abilities-e-container").addEventListener('mouseenter', function() {
                         d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
                         d.getElementById("champion-detail-abilities-description").innerHTML = AllData[i].spells[2].description;
                         ChampionKeyVideo("E");
+                        d.getElementById("champion-detail-ability-name-phone").innerText = "E - " + AllData[i].spells[2].name;
                     })
                     d.getElementById("champion-detail-abilities-r-container").addEventListener('mouseenter', function() {
                         d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
                         d.getElementById("champion-detail-abilities-description").innerHTML = AllData[i].spells[3].description;
                         ChampionKeyVideo("R");
+                        d.getElementById("champion-detail-ability-name-phone").innerText = "R - " + AllData[i].spells[3].name;
                     })
                     d.getElementById("champion-detail-abilities-video").addEventListener('mouseenter', function() {
                         this.muted = false;
