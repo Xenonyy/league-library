@@ -37,6 +37,7 @@ class ChampionDetailPanel extends React.Component {
         document.getElementById("showBtn").style.display = "block";
         document.getElementById("champion-detail-abilities-extra-detail-container").style.display = "none";
         document.getElementById("champion-detail-abilities-video").pause();
+        document.getElementById("champion-detail-ability-name-phone").style.opacity = "0";
     }
     ExtraPanelAnim = () => {
         gsap.to("#champion-detail-abilities-description", {
@@ -62,6 +63,13 @@ class ChampionDetailPanel extends React.Component {
             autoAlpha: 0
         })
     }
+    AbilityNameDivPhone = () => {
+        gsap.to("#champion-detail-ability-name-phone", {
+            duration: 1.5,
+            autoAlpha: 1,
+            display: "flex"
+        })
+    }
     render() {
         return(
             <div id ="champion-info-panel" style = {{display: "none"}} onScroll = { () => {this.ScrollAnim();}}>
@@ -80,26 +88,27 @@ class ChampionDetailPanel extends React.Component {
                 <div id = "champion-detail-abilities-container">
                     <span id = "abilities-text">Abilities</span>
                     <div id = "champion-detail-abilities-qwer-container">
-                        <div id = "champion-detail-abilities-p-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
+                        <div id = "champion-detail-abilities-p-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()} onClick = {() => this.AbilityNameDivPhone()}>
                             <img id = "champion-detail-abilities-p" alt = "Passive ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-p-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-q-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
+                        <div id = "champion-detail-abilities-q-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()} onClick = {() => this.AbilityNameDivPhone()}>
                             <img id = "champion-detail-abilities-q" alt = "Q ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-q-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-w-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
+                        <div id = "champion-detail-abilities-w-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()} onClick = {() => this.AbilityNameDivPhone()}>
                             <img id = "champion-detail-abilities-w" alt = "W ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-w-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-e-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
+                        <div id = "champion-detail-abilities-e-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()} onClick = {() => this.AbilityNameDivPhone()}>
                             <img id = "champion-detail-abilities-e" alt = "E ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-e-name" className = "abilities-name"></span>
                         </div>
-                        <div id = "champion-detail-abilities-r-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()}>
+                        <div id = "champion-detail-abilities-r-container" className = "abilities-container" onMouseEnter = {() => this.ExtraPanelAnim()} onClick = {() => this.AbilityNameDivPhone()}>
                             <img id = "champion-detail-abilities-r" alt = "R ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-r-name" className = "abilities-name"></span>
                         </div>
+                        <span id = "champion-detail-ability-name-phone"/>
                     </div>
                     <div id = "champion-detail-abilities-extra-detail-container">
                         <div id = "champion-detail-abilities-description"/>
