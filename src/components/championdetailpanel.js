@@ -37,7 +37,7 @@ class ChampionDetailPanel extends React.Component {
         document.getElementById("showBtn").style.display = "block";
         document.getElementById("champion-detail-abilities-extra-detail-container").style.display = "none";
         document.getElementById("champion-detail-abilities-video").pause();
-        document.getElementById("champion-detail-ability-name-phone").style.opacity = "0";
+        document.getElementById("champion-detail-ability-name-phone-container").style.opacity = "0";
     }
     ExtraPanelAnim = () => {
         gsap.to("#champion-detail-abilities-description", {
@@ -64,7 +64,7 @@ class ChampionDetailPanel extends React.Component {
         })
     }
     AbilityNameDivPhone = () => {
-        gsap.to("#champion-detail-ability-name-phone", {
+        gsap.to("#champion-detail-ability-name-phone-container", {
             duration: 1.5,
             autoAlpha: 1,
             display: "flex"
@@ -108,7 +108,9 @@ class ChampionDetailPanel extends React.Component {
                             <img id = "champion-detail-abilities-r" alt = "R ability" className = "champion-detail-ability"/>
                             <span id = "champion-detail-abilities-r-name" className = "abilities-name"></span>
                         </div>
-                        <span id = "champion-detail-ability-name-phone"/>
+                    </div>
+                    <div id = "champion-detail-ability-name-phone-container">
+                        <span id = "champion-detail-ability-name-phone" className = "abilities-name"/>
                     </div>
                     <div id = "champion-detail-abilities-extra-detail-container">
                         <div id = "champion-detail-abilities-description"/>

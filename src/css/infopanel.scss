@@ -126,6 +126,13 @@
     font-size: 1.2rem;
     margin: 0 0.5em 0.5em;
 }
+#champion-detail-ability-name-phone-container {
+    @extend %flex-prop;
+    width: 100%;
+    height: fit-content;
+    display: none;
+    opacity: 0;
+}
 #champion-detail-ability-name-phone {
     @extend %flex-prop;
     width: 70%;
@@ -135,8 +142,6 @@
     @extend %border-abilities;
     font-size: 1.3rem;
     color: coral;
-    display: none;
-    opacity: 0;
 }
 #champion-detail-abilities-extra-detail-container {
     @extend %flex-prop;

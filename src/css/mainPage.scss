@@ -179,7 +179,7 @@ a {
     #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly; width: fit-content; margin: 1em;}
     .abilities-container {margin: 0.5em 0.5em 0 0;}
     .champion-detail-ability {padding: 0.5em 1.1em; transform: scale(0.4);}
-    #champion-detail-abilities-description {width: 80%; margin: 1em;}
+    #champion-detail-abilities-description {width: 80%; margin: 1em; font-size: 0.9rem;}
     #champion-detail-abilities-video-container {width: 100%; margin: 0; padding: 0;}
     .abilities-name {font-size: 0.9rem;}
     ::-webkit-scrollbar {width: 4px;}
@@ -214,15 +214,16 @@ a {
     .abilities-container {margin: 1em 0.5em;}
     .champion-detail-ability {padding: 0.5em 2em; transform: scale(0.8);}
     .abilities-name {font-size: 0.9rem;}
-    #champion-detail-abilities-description {width: 80%; margin: 1em;}
+    #champion-detail-abilities-description {width: 80%; margin: 1em; font-size: 0.9rem;}
     #champion-detail-abilities-video-container {width: 80%; margin: 0; padding: 0;}
     .champion-detail-abilities-videos {width: 70%;min-height: 10em;}
     ::-webkit-scrollbar {width: 4px;}
 
-    #champion-detail-abilities-qwer-container {margin: 0em; width: auto;}
-    .abilities-container {width: 80px; height: 80px;}
+    #champion-detail-abilities-qwer-container {margin: 0 1em; width: auto; justify-content: center;}
+    .abilities-container {width: 60px; height: 60px;}
     .abilities-name {display: none;}
-    .champion-detail-ability {padding: 0; transform: scale(0.7);}
+    .champion-detail-ability {padding: 0; transform: scale(0.75);}
+    #champion-detail-ability-name-phone {font-size: 1rem; margin: 0; width: fit-content; padding: 0 1em;}
 }
 
 /************************ Browser support **********************/
