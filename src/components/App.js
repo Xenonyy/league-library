@@ -17,9 +17,8 @@ function App() {
 				<ChampionData />
 				<Results />
 			</div>
-			
-			<Footer />
-		</div>
+		</div>,
+		<Footer />
 	]);
 }
 
