@@ -110,7 +110,7 @@
 .champion-detail-ability {
     padding: 1em 3em 0.5em;
     filter: drop-shadow(0px 0px 3px black);
-    max-height: 128px;
+    max-height: 112px; // Aphelios + yone icons fix
 }
 .abilities-container {
     @extend %flex-prop;
