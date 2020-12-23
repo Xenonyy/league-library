@@ -23,17 +23,17 @@ class Search extends  React.Component {
         // Convert to an array
         var divsArray = [].slice.call(div);
         // Find all divs with display none
-        var displayNone = divsArray.filter(function(el) {
-            return getComputedStyle(el).display === "none"
+        var displayNone = divsArray.filter(function(e) {
+            return getComputedStyle(e).display === "none"
         });
         // And all divs that are not display none
-        var displayShow = divsArray.filter(function(el) {
-            return getComputedStyle(el).display !== "none"
+        var displayShow = divsArray.filter(function(e) {
+            return getComputedStyle(e).display !== "none"
         });
         // And use length to count # of divs
         var numberOfHiddenDivs = displayNone.length;
         var numberOfVisibleDivs = displayShow.length;
-        console.log("hidden: " + numberOfHiddenDivs + ", visible: " +numberOfVisibleDivs);
+        // console.log("hidden: " + numberOfHiddenDivs + ", visible: " +numberOfVisibleDivs);
 
         if (numberOfVisibleDivs < 1) {
             noResults.style.display = "flex";
