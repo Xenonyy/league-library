@@ -1,0 +1,29 @@
+#b2t {
+    display: none;
+    position: fixed;
+	bottom: 3em;
+	// make it scroll from 3em to 60
+    right: 8.5em;
+	background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    @extend %border;
+	border-radius: 3px;
+	opacity: 0.8;
+	z-index: 2;
+} 
+#b2t:hover {
+	background-color: coral;
+	color: black;
+	border-color: black;
+	img{
+		content: url(https://i.gyazo.com/25bca84d684ddfe5d7dd4aaec54f92e6.png);
+	}
+	#b2t-img {
+		content: url(https://i.gyazo.com/25bca84d684ddfe5d7dd4aaec54f92e6.png);
+	}
+}
+#b2t-img {
+	max-height: 32px;
+}

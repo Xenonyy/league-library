@@ -13,6 +13,7 @@ $champ-font: Capriola;
     border-color: coral;
     border-style: solid;
     border-width: 2px;
+    border-radius: 10px;
 }
 %border-abilities {
     border-width: 1px;
@@ -21,7 +22,7 @@ $champ-font: Capriola;
     border-radius: 2px;
 }
 
-@import 'scrollbar.css';
+@import 'scrollbar';
 
 // Styling
 * {
@@ -152,10 +153,11 @@ a {
 
 @import 'header';
 @import 'infopanel';
-@import 'gsap.css';
+@import 'gsap';
 @import 'footer';
 @import 'dropdown';
 @import 'search';
+@import 'backtotop';
 
 // Support for different screen sizes
 @media only screen and (min-width: 500px) and (max-width: 1440px) {
@@ -171,6 +173,9 @@ a {
     .champion-card {width: 15em; height: 25em; margin: 1em;}
     .champion-loading img {position: relative; width: 100%; object-fit: cover;}
     .champion-card-name {margin: -7em 0 0 0};
+
+    #b2t {padding: 15px;}
+    #b2t-img {transform: scale(0.9);}
 }
 @media only screen and (min-width: 200px) and (max-width: 499px) {
     html {font-size: 0.6rem; width: fit-content;}
@@ -216,6 +221,9 @@ a {
     #no-results-container {height: 12em;}
     #no-results {width: 100%;}
     #result-text {font-size: 1.2rem;}
+
+    #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
+    #b2t-img {transform: scale(0.8);}
 }
 // MOBILE LANDSCAPE MODE
 @media screen and (orientation:landscape) and (min-device-width: 200px) and (max-device-width: 900px) {
@@ -260,6 +268,9 @@ a {
     #no-results-container {height: 10em;}
     #no-results {width: 60%;}
     #result-text {font-size: 1.2rem;}
+
+    #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
+    #b2t-img {transform: scale(0.8);}
 }
 
 /************************ Browser support **********************/
