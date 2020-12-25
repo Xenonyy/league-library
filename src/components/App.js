@@ -1,4 +1,5 @@
 import React from 'react';
+import BackToTop from './backtotop';
 import ChampionData from './championdata';
 import Footer from './footer';
 import Header from './header';
@@ -16,6 +17,7 @@ function App() {
 				<Results />
 			</div>
 		</div>,
+		<BackToTop />,
 		<Footer />
 	]);
 }
