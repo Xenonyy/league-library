@@ -37,3 +37,13 @@ input::placeholder {
 	font-family: 'Work Sans';
 	// font-style: normal;
 }
+#search-reset {
+    color: pink;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+	height: inherit;
+	position: absolute;
+	margin-left: 12em;
+	cursor: pointer;
+}
