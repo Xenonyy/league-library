@@ -69,7 +69,7 @@ a {
     background-size: contain;
     background-repeat: repeat-y;
     background-blend-mode: lighten;
-    min-height: 100vh;
+    min-height: 110vh; // Fix background image not fully covering the page when there are no results from search.
 }
 .champion-container {
     @extend %flex-prop;
