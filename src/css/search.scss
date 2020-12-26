@@ -4,7 +4,7 @@
 	width: 100%;
 	align-items: flex-start;
 	overflow: auto;
-    height: 3em;
+    height: 2.7em;
 }
 .search-label {
 	@extend %border;
@@ -44,6 +44,7 @@ input::placeholder {
     justify-content: flex-end;
 	height: inherit;
 	position: absolute;
-	margin-left: 12em;
+	margin-left: 12.5em;
 	cursor: pointer;
+	padding: 8px;
 }
