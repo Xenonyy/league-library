@@ -125,7 +125,15 @@ class ChampionData extends React.Component {
                     d.getElementById("champion-detail-abilities-video").addEventListener('mouseleave', function() {
                         this.muted = true;
                     })
-                    
+                    // Lower font size if line break would occur
+                    let nameDiv = document.getElementsByClassName("abilities-name");
+                        for (let i = 0; i < nameDiv.length; i++) {
+                            // Sometimes randomly missing 1 block so using while loop instead of if condition
+                            while (nameDiv[i].clientHeight > 32) {
+                                nameDiv[i].style.fontSize = "0.8rem";
+                                nameDiv[i].style.whiteSpace = "nowrap";
+                            }
+                        }
                 });
             }
         }

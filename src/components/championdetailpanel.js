@@ -4,6 +4,8 @@ import { gsap } from "gsap";
 
 class ChampionDetailPanel extends React.Component {
     t1 = gsap.timeline({})
+    nameDiv = document.getElementsByClassName("abilities-name");
+
     ClosePanelAnimation = () => {
         gsap.to("#champion-info-panel", { duration:0.25, y: -200, autoAlpha: 0 })
         gsap.to(".abilities-container", { translateY: 200, autoAlpha:0 })
@@ -38,6 +40,10 @@ class ChampionDetailPanel extends React.Component {
         document.getElementById("champion-detail-abilities-extra-detail-container").style.display = "none";
         document.getElementById("champion-detail-abilities-video").pause();
         document.getElementById("champion-detail-ability-name-phone-container").style.opacity = "0";
+        for (let i = 0; i < this.nameDiv.length; i++) {
+            this.nameDiv[i].style.fontSize = "1.2rem";
+            this.nameDiv[i].style.whiteSpace = "normal";
+        }
     }
     ExtraPanelAnim = () => {
         gsap.to("#champion-detail-abilities-description", {
