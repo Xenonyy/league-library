@@ -136,6 +136,9 @@ class ChampionData extends React.Component {
                         }
                 });
             }
+            window.localStorage.setItem("mainAPI", JSON.stringify(cards))
+            let StoreChampData = JSON.parse(localStorage.getItem("mainAPI"))
+            console.log(StoreChampData[0]) // Successfully stored in localstorage
         }
         LoadAllAPI();
         return([
