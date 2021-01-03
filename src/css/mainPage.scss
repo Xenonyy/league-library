@@ -22,6 +22,7 @@ $champ-font: Capriola;
     border-radius: 2px;
 }
 
+@import 'welcome';
 @import 'scrollbar';
 
 // Styling
@@ -29,6 +30,7 @@ $champ-font: Capriola;
     box-sizing: border-box;
 }
 html, body {
+    background-color: #1d1d1d;
     scroll-behavior: smooth;
     font-size: 100%; /*by default 16px*/
     font-family: $main-font;
@@ -70,6 +72,7 @@ a {
     background-repeat: repeat-y;
     background-blend-mode: lighten;
     min-height: 110vh; // Fix background image not fully covering the page when there are no results from search.
+    display: none;
 }
 .champion-container {
     @extend %flex-prop;
@@ -224,6 +227,11 @@ a {
 
     #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
     #b2t-img {transform: scale(0.8);}
+
+    // Welcome Page
+    #extra-line-phone {display: block;}
+    #enter-button {margin: 1em 0 0;}
+    #welcome-description {padding: 1em;}
 }
 // MOBILE LANDSCAPE MODE
 @media screen and (orientation:landscape) and (min-device-width: 200px) and (max-device-width: 900px) {
@@ -271,6 +279,11 @@ a {
 
     #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
     #b2t-img {transform: scale(0.8);}
+
+    // Welcome Page
+    #extra-line-phone {display: block;}
+    #welcome-description {font-size: 1rem;}
+    #enter-button {margin: 1em 0 0;}
 }
 
 /************************ Browser support **********************/

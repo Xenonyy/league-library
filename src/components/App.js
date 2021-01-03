@@ -5,10 +5,12 @@ import Footer from './footer';
 import Header from './header';
 import Results from './result';
 import TopContainer from './topcont';
+import WelcomePage from './welcomepage';
 
 
 function App() {
 	return ([
+		<WelcomePage />,
 		<div className = "container">
 			<Header />
 			<TopContainer />

@@ -1,0 +1,68 @@
+#welcome-container {
+    height: 100vh;
+    width: 100%;
+    @extend %flex-prop;
+    background-color: #555;
+    background-image: url(https://raw.githubusercontent.com/chadcuomo/leagueuniverse/master/public/images/league-background.jpg);
+    background-size: cover;
+    position: absolute;
+    z-index: 4;
+    transition: opacity 0.8s;
+}
+#welcome-container.fade {
+    opacity: 0;
+}
+#welcome-main-container {
+    @extend %flex-prop;
+    height: 20em;
+    width: 65em;
+    background-color: #403f3fbd;
+    @extend %border;
+    max-width: 80%;
+    max-height: 35%;
+    min-height: 15em;
+}
+#welcome-text-container {
+    @extend %flex-prop;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    font-family: 'Aleo';
+    height: 50%;
+    letter-spacing: 0.5px;
+
+}
+#welcome-text {
+    filter: drop-shadow(2px 4px 6px black);
+    text-decoration: underline;
+}
+#welcome-description {
+    filter: drop-shadow(0px 2px 2px black);
+    font-size: 1.2rem;
+    padding: 1.5em;
+}
+#enter-container {
+    @extend %flex-prop;
+    width: 100%;
+}
+#enter-button {
+    @extend %border;
+    font-size: 1rem;
+    padding: 0.5em 0.8em;
+    color: coral;
+    background-color: #1d1d1d;
+    font-family: 'Aleo';
+    filter: drop-shadow(2px 2px 2px black);
+}
+#enter-button:hover {
+    background-color: #2f2f2f;
+    transform: scale(1.05);
+    -webkit-transition: transform 0.2s ease-in-out;
+    -moz-transition:transform 0.2s ease-in-out;
+    -ms-transition:transform 0.2s ease-in-out;
+}
+#welcome-container::-webkit-scrollbar { 
+    display: none;
+}
+#extra-line-phone {
+    display: none;
+}
