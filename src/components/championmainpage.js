@@ -10,11 +10,11 @@ class ChampionCards extends React.Component {
     }
     anim = () => {
         gsap.to('#champion-info-panel', {
-            duration: 1.5,
+            duration: 1,
             autoAlpha: 1,
             y: 0,
-            delay: 0.25,
-            ease: "expo.out"
+            delay: 0.15,
+            ease: "power3.out"
         });
     }
     render() {
