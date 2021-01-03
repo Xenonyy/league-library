@@ -56,9 +56,10 @@
 #enter-button:hover {
     background-color: #2f2f2f;
     transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;;
     -webkit-transition: transform 0.2s ease-in-out;
-    -moz-transition:transform 0.2s ease-in-out;
-    -ms-transition:transform 0.2s ease-in-out;
+    -moz-transition: transform 0.2s ease-in-out;
+    -ms-transition: transform 0.2s ease-in-out;
 }
 #welcome-container::-webkit-scrollbar { 
     display: none;
