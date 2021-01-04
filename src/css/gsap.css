@@ -4,14 +4,14 @@
     opacity: 0;
 }
 .abilities-container {
-    transform: translateY(200px);
+    transform: translateY(150px);
     opacity: 0;
 }
 #champion-detail-abilities-description {
-    transform: translateX(-200px);
+    transform: translateX(-100px);
     opacity: 0;
 }
 #champion-detail-abilities-video-container {
-    transform: translateX(200px);
+    transform: translateX(100px);
     opacity: 0;
 }

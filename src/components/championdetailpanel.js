@@ -7,8 +7,11 @@ class ChampionDetailPanel extends React.Component {
     nameDiv = document.getElementsByClassName("abilities-name");
 
     ClosePanelAnimation = () => {
-        gsap.to("#champion-info-panel", { duration:0.25, y: -200, autoAlpha: 0 })
-        gsap.to(".abilities-container", { translateY: 200, autoAlpha:0 })
+        gsap.to("#champion-info-panel", { duration: 0.25, y: "-=200", autoAlpha: 0 })
+        // Using loop to make sure it resets the value if the animation is still playing (kind of working)
+        for (let i = 0; i < 10; i++) {
+            gsap.to(".abilities-container", { translateY: 150, autoAlpha: 0 })
+        }
     }
     ScrollAnim = () => {
         // gsap.registerPlugin(ScrollTrigger);
@@ -59,12 +62,12 @@ class ChampionDetailPanel extends React.Component {
     }
     MouseLeave = () => {
         gsap.to("#champion-detail-abilities-description", { 
-            x: -200,
+            x: "-=200",
             duration: 0.5,
             autoAlpha: 0
         })
         gsap.to("#champion-detail-abilities-video-container", {
-            x: 200,
+            x: "+=200",
             duration: 0.5,
             autoAlpha: 0
         })
