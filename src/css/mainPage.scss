@@ -179,6 +179,8 @@ a {
 
     #b2t {padding: 15px;}
     #b2t-img {transform: scale(0.9);}
+
+    #champSkinsImg {transform: scale(0.7);}
 }
 @media only screen and (min-width: 200px) and (max-width: 499px) {
     html {font-size: 0.6rem; width: fit-content;}
@@ -198,7 +200,7 @@ a {
     #header-dropdown {padding: 1px; transform: scale(0.8);}
     .dropbtn {padding: 0.5em 0.25em 0.5em 0.25em; transform: scale(0.8);}
     #champion-detail-image {height: 70%;}
-    #champImg {transform: scale(0.9); width: fit-content; height: fit-content;}
+    #champImg, #champSkinsImg {transform: scale(0.9); width: auto; height: auto; max-height: fit-content;}
     #champion-detail-name {height: 5%; font-size: 4rem;}
     #champion-detail-title {font-size: 1.5rem;}
     #champion-detail-description-container {margin: 1em 8% 5em;}
@@ -232,6 +234,12 @@ a {
     #extra-line-phone {display: block;}
     #enter-button {margin: 1em 0 0;}
     #welcome-description {padding: 1em;}
+    
+    // Skins Page
+    #champSkinsImg {transform: scale(0.28);}
+    #button-container {width: 20%; align-items: flex-end; height: 70%;}
+    .prev,.next {padding: 10px;}
+    #champion-detail-skins-name {font-size: 1.8rem; padding: 1em;}
 }
 // MOBILE LANDSCAPE MODE
 @media screen and (orientation:landscape) and (min-device-width: 200px) and (max-device-width: 900px) {
@@ -284,6 +292,12 @@ a {
     #extra-line-phone {display: block;}
     #welcome-description {font-size: 1rem;}
     #enter-button {margin: 1em 0 0;}
+
+    // Skins Page
+    #champSkinsImg {transform: scale(0.4);}
+    .prev,.next {padding: 12px;}
+    #champion-detail-skins-name {font-size: 1.5rem; padding: 0.7em; margin-bottom: 1em;}
+    #champion-detail-skins-name-container {height: 112%;}
 }
 
 /************************ Browser support **********************/
