@@ -8,6 +8,7 @@ const version = "10.25.1";
 const apiSpell = "http://ddragon.leagueoflegends.com/cdn/" + version + "/img/spell/";
 const apiPassive = "http://ddragon.leagueoflegends.com/cdn/" + version + "/img/passive/";
 const apiSpellImg = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0";
+const apiSplash = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
 class ChampionData extends React.Component {
     constructor(){
@@ -55,8 +56,9 @@ class ChampionData extends React.Component {
                     QImg = AllData[i].spells[0].image.full,
                     WImg = AllData[i].spells[1].image.full,
                     EImg = AllData[i].spells[2].image.full,
-                    RImg = AllData[i].spells[3].image.full;
-
+                    RImg = AllData[i].spells[3].image.full,
+                    champSkin = AllData[i].skins;
+            
                 function ChampionKeyVideo(ability) {
                     if (champKey.length === 3) {
                         d.getElementById("champion-detail-abilities-video").src = apiSpellImg + champKey + "/ability_0" + champKey + "_" + ability + "1.webm";
@@ -72,8 +74,8 @@ class ChampionData extends React.Component {
 
                 d.getElementById("champion-card-" + i).addEventListener('click', function (){
                     d.getElementsByTagName("title")[0].innerText = champName + ' - ' + champTitle;
-                    d.getElementById("champBgImg").src = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + AllData[i].id + '_0.jpg';
-                    d.getElementById("champImg").src = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + AllData[i].id + '_0.jpg';
+                    d.getElementById("champBgImg").src = apiSplash + AllData[i].id + '_0.jpg';
+                    d.getElementById("champImg").src = apiSplash + AllData[i].id + '_0.jpg';
                     d.getElementById("champion-detail-name").innerHTML = champName;
                     d.getElementById("champion-detail-title").innerText = champTitle.capitalize();
                     d.getElementById("champion-detail-description").innerText = AllData[i].blurb;
@@ -88,6 +90,95 @@ class ChampionData extends React.Component {
                     d.getElementById("champion-detail-abilities-e").src = apiSpell + EImg;
                     d.getElementById("champion-detail-abilities-r-name").innerText = RName;
                     d.getElementById("champion-detail-abilities-r").src = apiSpell + RImg;
+
+
+                    // Slideshow of skins
+                    const timer = ms => new Promise(res => setTimeout(res, ms)) // Returns a Promise that resolves after "ms" Milliseconds
+                    let abort = false;
+                    async function load () {
+                        let j = 0;
+
+                        // Manual toggle
+                        d.getElementsByClassName("prev")[0].addEventListener("click", function () {
+                            abort = true;
+                            console.log(j, champSkin.length)
+                            if (j <= 0) {
+                                return;
+                            } else {
+                                d.getElementById("champSkinsImg").className = '';
+                                d.getElementById("champSkinsBgImg").className = '';
+                                d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j - 1].num + '.jpg';
+                                d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j - 1].num + '.jpg';
+                                d.getElementById("champion-detail-skins-name").innerText = AllData[i].skins[j - 1].name;
+                                if (AllData[i].skins[j - 1].name === "default") {
+                                    d.getElementById("champion-detail-skins-name").innerText = champName;
+                                }
+                                j = j - 1;
+                                console.log(j, abort);
+                            }
+                        })
+                        d.getElementsByClassName("next")[0].addEventListener("click", function () {
+                            abort = true;
+                            console.log(j, champSkin.length)
+                            if (j + 1 >= champSkin.length) {
+                                return;
+                            } else {
+                                d.getElementById("champSkinsImg").className = '';
+                                d.getElementById("champSkinsBgImg").className = '';
+                                d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j + 1].num + '.jpg';
+                                d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j + 1].num + '.jpg';
+                                d.getElementById("champion-detail-skins-name").innerText = AllData[i].skins[j + 1].name;
+                                if (AllData[i].skins[j + 1].name === "default") {
+                                    d.getElementById("champion-detail-skins-name").innerText = champName;
+                                }
+                                j = j + 1;
+                                console.log(j, abort);
+                            }
+                        })
+
+                        // Automatic slideshow
+                        for (j = 0; j < champSkin.length; j++) {
+                            if (abort === false) {
+                                d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j].num + '.jpg';
+                                d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j].num + '.jpg';
+                                let skinName = AllData[i].skins[j].name;
+                                d.getElementById("champSkinsImg").className = '';
+                                d.getElementById("champSkinsBgImg").className = '';
+                                
+                                if (skinName === "default") {
+                                    d.getElementById("champion-detail-skins-name").innerText = champName;
+                                } else {
+                                    d.getElementById("champion-detail-skins-name").innerText = skinName;
+                                }
+                                await timer(3000);
+                                    if (abort === true) {
+                                        d.getElementById("champSkinsImg").className = '';
+                                        d.getElementById("champSkinsBgImg").className = '';
+                                        return;
+                                    } else {
+                                        d.getElementById("champSkinsImg").className = 'hide';
+                                        d.getElementById("champSkinsBgImg").className = 'hide-almost';
+                                        await timer(500);
+                                    }
+                            }
+                        }
+                        // Reset to default if reached the end
+                        if (abort === false) {
+                            if (j >= champSkin.length) {
+                                d.getElementById("champSkinsImg").className = '';
+                                d.getElementById("champSkinsBgImg").className = '';
+                                d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[0].num + '.jpg';
+                                d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[0].num + '.jpg';
+                                d.getElementById("champion-detail-skins-name").innerText = champName;
+                            }
+                        }
+                        
+                    }
+                    load();
+                    d.getElementsByClassName("close-button")[0].addEventListener('click', () => {
+                        abort = true;
+                    })
+                    
 
                     d.getElementById("champion-detail-abilities-p-container").addEventListener('mouseenter', function() {
                         d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
