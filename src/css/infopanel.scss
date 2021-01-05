@@ -105,7 +105,8 @@
     justify-content: flex-start;
     display: flex;
     flex-flow: column;
-    min-height: 20em;
+    min-height: 12em;
+    border-top: 1px solid coral;
 }
 .champion-detail-ability {
     padding: 1em 3em 0.5em;
@@ -120,7 +121,7 @@
     border: 1px solid #b3b3b3;
     border-radius: 2px;
 }
-#abilities-text {
+#abilities-text, #skins-text {
     @extend %flex-prop;
     width: 100%;
     margin: 0;
@@ -185,4 +186,102 @@
     width: 100%;
     min-height: 15em;
     @extend %border-abilities;
+}
+#champion-detail-skins-container {
+    height: fit-content;
+	background-color: rgb(29, 29, 29);
+	color: antiquewhite;
+	font-family: Aleo;
+    font-size: 2rem;
+    min-height: 100vh;
+    border-top: 1px solid coral;
+    @extend %flex-prop;
+}
+#skins-text {
+    margin: 1em 0 0.5em;
+}
+#champion-detail-skins-image-main-container {
+    @extend %flex-prop;
+    height: 100vh;
+    width: 100%;
+}
+#champion-detail-skins-image-container {
+    width: 100%;
+    position: absolute;
+    @extend %flex-prop;
+    height: 100%;
+}
+#champSkinsImg {
+    z-index: 1;
+    filter: drop-shadow(0px 0px 10px black);
+    margin: 0;
+    position: absolute;
+    height: auto;
+    opacity: 1;
+    transition: opacity .5s linear;
+}
+.hide {
+    opacity: 0 !important;
+}
+.hide-almost {
+    opacity: 0.2 !important;
+}
+#champSkinsBgImg {
+    width: 90%;
+    height: 90%;
+    filter: blur(8px);
+    object-fit: cover;
+    opacity: 0.4;
+    @extend %flex-prop;
+    transition: opacity .5s linear;
+    
+}
+#champion-detail-skins-name-container {
+    @extend %flex-prop;
+    width: 100%;
+    height: 95%;
+    align-items: flex-end;
+    filter: drop-shadow(2px 4px 6px black);
+}
+#champion-detail-skins-name {
+    filter: drop-shadow(2px 4px 6px black);
+    z-index: 2;
+    font-size: 2.5rem;
+    background-color: #1d1d1dad;
+    padding: 0.5em;
+    color: pink;
+}
+#button-container {
+    @extend %flex-prop;
+    width: 100%;
+    position: absolute;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    // top: 50%;
+    width: auto;
+    padding: 16px;
+    color: coral;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: black;
+    @extend %border;
+    border-width: 1px;
+    z-index: 3;
+}
+.prev {
+    left: 0;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+    background-color: coral;
+    color: black;
+    border: 1px solid black;
 }
