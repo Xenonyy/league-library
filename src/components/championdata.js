@@ -39,7 +39,7 @@ class ChampionData extends React.Component {
                 Object.keys(json.data).forEach(key => {
                     AllData.push(json.data[key]);
                 });
-                const champName = AllData[i].name,
+                let champName = AllData[i].name,
                     champTitle = AllData[i].title,
                     champKey = AllData[i].key, 
                     PName = AllData[i].passive.name,
@@ -71,7 +71,6 @@ class ChampionData extends React.Component {
                         d.getElementById("champion-detail-abilities-video-source-webm").src = apiSpellImg + "00" + champKey + "/ability_000" + champKey + "_" + ability + "1.webm";
                     }
                 }
-
                 d.getElementById("champion-card-" + i).addEventListener('click', function (){
                     d.getElementsByTagName("title")[0].innerText = champName + ' - ' + champTitle;
                     d.getElementById("champBgImg").src = apiSplash + AllData[i].id + '_0.jpg';
@@ -95,48 +94,48 @@ class ChampionData extends React.Component {
                     // Slideshow of skins
                     const timer = ms => new Promise(res => setTimeout(res, ms)) // Returns a Promise that resolves after "ms" Milliseconds
                     let abort = false;
+                    let j = 0;
+
+                    // Manual toggle
+                    d.getElementsByClassName("prev")[0].addEventListener("click", function () {
+                        let champSkin = AllData[i].skins; // Gives typeError 'undefined' for champSkin without this for some reason.
+                        abort = true;
+                        console.log(j, champSkin.length)
+                        if (j <= 0) {
+                            return;
+                        } else {
+                            d.getElementById("champSkinsImg").className = '';
+                            d.getElementById("champSkinsBgImg").className = '';
+                            d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j - 1].num + '.jpg';
+                            d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j - 1].num + '.jpg';
+                            d.getElementById("champion-detail-skins-name").innerText = AllData[i].skins[j - 1].name;
+                            if (AllData[i].skins[j - 1].name === "default") {
+                                d.getElementById("champion-detail-skins-name").innerText = champName;
+                            }
+                            j = j - 1;
+                            console.log(j, abort);
+                        }
+                    })
+                    d.getElementsByClassName("next")[0].addEventListener("click", function () {
+                        abort = true;
+                        console.log(j, champSkin.length)
+                        if (j + 1 >= champSkin.length) {
+                            return;
+                        } else {
+                            d.getElementById("champSkinsImg").className = '';
+                            d.getElementById("champSkinsBgImg").className = '';
+                            d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j + 1].num + '.jpg';
+                            d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j + 1].num + '.jpg';
+                            d.getElementById("champion-detail-skins-name").innerText = AllData[i].skins[j + 1].name;
+                            if (AllData[i].skins[j + 1].name === "default") {
+                                d.getElementById("champion-detail-skins-name").innerText = champName;
+                            }
+                            j = j + 1;
+                            console.log(j, abort, champSkin);
+                        }
+                    })
+                    // Automatic slideshow
                     async function load () {
-                        let j = 0;
-
-                        // Manual toggle
-                        d.getElementsByClassName("prev")[0].addEventListener("click", function () {
-                            abort = true;
-                            console.log(j, champSkin.length)
-                            if (j <= 0) {
-                                return;
-                            } else {
-                                d.getElementById("champSkinsImg").className = '';
-                                d.getElementById("champSkinsBgImg").className = '';
-                                d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j - 1].num + '.jpg';
-                                d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j - 1].num + '.jpg';
-                                d.getElementById("champion-detail-skins-name").innerText = AllData[i].skins[j - 1].name;
-                                if (AllData[i].skins[j - 1].name === "default") {
-                                    d.getElementById("champion-detail-skins-name").innerText = champName;
-                                }
-                                j = j - 1;
-                                console.log(j, abort);
-                            }
-                        })
-                        d.getElementsByClassName("next")[0].addEventListener("click", function () {
-                            abort = true;
-                            console.log(j, champSkin.length)
-                            if (j + 1 >= champSkin.length) {
-                                return;
-                            } else {
-                                d.getElementById("champSkinsImg").className = '';
-                                d.getElementById("champSkinsBgImg").className = '';
-                                d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j + 1].num + '.jpg';
-                                d.getElementById("champSkinsBgImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j + 1].num + '.jpg';
-                                d.getElementById("champion-detail-skins-name").innerText = AllData[i].skins[j + 1].name;
-                                if (AllData[i].skins[j + 1].name === "default") {
-                                    d.getElementById("champion-detail-skins-name").innerText = champName;
-                                }
-                                j = j + 1;
-                                console.log(j, abort);
-                            }
-                        })
-
-                        // Automatic slideshow
                         for (j = 0; j < champSkin.length; j++) {
                             if (abort === false) {
                                 d.getElementById("champSkinsImg").src = apiSplash + AllData[i].id + '_'+ champSkin[j].num + '.jpg';
@@ -172,11 +171,11 @@ class ChampionData extends React.Component {
                                 d.getElementById("champion-detail-skins-name").innerText = champName;
                             }
                         }
-                        
                     }
                     load();
                     d.getElementsByClassName("close-button")[0].addEventListener('click', () => {
                         abort = true;
+                        champSkin.length = 0;
                     })
                     
 
