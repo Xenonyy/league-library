@@ -10,8 +10,8 @@ class WelcomePage extends React.Component {
             autoAlpha: 0,
             ease: "power3.out"
         })
-        document.getElementsByClassName("container")[0].style.display = "inline-grid";
-        document.getElementById("footer").style.display = "block";
+        document.querySelector(".container").style.display = "inline-grid";
+        document.getElementById("footer").style.display = "flex";
     }
     render() {
         document.addEventListener("DOMContentLoaded", () => {
