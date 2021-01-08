@@ -10,17 +10,17 @@ import WelcomePage from './welcomepage';
 
 function App() {
 	return ([
-		<WelcomePage />,
-		<div className = "container">
+		<WelcomePage key = {0} />,
+		<div className = "container" key = {1}>
 			<Header />
 			<TopContainer />
-			<div className = "champion-container">
+			<div className = "champion-container" key = {2}>
 				<ChampionData />
 				<Results />
 			</div>
-		</div>,
-		<BackToTop />,
-		<Footer />
+			<BackToTop />
+			<Footer  />
+		</div>
 	]);
 }
 
