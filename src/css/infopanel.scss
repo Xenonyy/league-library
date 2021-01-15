@@ -224,14 +224,15 @@
     opacity: 0 !important;
 }
 .hide-almost {
-    opacity: 0.2 !important;
+    opacity: 0.05 !important;
 }
 #champSkinsBgImg {
-    width: 90%;
-    height: 90%;
+    // 90-90% if arrows are visible
+    width: 100%;
+    height: 100%;
     filter: blur(8px);
     object-fit: cover;
-    opacity: 0.4;
+    opacity: 0.3;
     @extend %flex-prop;
     transition: opacity .5s linear;
     
@@ -284,4 +285,15 @@
     background-color: coral;
     color: black;
     border: 1px solid black;
+}
+
+.prev, .next {
+    display: none;
+}
+#slideShowEnd {
+    @extend %flex-prop;
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background-color: #555;
 }
