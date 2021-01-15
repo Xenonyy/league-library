@@ -27,8 +27,8 @@ class Search extends  React.Component {
         // Reset search on click
         reset.addEventListener("click", () => {
             input.value = "";
-            for (const item of div) {
-                div[item].style.display = "flex";
+            for (const [index] of Object.entries(div)) {
+                div[index].style.display = "flex";
             }
         })
     }
