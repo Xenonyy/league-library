@@ -87,7 +87,7 @@ a {
     gap: normal;
     height: 31em;
     width: 19em;
-    margin: 2em;
+    margin: 2em 1em 0;
     @extend %border;
     border-width: 1px;
 }
@@ -167,15 +167,23 @@ a {
     html {font-size: 0.9rem;}
     // .champion-card {transform: scale(0.8); margin: 0;}
     #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly;}
-    .abilities-container {margin: 0.5em 0.5em 1em 0.5em}
+    #champion-detail-abilities-description {width: 43%;}
+    .abilities-container {margin: 0.5em; width: 200px;}
+    .abilities-name {font-size: 1rem;}
+    .champion-detail-ability {transform: scale(0.8); padding: 1em 2em 0.5em;}
     #champion-detail-abilities-container {padding: 2em 0;}
-    #champion-detail-abilities-video-container {width: 70%; margin: 1em 0; justify-content: center; padding: 0;}
-    .champion-detail-abilities-videos {width: 70%; min-height: 17em;}
-    #champImg {transform: scale(0.9);}
+    #champion-detail-abilities-video-container {width: 50%; margin: 0e; justify-content: center; padding: 0;}
+    .champion-detail-abilities-videos {width: 92%; min-height: 15em;}
+    #champion-detail-name {margin: 0 0 0.3em; height: 5%;}
+    #champImg {transform: scale(0.75);}
+    #champBgImg {mask-image: linear-gradient(#000 65%, #0000 110%); -webkit-mask-image: linear-gradient(#000 65%, #0000 110%);}
     #champion-detail-description-container {margin: 1em 20% 5em;}
-    .champion-card {width: 15em; height: 25em; margin: 1em;}
+    #champion-detail-abilities-extra-detail-container {padding: 0 0.5em;}
+    .champion-container {margin: 2em 3em 5em;}
+    .champion-card {width: 15em; height: 25em; margin: 2em 0.5em 0;}
     .champion-loading img {position: relative; width: 100%; object-fit: cover;}
     .champion-card-name {margin: -7em 0 0 0};
+    
 
     #b2t {padding: 15px;}
     #b2t-img {transform: scale(0.9);}
