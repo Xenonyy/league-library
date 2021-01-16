@@ -1,11 +1,11 @@
 import React from 'react';
-import BackToTop from './backtotop';
-import ChampionData from './championdata';
-import Footer from './footer';
-import Header from './header';
-import Results from './result';
-import TopContainer from './topcont';
-import WelcomePage from './welcomepage';
+import BackToTop from './layout/BackToTop';
+import ChampionData from './champions/ChampionData';
+import Footer from './layout/Footer';
+import Header from './layout/Header';
+import Results from './search/Results';
+import TopContainer from './layout/TopContainer';
+import WelcomePage from './layout/WelcomePage';
 
 
 function App() {

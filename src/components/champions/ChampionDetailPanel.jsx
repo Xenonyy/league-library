@@ -134,19 +134,21 @@ class ChampionDetailPanel extends React.Component {
                     <span id = "skins-text">Skins</span>
                     <div id ="champion-detail-skins-image-main-container">
                         <div id = "champion-detail-skins-image-container">
-                            <img id = "champSkinsImg" alt = "Skin Splash Art"/>
-                            <img id = "champSkinsBgImg" alt = "Skin Splash Art Background"/>
+                            <img id = "champSkinsImg" className = "non-selectable" alt = "Skin Splash Art" />
+                            <img id = "champSkinsBgImg" className = "non-selectable" alt = "Skin Splash Art Background" />
+                            <div id = "slideShowEnd" className = "non-selectable hide">
+                                {/* <div id = "endTextContainer"></div> */}
+                            </div>
+                            <div id = "champion-detail-skins-name-container">
+                                <span id = "champion-detail-skins-name" className = "non-selectable"></span>
+                            </div>
                         </div>
-                        <div id = "champion-detail-skins-name-container">
-                            <span id = "champion-detail-skins-name" className = "non-selectable"></span>
-                        </div>
+                        
                         <div id = "button-container">
                             <button className = "prev">❮</button>
                             <button className = "next">❯</button>
                         </div>
-                        
                     </div>
-                        
                 </div>
             </div>
         )

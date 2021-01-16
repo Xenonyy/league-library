@@ -1,4 +1,4 @@
-$default-font:  source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+$default-font: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 $main-font: 'Work Sans', sans-serif;
 $champ-font: Capriola;
 
@@ -22,8 +22,8 @@ $champ-font: Capriola;
     border-radius: 2px;
 }
 
-@import 'welcome';
-@import 'scrollbar';
+@import 'Welcome';
+@import 'ScrollBar';
 
 // Styling
 * {
@@ -154,13 +154,13 @@ a {
     @extend %flex-prop;
 }
 
-@import 'header';
-@import 'infopanel';
-@import 'gsap';
-@import 'footer';
-@import 'dropdown';
-@import 'search';
-@import 'backtotop';
+@import 'Header';
+@import 'Dropdown';
+@import 'InfoPanel';
+@import 'Gsap';
+@import 'Footer';
+@import 'Search';
+@import 'BackToTop';
 
 // Support for different screen sizes
 @media only screen and (min-width: 500px) and (max-width: 1650px) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import ChampionCards from "./championmainpage";
-import {ChampionAPI} from "../api/champions";
-import ChampionDetailPanel from './championdetailpanel';
+import {ChampionAPI} from "../../api/champions";
+import ChampionDetailPanel from './ChampionDetailPanel';
+import ChampionMainPage from './ChampionMainPage';
 
 const d = document,
     version = "10.25.1",
@@ -209,7 +209,7 @@ class ChampionData extends React.Component {
         }
         LoadAllAPI();
         return([
-            <ChampionCards key = {0.1} cards = {this.state.cards}/>,
+            <ChampionMainPage key = {0.1} cards = {this.state.cards}/>,
             <ChampionDetailPanel key = {0.2}/> // Random key values, to remove the warnings.
         ])
     }

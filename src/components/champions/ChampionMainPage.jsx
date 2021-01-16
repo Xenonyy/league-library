@@ -1,7 +1,7 @@
 import React from 'react';
 import { gsap } from "gsap";
 
-class ChampionCards extends React.Component {
+class ChampionMainPage extends React.Component {
     TogglePanel = () => {
         gsap.to("body", { overflow: "hidden", delay: 0.15, duration: 0.5});
         gsap.to('#champion-info-panel', {
@@ -31,4 +31,4 @@ class ChampionCards extends React.Component {
     }
 }
 
-export default ChampionCards;
+export default ChampionMainPage;
