@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../search/Search';
+import Search from './Search';
 
 class TopContainer extends React.Component {
     render() {
