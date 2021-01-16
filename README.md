@@ -10,16 +10,15 @@ React - Front-end JavaScript library\
 Sass - Syntactically Awesome Style Sheets (CSS extension)\
 Gsap - JavaScript animation library
 
-## Getting Started
-# Prerequisites
+# Getting Started
+## Prerequisites
 
 To run this project you will need NodeJS, React, Node-Sass.
-# Installation
+## Installation
 
 ``` npm install node ```\
 ``` npm install react ```\
-For compatibility reasons, this version is required.\
-``` npm install node-sass@4.14.1 ``` 
+``` npm install node-sass@4.14.1 ``` (For compatibility reasons, this version is required.)
 
 # Available Scripts
 
