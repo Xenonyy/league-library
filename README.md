@@ -4,6 +4,9 @@ This project is based on a game called League of Legends, where you can freely b
 
 ![alt text](https://i.gyazo.com/5ec8d9f237a400fb27fe882fd28898c9.jpg)
 
+# Homepage
+Visit this project at: https://leaguelibrary.netlify.app/
+
 # Technologies used
 
 React - Front-end JavaScript library\
