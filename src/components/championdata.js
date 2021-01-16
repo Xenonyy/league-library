@@ -12,8 +12,8 @@ const d = document,
     apiSplash = `${cdn}img/champion/splash/`;
 
 class ChampionData extends React.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {cards: []}
     }
     async componentDidMount() {
@@ -188,8 +188,13 @@ class ChampionData extends React.Component {
                             ChampionKeyVideo(`${x.toUpperCase()}`);
                         });
                     }
-                    d.getElementById("champion-detail-abilities-video").addEventListener('mouseenter', function () { this.muted = false })
-                    d.getElementById("champion-detail-abilities-video").addEventListener('mouseleave', function () { this.muted = true })
+                    const setVolume = () => {
+                        const video = d.getElementById("champion-detail-abilities-video");
+                        video.volume = 0.3;
+                        video.addEventListener('mouseenter', function () { this.muted = false });
+                        video.addEventListener('mouseleave', function () { this.muted = true });
+                    }
+                    setVolume();
 
                     // Lower font size if line break would occur
                     for (const div of d.querySelectorAll(".abilities-name")) {
