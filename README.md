@@ -1,11 +1,13 @@
 # League Library
 
 This project is based on a game called League of Legends, where you can freely browse all the champions from the game using Riot Games' APIs.
+
 ![alt text](https://i.gyazo.com/5ec8d9f237a400fb27fe882fd28898c9.jpg)
+
 # Technologies used
 
-React - Front-end JavaScript library
-Sass - Syntactically Awesome Style Sheets (CSS extension)
+React - Front-end JavaScript library\
+Sass - Syntactically Awesome Style Sheets (CSS extension)\
 Gsap - JavaScript animation library
 
 ## Getting Started
@@ -14,8 +16,8 @@ Gsap - JavaScript animation library
 To run this project you will need NodeJS, React, Node-Sass.
 # Installation
 
-``` npm install node ```
-``` npm install react ```
+``` npm install node ```\
+``` npm install react ```\
 For compatibility reasons, this version is required.\
 ``` npm install node-sass@4.14.1 ``` 
 
