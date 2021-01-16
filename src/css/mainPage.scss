@@ -22,7 +22,7 @@ $champ-font: Capriola;
     border-radius: 2px;
 }
 
-@import 'Welcome';
+@import '../components/layout/WelcomePage/Welcome.scss';
 @import 'ScrollBar';
 
 // Styling
@@ -154,13 +154,13 @@ a {
     @extend %flex-prop;
 }
 
-@import 'Header';
-@import 'Dropdown';
-@import 'InfoPanel';
+@import '../components/layout/Header/Header.scss';
+@import '../components/layout/Header/Dropdown';
+@import '../components/champions/InfoPanel.scss';
 @import 'Gsap';
-@import 'Footer';
-@import 'Search';
-@import 'BackToTop';
+@import '../components/layout/Footer/Footer.scss';
+@import '../components/search/Search.scss';
+@import '../components/layout/BackToTop/BackToTop.scss';
 
 // Support for different screen sizes
 @media only screen and (min-width: 500px) and (max-width: 1650px) {
