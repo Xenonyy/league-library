@@ -80,7 +80,7 @@ a {
     height: fit-content;
     background-color: rgba(64, 63, 63, 0.69);
     @extend %border;
-
+    padding: 1em;
 }
 .champion-card {
     @extend %flex-prop;
@@ -163,22 +163,22 @@ a {
 @import 'backtotop';
 
 // Support for different screen sizes
-@media only screen and (min-width: 500px) and (max-width: 1440px) {
+@media only screen and (min-width: 500px) and (max-width: 1650px) {
     html {font-size: 0.9rem;}
     // .champion-card {transform: scale(0.8); margin: 0;}
     #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly;}
-    #champion-detail-abilities-description {width: 43%;}
+    #champion-detail-abilities-description {width: fit-content; max-width: 45%;}
     .abilities-container {margin: 0.5em; width: 200px;}
     .abilities-name {font-size: 1rem;}
-    .champion-detail-ability {transform: scale(0.8); padding: 1em 2em 0.5em;}
+    .champion-detail-ability {transform: scale(0.8); padding: 0.5em 1.5em 0.5em; max-height: 90px;}
     #champion-detail-abilities-container {padding: 2em 0;}
-    #champion-detail-abilities-video-container {width: 50%; margin: 0e; justify-content: center; padding: 0;}
-    .champion-detail-abilities-videos {width: 92%; min-height: 15em;}
+    #champion-detail-abilities-video-container {width: 22em; justify-content: center; padding: 0; margin: 1em 0 0;}
+    .champion-detail-abilities-videos {min-height: 15em;}
     #champion-detail-name {margin: 0 0 0.3em; height: 5%;}
     #champImg {transform: scale(0.75);}
     #champBgImg {mask-image: linear-gradient(#000 65%, #0000 110%); -webkit-mask-image: linear-gradient(#000 65%, #0000 110%);}
     #champion-detail-description-container {margin: 1em 20% 5em;}
-    #champion-detail-abilities-extra-detail-container {padding: 0 0.5em;}
+    #champion-detail-abilities-extra-detail-container {padding: 0 0.5em; justify-content: space-evenly;}
     .champion-container {margin: 2em 3em 5em;}
     .champion-card {width: 15em; height: 25em; margin: 2em 0.5em 0;}
     .champion-loading img {position: relative; width: 100%; object-fit: cover;}
