@@ -16,7 +16,9 @@ Gsap - JavaScript animation library
 # Getting Started
 ## Prerequisites
 
-To run this project you will need Node, React, Node-Sass and Gsap.
+To run this project you will need NodeJS installed. This project uses v15.4.0.\
+Check your current version with ``` node -v ```\
+If you dont have Node installed, install it with ``` npm install node ```
 ## Installation
 
 Pull this repository then simply run ``` npm install ```
