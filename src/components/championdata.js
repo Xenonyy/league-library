@@ -202,7 +202,7 @@ class ChampionData extends React.Component {
                         if (div.clientHeight <= 32) continue;
                             div.style.fontSize = "0.8rem";
                             div.style.whiteSpace = "nowrap";
-                            if (d.body.clientWidth < 1400) div.style.fontSize = "0.7rem";
+                            if (d.body.clientWidth < 1650) div.style.fontSize = "0.7rem";
                     }
                 });
             }
