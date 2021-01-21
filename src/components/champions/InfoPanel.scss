@@ -290,13 +290,13 @@
     border: 1px solid black;
 }
 
-.prev, .next {
-    display: none;
-}
-#slideShowEnd {
-    @extend %flex-prop;
-    position: absolute;
-    height: inherit;
-    width: inherit;
-    background-color: #555;
-}
+// .prev, .next {
+//     display: none;
+// }
+// #slideShowEnd {
+//     @extend %flex-prop;
+//     position: absolute;
+//     height: inherit;
+//     width: inherit;
+//     background-color: #555;
+// }
