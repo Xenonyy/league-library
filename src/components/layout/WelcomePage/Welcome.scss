@@ -8,6 +8,9 @@
     position: absolute;
     z-index: 4;
     transition: opacity 0.8s;
+    -webkit-transition: opacity 0.8s;
+    -moz-transition: opacity 0.8s;
+    -ms-transition: opacity 0.8s;
 }
 .fade {
     opacity: 0;
@@ -16,11 +19,12 @@
     @extend %flex-prop;
     height: 20em;
     width: 65em;
-    background-color: #403f3fbd;
+    background-color: #2b2b2b;
     @extend %border;
     max-width: 80%;
-    max-height: 35%;
+    max-height: 40%;
     min-height: 15em;
+    opacity: 0.8;
 }
 #welcome-text-container {
     @extend %flex-prop;
@@ -61,9 +65,6 @@
     -moz-transition: transform 0.2s ease-in-out;
     -ms-transition: transform 0.2s ease-in-out;
 }
-#welcome-container::-webkit-scrollbar { 
-    display: none;
-}
-#extra-line-phone {
+#welcome-container::-webkit-scrollbar, #extra-line-phone { 
     display: none;
 }

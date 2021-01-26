@@ -17,6 +17,8 @@
 .dropdown-content {
     position: absolute;
     background-color: #292929;
+    width: -moz-max-content;
+    width: -webkit-fill-available;
     width: max-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     margin-top: 7em;
@@ -36,7 +38,7 @@
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #d67db5; color: black;}
+.dropdown-content a:hover {background-color: $pink; color: black;}
 
 /* Show the dropdown menu on hover */
 #header-dropdown:hover .dropdown-content {opacity: 1;}
