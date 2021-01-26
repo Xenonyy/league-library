@@ -4,7 +4,7 @@
     position: fixed;
     background-color: black;
     z-index: 2;
-    // outline: #d67db5 1px solid;
+    // outline: $pink 1px solid;
     outline: coral 1px solid;
 }
 #header-icon {
@@ -37,7 +37,7 @@ img[alt~="league-icon"] {
 #header-email {
     @extend %flex-prop;
     // color: whitesmoke;
-    color: #d67db5;
+    color: $pink;
     height: 100%;
 }
 #header-github {

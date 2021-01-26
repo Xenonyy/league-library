@@ -1,6 +1,7 @@
 $default-font: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 $main-font: 'Work Sans', sans-serif;
 $champ-font: Capriola;
+$pink: #d67db5;
 
 %flex-prop {
     display: flex;
@@ -49,7 +50,7 @@ img {
     @extend %flex-prop;
 }
 a {
-    color: #d67db5;
+    color: $pink;
     text-decoration: none;
 }
 .non-selectable {
@@ -65,7 +66,9 @@ a {
 .container {
     width: 100%;
     background-color: #292929;
+    height: -moz-fit-content;
     height: fit-content;
+    height: -webkit-fit-content;
     display: inline-grid;
     background-image: url(https://raw.githubusercontent.com/chadcuomo/leagueuniverse/master/public/images/league-background.jpg);
     background-size: contain;
@@ -77,7 +80,9 @@ a {
 .champion-container {
     @extend %flex-prop;
     margin: 2em 5em 5em;
+    height: -moz-fit-content;
     height: fit-content;
+    height: -webkit-fit-content;
     background-color: rgba(64, 63, 63, 0.69);
     @extend %border;
     padding: 1em;
@@ -113,6 +118,7 @@ a {
 .champion-loading {
     background-size: cover;
     background-repeat: no-repeat;
+    -ms-transition: all .5s;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     -o-transition: all .5s;
@@ -129,10 +135,11 @@ a {
     @extend %flex-prop;
     width: 100%;
     height: 2em;
-    color: pink;
+    color: $pink;
     font-size: 1rem;
-    // font-style: oblique;
-    font-weight: 300;
+    font-family: 'Aleo';
+    font-style: oblique;
+    font-weight: 400;
     margin: 4.5em 0 0;
 }
 #no-results-container {
@@ -146,10 +153,12 @@ a {
     @extend %flex-prop;
     width: 50em;
     height: inherit;
-    background-color: #403f3fb0;
+    background-color: #313131;
+    border: $pink 1px solid;
+    border-radius: 15px;
 }
 #result-text {
-    color: #d67db5;
+    color: $pink;
     font-size: 1.5rem;
     @extend %flex-prop;
 }
@@ -167,15 +176,15 @@ a {
     html {font-size: 0.9rem;}
     // .champion-card {transform: scale(0.8); margin: 0;}
     #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly;}
-    #champion-detail-abilities-description {width: fit-content; max-width: 45%;}
+    #champion-detail-abilities-description {width: -webkit-fit-content; width: -moz-fit-content; width: fit-content; max-width: 45%;}
     .abilities-container {margin: 0.5em; width: 200px;}
     .abilities-name {font-size: 1rem;}
-    .champion-detail-ability {transform: scale(0.8); padding: 0.5em 1.5em 0.5em; max-height: 90px;}
+    .champion-detail-ability {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8); padding: 0.5em 1.5em 0.5em; max-height: 90px;}
     #champion-detail-abilities-container {padding: 2em 0;}
     #champion-detail-abilities-video-container {width: 22em; justify-content: center; padding: 0; margin: 1em 0 0;}
     .champion-detail-abilities-videos {min-height: 15em;}
     #champion-detail-name {margin: 0 0 0.3em; height: 5%;}
-    #champImg {transform: scale(0.75);}
+    #champImg {transform: scale(0.75); -moz-transform: scale(0.75); -o-transform: scale(0.75); -webkit-transform: scale(0.75);}
     #champBgImg {mask-image: linear-gradient(#000 65%, #0000 110%); -webkit-mask-image: linear-gradient(#000 65%, #0000 110%);}
     #champion-detail-description-container {margin: 1em 20% 5em;}
     #champion-detail-abilities-extra-detail-container {padding: 0 0.5em; justify-content: space-evenly;}
@@ -186,36 +195,35 @@ a {
     
 
     #b2t {padding: 15px;}
-    #b2t-img {transform: scale(0.9);}
+    #b2t-img {transform: scale(0.9); -moz-transform: scale(0.9); -o-transform: scale(0.9); -webkit-transform: scale(0.9);}
 
-    #champSkinsImg {transform: scale(0.7);}
+    #champSkinsImg {transform: scale(0.7); -moz-transform: scale(0.7); -o-transform: scale(0.7); -webkit-transform: scale(0.7);}
 }
 @media only screen and (min-width: 200px) and (max-width: 499px) {
-    html {font-size: 0.6rem; width: fit-content;}
+    html {font-size: 0.6rem; width: -webkit-fit-content; width: -moz-fit-content; width: fit-content;}
     body {line-height: 1.5em;}
     .title {font-size: 3rem; margin: 0.5em 0 1em;}
     .champion-container {margin: 1em; padding: 1em;}
-    .close-button {transform: scale(0.8);}
+    .close-button {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
     .champion-card {width: 10em; height: 17em; margin: 0.5em;}
     .champion-loading img {position: relative; width: 100%; object-fit: cover;}
     .champion-card-name {margin: -5em 0 0 0; font-size: 0.5rem; padding: 5px;}
     .champion-loading {height: inherit; width: inherit;}
     // img[alt="Loading Art"] {width: 250%; height: 40%;}
     #header-container {width: 98%;}
-    #header-icon {left: 0%; width: auto; transform: scale(0.9);}
-    #header-email {transform: scale(0.8);}
-    #header-github {transform: scale(0.8);}
-    #header-dropdown {padding: 1px; transform: scale(0.8);}
-    .dropbtn {padding: 0.5em 0.25em 0.5em 0.25em; transform: scale(0.8);}
+    #header-icon {left: 0%; width: auto; transform: scale(0.9); -moz-transform: scale(0.9); -o-transform: scale(0.9); -webkit-transform: scale(0.9);}
+    #header-email, #header-github {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
+    #header-dropdown {padding: 1px; transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
+    .dropbtn {padding: 0.5em 0.25em 0.5em 0.25em; transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
     #champion-detail-image {height: 70%;}
-    #champImg, #champSkinsImg {transform: scale(0.9); width: auto; height: auto; max-height: fit-content;}
+    #champImg, #champSkinsImg {transform: scale(0.9); -moz-transform: scale(0.9); -o-transform: scale(0.9); -webkit-transform: scale(0.9); width: auto; height: auto; max-height: -webkit-fit-content; max-height: -moz-fit-content; max-height: fit-content;}
     #champion-detail-name {height: 5%; font-size: 4rem;}
     #champion-detail-title {font-size: 1.5rem;}
     #champion-detail-description-container {margin: 1em 8% 5em;}
     #champion-detail-description, #champion-detail-description-full, #showBtn {font-size: 0.85rem;}
-    #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly; width: fit-content; margin: 1em;}
+    #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly; width: -webkit-fit-content; width: -moz-fit-content; width: fit-content; margin: 1em;}
     .abilities-container {margin: 0.5em 0.5em 0 0;}
-    .champion-detail-ability {padding: 0.5em 1.1em; transform: scale(0.4);}
+    .champion-detail-ability {padding: 0.5em 1.1em; transform: scale(0.4); -moz-transform: scale(0.4); -o-transform: scale(0.4); -webkit-transform: scale(0.4);}
     #champion-detail-abilities-description {width: auto; margin: 1em; font-size: 0.8rem; padding: 1em;}
     #champion-detail-abilities-video-container {width: 100%; margin: 0; padding: 0;}
     .abilities-name {font-size: 0.9rem;}
@@ -224,7 +232,7 @@ a {
     #champion-detail-abilities-qwer-container {margin: 0em; width: auto;}
     .abilities-container {width: 50px; height: 50px;}
     .abilities-name {display: none;}
-    .champion-detail-ability {padding: 0; transform: scale(0.7);}
+    .champion-detail-ability {padding: 0; transform: scale(0.7); -moz-transform: scale(0.7); -o-transform: scale(0.7); -webkit-transform: scale(0.7);}
     #champion-detail-ability-name-phone-container {visibility: visible; margin: 1em 0 0 0;};
     #champion-detail-ability-name-phone {display: flex;}
     #champion-detail-abilities-extra-detail-container {margin: 1.5em 0;}
@@ -236,7 +244,7 @@ a {
     #result-text {font-size: 1.2rem;}
 
     #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
-    #b2t-img {transform: scale(0.8);}
+    #b2t-img {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
 
     // Welcome Page
     #extra-line-phone {display: block;}
@@ -244,7 +252,7 @@ a {
     #welcome-description {padding: 1em;}
     
     // Skins Page
-    #champSkinsImg {transform: scale(0.28);}
+    #champSkinsImg {transform: scale(0.28); -moz-transform: scale(0.28); -o-transform: scale(0.28); -webkit-transform: scale(0.28);}
     #button-container {width: 20%; align-items: flex-end; height: 70%;}
     .prev,.next {padding: 10px;}
     #champion-detail-skins-name {font-size: 1.8rem; padding: 1em;}
@@ -254,10 +262,10 @@ a {
     html {font-size: 0.8rem;}
     body {line-height: 1.5em;}
     #header-dropdown {padding: 5px;}
-    .dropbtn {padding: 0.5em; transform: scale(1);}
+    .dropbtn {padding: 0.5em; transform: scale(1); -moz-transform: scale(1); -o-transform: scale(1); -webkit-transform: scale(1);}
     .title {font-size: 3rem; margin: 0.5em 0 1em;}
     .champion-container {margin: 1em; padding: 1em;}
-    .close-button {transform: scale(0.8);}
+    .close-button {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
     .champion-card {margin: 1em; width: 30%;}
     .champion-card {width: 10em; height: 15em; margin: 0.5em;}
     .champion-card-name {padding: 2px; margin: -4em 0 0 0; font-size: 0.5rem;}
@@ -265,14 +273,14 @@ a {
     .champion-loading img {object-fit: contain; height: auto;}
     // img[alt="Loading Art"] {width: 333%; height: 40%;}
     #champion-detail-image {height: 75%;}
-    #champImg {transform: scale(2.3);}
+    #champImg {transform: scale(2.3); -moz-transform: scale(2.3); -o-transform: scale(2.3); -webkit-transform: scale(2.3);}
     #champion-detail-name {height: 10%; font-size: 3rem;}
     #champion-detail-title {font-size: 1rem;}
     #champion-detail-description-container {margin: 1em 10% 5em;}
     #champion-detail-description, #champion-detail-description-full, #showBtn {font-size: 0.85rem;}
-    #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly; width: fit-content; margin: 1em;}
+    #champion-detail-abilities-qwer-container {display: flex; justify-content: space-evenly; width: -webkit-fit-content; width: -moz-fit-content; width: fit-content; margin: 1em;}
     .abilities-container {margin: 1em 0.5em;}
-    .champion-detail-ability {padding: 0.5em 2em; transform: scale(0.8);}
+    .champion-detail-ability {padding: 0.5em 2em; transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
     .abilities-name {font-size: 0.9rem;}
     #champion-detail-abilities-description {width: auto; margin: 1em; font-size: 0.8rem; padding: 1em;}
     #champion-detail-abilities-video-container {width: 80%; margin: 0; padding: 0;}
@@ -282,8 +290,8 @@ a {
     #champion-detail-abilities-qwer-container {margin: 0 1em; width: auto; justify-content: center;}
     .abilities-container {width: 60px; height: 60px;}
     .abilities-name {display: none;}
-    .champion-detail-ability {padding: 0; transform: scale(0.75);}
-    #champion-detail-ability-name-phone {font-size: 1rem; margin: 1em 0 0 0; width: fit-content; padding: 0 1em; display: flex;}
+    .champion-detail-ability {padding: 0; transform: scale(0.75); -moz-transform: scale(0.75); -o-transform: scale(0.75); -webkit-transform: scale(0.75);}
+    #champion-detail-ability-name-phone {font-size: 1rem; margin: 1em 0 0 0; padding: 0 1em; display: flex; width: -webkit-fit-content; width: -moz-fit-content; width: fit-content;}
     #champion-detail-ability-name-phone-container {visibility: visible};
     #champion-detail-abilities-extra-detail-container {margin: 1em 0;}
 
@@ -294,7 +302,7 @@ a {
     #result-text {font-size: 1.2rem;}
 
     #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
-    #b2t-img {transform: scale(0.8);}
+    #b2t-img {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
 
     // Welcome Page
     #extra-line-phone {display: block;}
@@ -302,13 +310,13 @@ a {
     #enter-button {margin: 1em 0 0;}
 
     // Skins Page
-    #champSkinsImg {transform: scale(0.4);}
+    #champSkinsImg {transform: scale(0.4); -moz-transform: scale(0.4); -o-transform: scale(0.4); -webkit-transform: scale(0.4);}
     .prev,.next {padding: 12px;}
     #champion-detail-skins-name {font-size: 1.5rem; padding: 0.7em; margin-bottom: 1em;}
     #champion-detail-skins-name-container {height: 112%;}
 }
 
-/************************ Browser support **********************/
+/************************ Extra Browser support **********************/
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
 
 }
