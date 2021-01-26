@@ -1,6 +1,7 @@
 #champion-info-panel {
     width: 100%;
     height: -webkit-fill-available;
+    height: -moz-available;
     background-color: #191919;
     position: fixed;
     z-index: 3;
@@ -73,7 +74,9 @@
 }
 #champion-detail-description-container, #champion-detail-description-full {
     @extend %flex-prop;
-	height: fit-content;
+	height: -moz-fit-content;
+    height: fit-content;
+    height: -webkit-fit-content;
     background-color: rgb(29, 29, 29);
     color: antiquewhite;
     margin: 1em 28% 5em;
@@ -92,12 +95,16 @@
 }
 #champion-detail-abilities-qwer-container {
     @extend %flex-prop;
+    width: -moz-fit-content;
     width: fit-content;
+    width: -webkit-fit-content;
     width: 100%;
     margin: 1em 0 0;
 }
 #champion-detail-abilities-container {
-	height: fit-content;
+	height: -moz-fit-content;
+    height: fit-content;
+    height: -webkit-fit-content;
 	background-color: rgb(29, 29, 29);
 	padding: 2em 1em;
 	color: antiquewhite;
@@ -116,7 +123,9 @@
 }
 .abilities-container {
     @extend %flex-prop;
+    width: -moz-min-content;
     width: min-content;
+    width: -webkit-min-content;
     background-color: #3a3a3a;
     margin: 2em 1.5em 1em 0;
     border: 1px solid #b3b3b3;
@@ -137,14 +146,18 @@
 #champion-detail-ability-name-phone-container {
     @extend %flex-prop;
     width: 100%;
+    height: -moz-fit-content;
     height: fit-content;
+    height: -webkit-fit-content;
     display: none;
     opacity: 0;
     visibility: hidden;
 }
 #champion-detail-ability-name-phone {
     @extend %flex-prop;
+    width: -moz-fit-content;
     width: fit-content;
+    width: -webkit-fit-content;
     padding: 0 2em;
     height: 2em;
     background-color: #3a3a3a;
@@ -159,11 +172,15 @@
     @extend %flex-prop;
     align-items: flex-start;
     width: 100%;
+    height: -moz-fit-content;
     height: fit-content;
+    height: -webkit-fit-content;
     display: none;
 }
 #champion-detail-abilities-description{
+    height: -moz-fit-content;
     height: fit-content;
+    height: -webkit-fit-content;
     padding: 1.5em;
     background-color: #3a3a3a;
     font-size: 1.1rem;
@@ -175,7 +192,9 @@
 #champion-detail-abilities-video-container {
     @extend %flex-prop;
     align-items: flex-end;
+    height: -moz-fit-content;
     height: fit-content;
+    height: -webkit-fit-content;
     width: 39%;
     margin: 1em 0 0 2em;
     padding-right: 1.4em;
@@ -189,7 +208,9 @@
     @extend %border-abilities;
 }
 #champion-detail-skins-container {
+    height: -moz-fit-content;
     height: fit-content;
+    height: -webkit-fit-content;
 	background-color: rgb(29, 29, 29);
 	color: antiquewhite;
 	font-family: Aleo;
