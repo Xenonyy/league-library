@@ -245,6 +245,7 @@ a {
 
     #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
     #b2t-img {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
+    #b2tPanel {top: 75%; left: 88%; transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
 
     // Welcome Page
     #extra-line-phone {display: block;}
@@ -272,8 +273,8 @@ a {
     .champion-loading {height: inherit; width: inherit;}
     .champion-loading img {object-fit: contain; height: auto;}
     // img[alt="Loading Art"] {width: 333%; height: 40%;}
-    #champion-detail-image {height: 75%;}
-    #champImg {transform: scale(2.3); -moz-transform: scale(2.3); -o-transform: scale(2.3); -webkit-transform: scale(2.3);}
+    #champion-detail-image {height: 75%; align-items: baseline;}
+    #champImg {transform: scale(2.5); -moz-transform: scale(2.5); -o-transform: scale(2.5); -webkit-transform: scale(2.5);}
     #champion-detail-name {height: 10%; font-size: 3rem;}
     #champion-detail-title {font-size: 1rem;}
     #champion-detail-description-container {margin: 1em 10% 5em;}
@@ -303,6 +304,7 @@ a {
 
     #b2t {bottom: 2em; right: 1.5em; padding: 8px;}
     #b2t-img {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
+    #b2tPanel {top: 75%; left: 88%; transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
 
     // Welcome Page
     #extra-line-phone {display: block;}
@@ -313,7 +315,7 @@ a {
     #champSkinsImg {transform: scale(0.4); -moz-transform: scale(0.4); -o-transform: scale(0.4); -webkit-transform: scale(0.4);}
     .prev,.next {padding: 12px;}
     #champion-detail-skins-name {font-size: 1.5rem; padding: 0.7em; margin-bottom: 1em;}
-    #champion-detail-skins-name-container {height: 112%;}
+    #champion-detail-skins-name-container {height: 115%;}
 }
 
 /************************ Extra Browser support **********************/
