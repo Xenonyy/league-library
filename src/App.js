@@ -6,15 +6,17 @@ import Header from './components/layout/Header/Header';
 import Results from './components/search/Results';
 import TopContainer from './components/search/TopContainer';
 import WelcomePage from './components/layout/WelcomePage/WelcomePage';
+import ChampionDetailPanel from './components/champions/ChampionDetailPanel';
 
 
 function App() {
 	return ([
-		<WelcomePage key = {0} />,
-		<div className = "container" key = {1}>
+		<WelcomePage key = {"WelcomePage"} />,
+		<div className = "container" key = {"container"}>
 			<Header />
 			<TopContainer />
-			<div className = "champion-container" key = {2}>
+			<div className = "champion-container">
+				<ChampionDetailPanel />
 				<ChampionData />
 				<Results />
 			</div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {ChampionAPI} from "../../api/champions";
-import ChampionDetailPanel from './ChampionDetailPanel';
 import ChampionMainPage from './ChampionMainPage';
 
 const d = document,
@@ -206,10 +205,9 @@ class ChampionData extends React.Component {
             }
         }
         LoadAllAPI();
-        return([
-            <ChampionMainPage key = {0.1} cards = {this.state.cards}/>,
-            <ChampionDetailPanel key = {0.2}/> // Random key values, to remove the warnings.
-        ])
+        return(
+            <ChampionMainPage cards = {this.state.cards}/>
+        )
     }
 
 }
