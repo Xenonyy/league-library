@@ -1,1 +1,1 @@
-export const ChampionAPI = "https://ddragon.leagueoflegends.com/cdn/10.25.1/data/en_US/champion.json";
+export const ChampionAPI = "http://ddragon.leagueoflegends.com/cdn/11.2.1/data/en_US/champion.json";
