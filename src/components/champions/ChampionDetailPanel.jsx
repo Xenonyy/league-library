@@ -79,9 +79,21 @@ class ChampionDetailPanel extends React.Component {
             display: "flex"
         })
     }
+    BackToTop = () => {
+        let b2t = document.querySelector("#b2tPanel"),
+            panel = document.querySelector("#champion-info-panel");
+        if (panel.scrollTop > 300) b2t.style.opacity = 1;
+        else b2t.style.opacity = 0;
+        b2t.addEventListener("click", () => {
+            panel.scrollTo({top: 0, behavior: 'smooth'});
+        })
+    }
     render() {
         return(
-            <div id ="champion-info-panel" style = {{display: "none"}} onScroll = { () => {this.ScrollAnim();}}>
+            <div id ="champion-info-panel" style = {{display: "none"}} onScroll = { () => {this.ScrollAnim(); this.BackToTop();}}>
+                <button id = "b2tPanel">
+                    <img src = "https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png" alt = "Scroll To The Top" id = "b2tPanel-img"></img>
+                </button>
                 <button className = "close-button" onClick = {() => {this.ClosePanelAnimation(); this.ResetInfo(); this.MouseLeave()}}>X</button>
                 <div id = "champion-detail-image" className = "non-selectable">
                     <img id = "champBgImg" alt = "Background Splash"/>

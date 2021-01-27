@@ -1,4 +1,4 @@
-#b2t {
+#b2t, #b2tPanel {
     display: none;
     position: fixed;
 	bottom: 3em;
@@ -11,19 +11,32 @@
     @extend %border;
 	border-radius: 3px;
 	opacity: 0.8;
+	-ms-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
 	z-index: 2;
-} 
-#b2t:hover {
+}
+#b2tPanel {
+	display: block;
+	opacity: 0;
+	z-index: 3;
+	position: sticky;
+	top: 85%;
+	left: 94%;
+}
+#b2t:hover, #b2tPanel:hover {
 	background-color: coral;
 	color: black;
 	border-color: black;
 	img{
 		content: url(https://i.gyazo.com/25bca84d684ddfe5d7dd4aaec54f92e6.png);
 	}
-	#b2t-img {
+	#b2t-img, #b2tPanel-img {
 		content: url(https://i.gyazo.com/25bca84d684ddfe5d7dd4aaec54f92e6.png);
 	}
 }
-#b2t-img {
+#b2t-img, #b2tPanel-img {
 	max-height: 32px;
 }
