@@ -80,7 +80,6 @@ class ChampionData extends React.Component {
                     }
                 }
                 d.querySelector(`#champion-card-${x}`).addEventListener('click', () => {
-                    console.log(...name)
                     d.getElementsByTagName("title")[0].innerText = `${name} - ${title}`;
                     d.getElementById("champBgImg").src = `${apiSplash + id}_0.jpg`;
                     d.getElementById("champImg").src = `${apiSplash + id}_0.jpg`;
@@ -109,7 +108,6 @@ class ChampionData extends React.Component {
                     // Automatic slideshow
                     async function slideShow () {
                         for (j = 0; j < skins.length; j++) {
-                            console.log(j)
                             if (abort === false) {
                                 skinDiv.src = `${apiSplash + id}_${skins[j].num}.jpg`;
                                 skinBgDiv.src = `${apiSplash + id}_${skins[j].num}.jpg`;
@@ -177,7 +175,7 @@ class ChampionData extends React.Component {
                         abort = true;
                         j = 0;
                         // Proof of bug
-                        console.log(name)
+                        // console.log(name)
                     })
                     // Show abilities information when hovering
                     for (const [x, ability] of Object.entries(spells)) {
