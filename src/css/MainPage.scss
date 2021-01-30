@@ -183,8 +183,9 @@ a {
     #champion-detail-abilities-container {padding: 2em 0;}
     #champion-detail-abilities-video-container {width: 22em; justify-content: center; padding: 0; margin: 1em 0 0;}
     .champion-detail-abilities-videos {min-height: 15em;}
-    #champion-detail-name {margin: 0 0 0.3em; height: 5%;}
-    #champImg {transform: scale(0.75); -moz-transform: scale(0.75); -o-transform: scale(0.75); -webkit-transform: scale(0.75);}
+    #champion-detail-name {margin: .1em 0 0.3em; height: 5%;}
+    #champion-detail-image {height: 75%}
+    #champImg {transform: scale(2); -moz-transform: scale(2); -o-transform: scale(2); -webkit-transform: scale(2); margin: 0;}
     #champBgImg {mask-image: linear-gradient(#000 65%, #0000 110%); -webkit-mask-image: linear-gradient(#000 65%, #0000 110%);}
     #champion-detail-description-container {margin: 1em 20% 5em;}
     #champion-detail-abilities-extra-detail-container {padding: 0 0.5em; justify-content: space-evenly;}
@@ -215,7 +216,7 @@ a {
     #header-email, #header-github {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
     #header-dropdown {padding: 1px; transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
     .dropbtn {padding: 0.5em 0.25em 0.5em 0.25em; transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
-    #champion-detail-image {height: 70%;}
+    #champion-detail-image {height: 50%;}
     #champImg, #champSkinsImg {transform: scale(0.9); -moz-transform: scale(0.9); -o-transform: scale(0.9); -webkit-transform: scale(0.9); width: auto; height: auto; max-height: -webkit-fit-content; max-height: -moz-fit-content; max-height: fit-content;}
     #champion-detail-name {height: 5%; font-size: 4rem;}
     #champion-detail-title {font-size: 1.5rem;}
