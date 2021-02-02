@@ -91,8 +91,12 @@ class ChampionData extends React.Component {
                         d.querySelector(`#champion-detail-abilities-${key}`).src = apiSpell + spell.img;
                     }
                     d.getElementById("champion-detail-abilities-p").src = apiPassive + spells.p.img;
-                    skinDiv.src = `${apiSplash + id}_0.jpg`;
-                    skinBgDiv.src = `${apiSplash + id}_0.jpg`;
+                    for (const skin of skins) {
+                        const preloadImages = (url) => {
+                            new Image().src = url;
+                        }
+                        preloadImages(`${apiSplash + id}_${skin.num}.jpg`)
+                    }
                     d.getElementById("champion-detail-skins-name").innerText = name;
 
                     // Slideshow of skins
@@ -110,7 +114,6 @@ class ChampionData extends React.Component {
                             if (abort === false) {
                                 skinDiv.src = `${apiSplash + id}_${skins[j].num}.jpg`;
                                 skinBgDiv.src = `${apiSplash + id}_${skins[j].num}.jpg`;
-                                // await timer(650); // Wait for the skins to load before showing
                                 showDivs();
                                 if (skins[j].name === "default") d.getElementById("champion-detail-skins-name").innerText = name;
                                 else d.getElementById("champion-detail-skins-name").innerText = skins[j].name;
