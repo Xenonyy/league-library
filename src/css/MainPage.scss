@@ -186,7 +186,7 @@ a {
     #champion-detail-name {margin: .1em 0 0.3em; height: 5%;}
     #champion-detail-image {height: 75%}
     #champImg {transform: scale(2); -moz-transform: scale(2); -o-transform: scale(2); -webkit-transform: scale(2); margin: 0;}
-    #champBgImg {mask-image: linear-gradient(#000 65%, #0000 110%); -webkit-mask-image: linear-gradient(#000 65%, #0000 100%);}
+    #champBgImg {mask-image: linear-gradient(#000 65%, #0000 100%); -webkit-mask-image: linear-gradient(#000 65%, #0000 100%);}
     #champion-detail-description-container {margin: 1em 20% 5em;}
     #champion-detail-abilities-extra-detail-container {padding: 0 0.5em; justify-content: space-evenly;}
     .champion-container {margin: 2em 3em 5em;}
@@ -274,9 +274,9 @@ a {
     .champion-loading {height: inherit; width: inherit;}
     .champion-loading img {object-fit: contain; height: auto;}
     // img[alt="Loading Art"] {width: 333%; height: 40%;}
-    #champion-detail-image {height: 75%; align-items: baseline;}
-    #champImg {transform: scale(2.5); -moz-transform: scale(2.5); -o-transform: scale(2.5); -webkit-transform: scale(2.5);}
-    #champion-detail-name {height: 10%; font-size: 3rem;}
+    #champion-detail-image {height: 70%; align-items: baseline;}
+    #champImg {transform: scale(2.5); -moz-transform: scale(2.5); -o-transform: scale(2.5); -webkit-transform: scale(2.5); margin: 2rem 0 0;}
+    #champion-detail-name {height: 5%;font-size: 4rem; margin: 0 0 0.3em;}
     #champion-detail-title {font-size: 1rem;}
     #champion-detail-description-container {margin: 1em 10% 5em;}
     #champion-detail-description, #champion-detail-description-full, #showBtn {font-size: 0.85rem;}
