@@ -83,6 +83,8 @@
     padding: 2em;
     font-family: Gabriela;
     letter-spacing: 0.5px;
+    @extend %border-abilities;
+    border-radius: 5px;
 }
 #showBtn {
     background: none;
@@ -241,6 +243,8 @@
     height: auto;
     opacity: 1;
     transition: opacity .5s linear;
+    // border: 2px solid pink;
+    border-radius: 10px;
 }
 .hide {
     opacity: 0 !important;
@@ -267,12 +271,13 @@
     height: 90%;
     z-index: 2;
     align-items: flex-end;
-    filter: drop-shadow(2px 4px 6px black);
 }
 #champion-detail-skins-name {
     filter: drop-shadow(2px 4px 6px black);
     font-size: 2rem;
-    background-color: #1d1d1dad;
+    border: 1px solid pink;
+    border-radius: 5px;
+    background: #1d1d1d;
     padding: 0.5em;
     color: pink;
 }
