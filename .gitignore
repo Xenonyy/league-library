@@ -24,3 +24,12 @@ yarn-error.log*
 
 # Old/Unused files
 /old_files
+
+# Express.js back-end
+/api
+server.js
+
+# TypeScript
+.vscode
+*env.d.ts
+tsconfig.json
