@@ -1,20 +1,16 @@
 import React from 'react';
 
-window.onload = () => {
-    // Hamburger Menu SVG
-    const menu = document.querySelector("#menu-toggle");
-    const header_menu = document.querySelector("#header-menu");
-    menu.onclick = function(){
-        menu.classList.toggle('open');
-        header_menu.classList.toggle('hidden');
-        header_menu.classList.toggle('animation');
-    };
-}
-
 class HeaderPhone extends React.Component {
+    MenuAnimation = () => {
+        const menu = document.getElementById("menu-toggle");
+        const header_menu = document.getElementById("header-menu");
+            menu.classList.toggle('open');
+            header_menu.classList.toggle('hidden');
+            header_menu.classList.toggle('animation');
+    }
     render() {
     return([
-        <div id = "header-menu" className = "hidden">
+        <div id = "header-menu" className = "hidden" key = {"header-menu"}>
             <div id = "contact-phone">
                 <div id = "project-link-container">
                     <div id = "src-code-container">
@@ -42,13 +38,13 @@ class HeaderPhone extends React.Component {
                 <p id = "header-phone-copyright">&copy; 2021 Gonda Armand</p>
             </div>
         </div>,
-        <header id = "header-phone">
+        <header id = "header-phone" key = {"header-phone"}>
             <div id = "header-phone-container">
                 <div id = "header-phone-icon" className = "non-selectable">
                     <img src = "https://i.gyazo.com/e3f99f53992a9a36f7a0e110ceedd75c.png"  alt = "league" id = "league-phone-icon" className = "phone-icon non-selectable"></img>
                     <div id = "header-phone-text">League Library</div>
                 </div>
-                <div id = "menu-toggle">
+                <div id = "menu-toggle" onClick = {() => this.MenuAnimation()}>
                     <div id = "hamburger">
                         <span></span>
                         <span></span>
