@@ -164,6 +164,7 @@ a {
 }
 
 @import '../components/layout/Header/Header.scss';
+@import '../components/layout/HeaderPhone/HeaderPhone.scss';
 @import '../components/layout/Header/Dropdown';
 @import '../components/champions/InfoPanel.scss';
 @import 'Gsap';
@@ -258,6 +259,9 @@ a {
     #button-container {width: 20%; align-items: flex-end; height: 70%;}
     .prev,.next {padding: 10px;}
     #champion-detail-skins-name {font-size: 1.8rem; padding: 1em;}
+
+    // Phone Header Adjustments
+    #top-container {margin-top: 3rem;}
 }
 // MOBILE LANDSCAPE MODE
 @media screen and (orientation:landscape) and (min-device-width: 200px) and (max-device-width: 900px) {
@@ -317,6 +321,15 @@ a {
     .prev,.next {padding: 12px;}
     #champion-detail-skins-name {font-size: 1.5rem; padding: 0.7em; margin-bottom: 1em;}
     #champion-detail-skins-name-container {height: 115%;}
+
+    // Phone Header Adjustments
+    #header-phone {height: 6rem;}
+    #top-container {margin-top: 2.2rem;}
+    #contact-phone {height: 88%;}
+    #src-code-container {width: 60%;}
+    #project-link-container {height: 35%; justify-content: flex-start;}
+    #contact-container {height: 82%; line-height: .2;}
+    .link-text {font-size: 1rem;}
 }
 
 /************************ Extra Browser support **********************/
