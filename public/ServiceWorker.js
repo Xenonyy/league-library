@@ -40,11 +40,25 @@ registerRoute(
       new CacheableResponse({
         statuses: [200],
       }),
-      // Don't cache more than 50 items, and expire them after 30 days
+      // Don't cache more than 50 items, and expire them after 1 Year
       new ExpirationPlugin({
         maxEntries: 50,
-        maxAgeSeconds: 60 * 60 * 24 * 365, // Expires after 1 Year
+        maxAgeSeconds: 60 * 60 * 24 * 365,
       }),
     ],
   }),
+);
+
+// Cache API responses of champion splash arts
+registerRoute(
+  new RegExp('/loading/(.*)'),
+  new StaleWhileRevalidate({
+       cacheName: 'apiCache',
+       plugins : [
+          new ExpirationPlugin({
+              maxEntries: 200,
+              maxAgeSeconds: 60 * 60 * 24 * 30 // Store for 30 Days
+          })
+      ]
+  })
 );
