@@ -25,6 +25,7 @@
     border-radius: 10px;
     opacity: 0;
     transition: opacity 0.5s;
+    visibility: hidden;
 }
 
 /* Links inside the dropdown */
@@ -41,4 +42,4 @@
 .dropdown-content a:hover {background-color: $pink; color: black;}
 
 /* Show the dropdown menu on hover */
-#header-dropdown:hover .dropdown-content {opacity: 1;}
+#header-dropdown:hover .dropdown-content {opacity: 1; transition: opacity 0.5s; visibility: visible;}
