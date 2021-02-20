@@ -51,7 +51,7 @@ registerRoute(
 
 // Cache API responses of champion splash arts
 registerRoute(
-  new RegExp('/loading/(.*)'),
+  new RegExp('/cdn/(.*)'),
   new StaleWhileRevalidate({
        cacheName: 'apiCache',
        plugins : [
