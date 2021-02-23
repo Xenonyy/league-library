@@ -51,3 +51,6 @@ input::placeholder {
 #search-input:focus {
 	background-color: #1f1f1f;
 }
+.search-container:focus-within {
+	filter: drop-shadow(0px 0px 4px black);
+}
