@@ -62,12 +62,12 @@ class ChampionDetailPanel extends React.Component {
     }
     MouseLeave = () => {
         gsap.to("#champion-detail-abilities-description", { 
-            x: "-=200",
+            x: "-=100",
             duration: 0.5,
             autoAlpha: 0
         })
         gsap.to("#champion-detail-abilities-video-container", {
-            x: "+=200",
+            x: "+=100",
             duration: 0.5,
             autoAlpha: 0
         })
