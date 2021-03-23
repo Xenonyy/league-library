@@ -17,6 +17,11 @@
     -o-transition: opacity .5s;
     transition: opacity .5s;
 	z-index: 2;
+	min-width: 4em;
+    min-height: 4em;
+}
+button > * {
+	pointer-events: none;
 }
 #b2tPanel {
 	display: block;

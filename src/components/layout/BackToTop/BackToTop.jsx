@@ -9,9 +9,15 @@ class BackToTop extends React.Component {
             } else {
                 b2t.style.display = "none";
             }
-            b2t.addEventListener("click", () => {
+        }
+        window.onload = () => {
+            document.querySelector("button > img").addEventListener("click", function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            document.querySelector("#b2t").addEventListener("click", function() {
                 document.documentElement.scrollTop = 0;
-            })
+            });
         }
     return(
         <button id = "b2t" >
