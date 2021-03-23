@@ -3,7 +3,7 @@ import {ChampionAPI} from "../../api/champions";
 import ChampionMainPage from './ChampionMainPage';
 
 const d = document,
-    version = "11.2.1",
+    version = "11.6.1",
     cdn = "http://ddragon.leagueoflegends.com/cdn/",
     apiSpell = `${cdn + version}/img/spell/`,
     apiPassive = `${cdn + version}/img/passive/`,
