@@ -3,7 +3,7 @@
     height: 7rem;
     position: fixed;
     background-color: black;
-    z-index: 2;
+    z-index: 3;
     // outline: $pink 1px solid;
     outline: coral 1px solid;
 }
@@ -163,7 +163,7 @@ a:hover:after {
     background-color: #212121;
     position: fixed;
     right: 0;
-    z-index: 2;
+    z-index: 3;
     justify-content: center;
     align-items: center;
     flex-flow: row;
