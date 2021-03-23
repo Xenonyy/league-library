@@ -24,9 +24,11 @@ class WelcomePage extends React.Component {
             <div id = "welcome-main-container">
                 <div id = "welcome-text-container">
                     <span id = "welcome-text">Welcome to League Library!</span>
-                    <span id = "welcome-description">League Library is a website based on League of Legends, a MOBA game made by Riot Games.<br></br>
-                    <p id = "extra-line-phone" style = {{width: "100%"}}></p>
-                    On this website you can freely browse your favorite characters and their information from the game! </span>
+                    <span id = "welcome-description">League Library is a web app based on League of Legends, a MOBA game made by Riot Games.<br></br>
+                        <p id = "extra-line-phone" style = {{width: "100%"}}></p>
+                        On this website you can freely browse all the characters and their information from the game! <br/>
+                        This website has no affiliation with Riot Games. All assets belong to Riot Games.
+                    </span>
                 </div>
                 <div id = "enter-container">
                     <button id = "enter-button" onClick = {() => this.ShowPage()}>Enter</button>
