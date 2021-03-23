@@ -3,7 +3,7 @@
     width: 100%;
     @extend %flex-prop;
     background-color: #555;
-    background-image: url(https://raw.githubusercontent.com/chadcuomo/leagueuniverse/master/public/images/league-background.jpg);
+    background-image: url(../../../background.webp);
     background-size: cover;
     position: absolute;
     z-index: 4;
@@ -18,12 +18,11 @@
 #welcome-main-container {
     @extend %flex-prop;
     height: 20em;
-    width: 65em;
+    width: 62em;
     background-color: #2b2b2b;
     @extend %border;
-    max-width: 80%;
-    max-height: 40%;
-    min-height: 15em;
+    max-width: 85%;
+    min-height: fit-content;
     opacity: 0.8;
 }
 #welcome-text-container {
