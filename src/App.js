@@ -2,7 +2,7 @@ import React from 'react';
 import BackToTop from './components/layout/BackToTop/BackToTop';
 import ChampionData from './components/champions/ChampionData';
 import Footer from './components/layout/Footer/Footer';
-import Results from './components/search/Results';
+import { Results } from './components/search/Results';
 import TopContainer from './components/search/TopContainer';
 import WelcomePage from './components/layout/WelcomePage/WelcomePage';
 import ChampionDetailPanel from './components/champions/ChampionDetailPanel';
