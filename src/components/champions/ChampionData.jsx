@@ -34,7 +34,7 @@ class ChampionData extends React.Component {
         window.onload = () => {
             for (const [x, div] of Object.entries(d.querySelectorAll(".champion-card"))) {
                 const champName = d.querySelectorAll(".champion-card-name");
-                div.addEventListener("click", async () => {
+                div.addEventListener("click" || "touchstart", async () => {
                     let counter = this.state.counter;
 
                     // Fetch the champion json the user clicked on
