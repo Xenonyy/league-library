@@ -6,15 +6,15 @@ class Header extends React.Component {
         <header className = "header">
             <div id = "header-container">
                 <div id = "header-icon" className = "non-selectable">
-                    <img src = "https://i.gyazo.com/e3f99f53992a9a36f7a0e110ceedd75c.png"  alt = "league-icon"></img>
+                    <img src = "../../header-icon-transparent.webp"  alt = "league-icon"></img>
                     <div id = "header-text">League Library</div>
                 </div>
                 <div id = "header-email">gonda.armand@gmail.com
-                    <img src = "https://i.gyazo.com/225151653b3915372e6bba191222b7f7.png" alt = "email-icon" id = "email-icon" className = "non-selectable"></img>
+                    <img src = "../../email.webp" alt = "email-icon" id = "email-icon" className = "non-selectable"></img>
                     {/* <img src = "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt = "email-icon" id = "email-icon"></img> */}
                 </div>
                 <div id = "header-github">
-                    <img src = "https://i.gyazo.com/833f2c714bb26d16b8057f18cd6cc5f0.png" alt = "github-icon" id = "github-icon" className = "non-selectable"></img>
+                    <img src = "../../github.webp" alt = "github-icon" id = "github-icon" className = "non-selectable"></img>
                     <a href = "https://github.com/Xenonyy" style = {{position: "absolute", screenLeft: "4em"}}>Xenonyy</a>
                 </div>
                 <div id = "header-dropdown">
