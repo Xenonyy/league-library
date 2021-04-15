@@ -3,7 +3,7 @@ import {ChampionAPI} from "../../api/champions";
 import ChampionMainPage from './ChampionMainPage';
 
 const d = document,
-    version = "11.6.1",
+    version = "11.8.1",
     cdn = "http://ddragon.leagueoflegends.com/cdn/",
     apiSpell = `${cdn + version}/img/spell/`,
     apiPassive = `${cdn + version}/img/passive/`,
@@ -13,7 +13,7 @@ const d = document,
 class ChampionData extends React.Component {
     constructor(){
         super();
-        this.state = {cards: []}
+        this.state = {cards: [], counter: 0}
     }
     async componentDidMount() {
         const response = await fetch(ChampionAPI);
@@ -27,58 +27,51 @@ class ChampionData extends React.Component {
     render(){
         // eslint-disable-next-line
         String.prototype.capitalize = () => this.charAt(0).toUpperCase() + this.slice(1);
-        let cards = this.state.cards;
         let AllData = [];
         const skinDiv = d.getElementById("champSkinsImg"),
             skinBgDiv = d.getElementById("champSkinsBgImg");
 
-        const LoadAllAPI = async () => {
-            for (const [x, card] of Object.entries(cards)) {
-                const response = await fetch(`${cdn + version}/data/en_US/champion/${card.id}.json`);
-                const json = await response.json();
-                Object.keys(json.data).forEach(key => {
-                    AllData.push(json.data[key]);
-                });
+        window.onload = () => {
+            for (const [x, div] of Object.entries(d.querySelectorAll(".champion-card"))) {
+                const champName = d.querySelectorAll(".champion-card-name");
+                div.addEventListener("click", async () => {
+                    let counter = this.state.counter;
 
-                const champion = {
-                    name: AllData[x].name,
-                    id: AllData[x].id,
-                    title: AllData[x].title,
-                    key: AllData[x].key,
-                    skins: AllData[x].skins,
-                    blurb: AllData[x].blurb,
-                    lore: AllData[x].lore,
-                    spell: AllData[x].spells,
-                };
-                const { name, id, title, key, skins, blurb, lore, spell } = champion;
+                    // Fetch the champion json the user clicked on
+                    const response = await fetch(`${cdn + version}/data/en_US/champion/${champName[x].innerText.toLowerCase().capitalize()}.json`);
+                    const json = await response.json();
+                    Object.keys(json.data).forEach(key => {
+                        AllData.push(json.data[key]);
+                    });
+                    console.log(AllData, counter);
 
-                const spells = {
-                    p: {
-                        name: AllData[x].passive.name,
-                        desc: AllData[x].passive.description,
-                        img: AllData[x].passive.image.full,
+                    // Assign all the received data to objects
+                    const champion = {
+                        name: AllData[counter].name,
+                        id: AllData[counter].id,
+                        title: AllData[counter].title,
+                        key: AllData[counter].key,
+                        skins: AllData[counter].skins,
+                        blurb: AllData[counter].blurb,
+                        lore: AllData[counter].lore,
+                        spell: AllData[counter].spells,
+                    };
+                    const { name, id, title, key, skins, blurb, lore, spell } = champion;
+    
+                    const spells = {
+                        p: {
+                            name: AllData[counter].passive.name,
+                            desc: AllData[counter].passive.description,
+                            img: AllData[counter].passive.image.full,
+                        }
+                    };
+
+                    for (const [num, ability] of Object.entries(['q', 'w', 'e', 'r'])) {
+                        spells[ability] = spell[num];
+                        spells[ability].name = spell[num].name;
+                        spells[ability].desc = spell[num].description;
+                        spells[ability].img = spell[num].image.full;
                     }
-                };
-
-                for (const [num, ability] of Object.entries(['q', 'w', 'e', 'r'])) {
-                    spells[ability] = spell[num];
-                    spells[ability].name = spell[num].name;
-                    spells[ability].desc = spell[num].description;
-                    spells[ability].img = spell[num].image.full;
-                }
-                function ChampionKeyVideo(ability) {
-                    if (key.length === 3) {
-                        d.getElementById("champion-detail-abilities-video").src = `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
-                        d.getElementById("champion-detail-abilities-video-source-webm").src = `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
-                    } else if (key.length === 2) {
-                        d.getElementById("champion-detail-abilities-video").src = `${apiSpellImg}0${key}/ability_00${key}_${ability}1.webm`;
-                        d.getElementById("champion-detail-abilities-video-source-webm").src = `${apiSpellImg}0${key}/ability_00${key}_${ability}1.webm`;
-                    } else if (key.length === 1) {
-                        d.getElementById("champion-detail-abilities-video").src = `${apiSpellImg}00${key}/ability_000${key}_${ability}1.webm`;
-                        d.getElementById("champion-detail-abilities-video-source-webm").src = `${apiSpellImg}00${key}/ability_000${key}_${ability}1.webm`;
-                    }
-                }
-                d.querySelector(`#champion-card-${x}`).addEventListener('click', () => {
                     d.getElementsByTagName("title")[0].innerText = `${name} - ${title}`;
                     d.getElementById("champBgImg").src = `${apiSplash + id}_0.jpg`;
                     d.getElementById("champImg").src = `${apiSplash + id}_0.jpg`;
@@ -91,6 +84,8 @@ class ChampionData extends React.Component {
                         d.querySelector(`#champion-detail-abilities-${key}`).src = apiSpell + spell.img;
                     }
                     d.getElementById("champion-detail-abilities-p").src = apiPassive + spells.p.img;
+
+                    // Preload all skins on champion click
                     for (const skin of skins) {
                         const preloadImages = (url) => {
                             new Image().src = url;
@@ -98,6 +93,36 @@ class ChampionData extends React.Component {
                         preloadImages(`${apiSplash + id}_${skin.num}.jpg`)
                     }
                     d.getElementById("champion-detail-skins-name").innerText = name;
+
+                    // Assign the video source for each ability
+                    function ChampionKeyVideo(ability) {
+                        if (key.length === 3) {
+                            d.getElementById("champion-detail-abilities-video").src = `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
+                            d.getElementById("champion-detail-abilities-video-source-webm").src = `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
+                        } else if (key.length === 2) {
+                            d.getElementById("champion-detail-abilities-video").src = `${apiSpellImg}0${key}/ability_00${key}_${ability}1.webm`;
+                            d.getElementById("champion-detail-abilities-video-source-webm").src = `${apiSpellImg}0${key}/ability_00${key}_${ability}1.webm`;
+                        } else if (key.length === 1) {
+                            d.getElementById("champion-detail-abilities-video").src = `${apiSpellImg}00${key}/ability_000${key}_${ability}1.webm`;
+                            d.getElementById("champion-detail-abilities-video-source-webm").src = `${apiSpellImg}00${key}/ability_000${key}_${ability}1.webm`;
+                        }
+                    }
+                    // Show abilities information when hovering
+                    for (const [x, ability] of Object.entries(spells)) {
+                        d.querySelector(`#champion-detail-abilities-${x}-container`).addEventListener('mouseenter', function () {
+                            d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
+                            d.getElementById("champion-detail-abilities-description").innerHTML = ability.desc;
+                            d.getElementById("champion-detail-ability-name-phone").innerText = `${x.toUpperCase()} - ${ability.name}`;
+                            ChampionKeyVideo(`${x.toUpperCase()}`);
+                        });
+                    }
+                    const setVolume = () => {
+                        const video = d.getElementById("champion-detail-abilities-video");
+                        video.volume = 0.3;
+                        video.addEventListener('mouseenter', function () { this.muted = false });
+                        video.addEventListener('mouseleave', function () { this.muted = true });
+                    }
+                    setVolume();
 
                     // Slideshow of skins
                     const timer = ms => new Promise(res => setTimeout(res, ms)) // Returns a Promise that resolves after "ms" Milliseconds
@@ -131,70 +156,14 @@ class ChampionData extends React.Component {
                             }
                             if (j  + 1 >= skins.length) j = -1; // Reset slideshow if it reached the end
                         }
-                        // Reset to default if reached the end
-                        // if (abort === false) {
-                        //     if (j >= skins.length) {
-                        //         showDivs();
-                        //         skinDiv.src = `${apiSplash + id}_0.jpg`;
-                        //         skinBgDiv.src = `${apiSplash + id}_0.jpg`;
-                        //         d.getElementById("champion-detail-skins-name").innerText = name;
-                        //         await timer(200);
-                        //         d.querySelector("#slideShowEnd").classList.remove("hide");
-                        //     }
-                        // }
-                        // Manual toggle
-                        // d.getElementsByClassName("prev")[0].addEventListener("click", () => {
-                        //     abort = true;
-                        //     console.log(j, skins.length)
-                        //     if (j <= 0) {
-                        //         return;
-                        //     } else {
-                        //         showDivs();
-                        //         skinDiv.src = `${apiSplash + id}_${skins[j - 1].num}.jpg`;
-                        //         skinBgDiv.src = `${apiSplash + id}_${skins[j - 1].num}.jpg`;
-                        //         d.getElementById("champion-detail-skins-name").innerText = skins[j - 1].name;
-                        //         if (skins[j - 1].name === "default") d.getElementById("champion-detail-skins-name").innerText = name;
-                        //         j--;
-                        //     }
-                        // })
-                        // d.getElementsByClassName("next")[0].addEventListener("click", () => {
-                        //     abort = true;
-                        //     console.log(j, skins.length)
-                        //     if (j + 1 >= skins.length) {
-                        //         return;
-                        //     } else {
-                        //         showDivs();
-                        //         skinDiv.src = `${apiSplash + id}_${skins[j + 1].num}.jpg`;
-                        //         skinBgDiv.src = `${apiSplash + id}_${skins[j + 1].num}.jpg`;
-                        //         d.getElementById("champion-detail-skins-name").innerText = skins[j + 1].name;
-                        //         if (skins[j + 1].name === "default") d.getElementById("champion-detail-skins-name").innerText = name;
-                        //         j++;
-                        //     }
-                        // })
                     }
                     slideShow();
+
+                    // Reset the slideshow
                     d.getElementsByClassName("close-button")[0].addEventListener('click', () => {
                         abort = true;
                         j = 0;
-                        // Proof of bug
-                        // console.log(name)
-                    })
-                    // Show abilities information when hovering
-                    for (const [x, ability] of Object.entries(spells)) {
-                        d.querySelector(`#champion-detail-abilities-${x}-container`).addEventListener('mouseenter', function () {
-                            d.getElementById("champion-detail-abilities-extra-detail-container").style.display = "flex";
-                            d.getElementById("champion-detail-abilities-description").innerHTML = ability.desc;
-                            d.getElementById("champion-detail-ability-name-phone").innerText = `${x.toUpperCase()} - ${ability.name}`;
-                            ChampionKeyVideo(`${x.toUpperCase()}`);
-                        });
-                    }
-                    const setVolume = () => {
-                        const video = d.getElementById("champion-detail-abilities-video");
-                        video.volume = 0.3;
-                        video.addEventListener('mouseenter', function () { this.muted = false });
-                        video.addEventListener('mouseleave', function () { this.muted = true });
-                    }
-                    setVolume();
+                    });
 
                     // Lower font size if line break would occur
                     for (const div of d.querySelectorAll(".abilities-name")) {
@@ -204,10 +173,12 @@ class ChampionData extends React.Component {
                             div.style.whiteSpace = "nowrap";
                             if (d.body.clientWidth < 1650) div.style.fontSize = "0.7rem";
                     }
+                                    
+                    // Increment counter for the next click(champion)
+                    this.setState({counter: counter + 1});
                 });
             }
         }
-        LoadAllAPI();
         return(
             <ChampionMainPage cards = {this.state.cards}/>
         )
