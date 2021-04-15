@@ -20,7 +20,7 @@ class ChampionMainPage extends React.Component {
             this.props.cards.map((champion, i) =>
                 <div key = {i} className = "champion-card non-selectable" id = {`champion-card-${i}`} onClick = {() => {this.TogglePanel();}}>
                     <div className = "champion-loading">
-                        <img src = {`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`} alt = "Loading Art" />
+                        <img loading = "lazy" src = {`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`} alt = "Loading Art" />
                     </div>
                     <div className = "champion-card-name">{champion.name.toUpperCase()}
                         {/* <div className = "champion-card-title">{champion.title.capitalize()}</div> */}
