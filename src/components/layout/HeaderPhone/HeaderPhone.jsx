@@ -25,13 +25,13 @@ class HeaderPhone extends React.Component {
                 </div>
                 <div id = "header-phone-github">
                     <a href = "https://github.com/Xenonyy" style = {{width: "40px", height: "40px", display: "flex"}}>
-                        <img src = "https://i.gyazo.com/833f2c714bb26d16b8057f18cd6cc5f0.png" alt = "github" id = "github-phone-icon" sizes = "48x48" className = "phone-icon non-selectable"></img>
+                        <img src = "../../github.webp" alt = "github" id = "github-phone-icon" width = "128" height = "128" className = "phone-icon non-selectable"></img>
                     </a>
                     {/* <p className = "link-text">GitHub</p> */}
                 </div>
                 <div id = "header-phone-linkedin">
                     <a href = "https://www.linkedin.com/in/armand-gonda-a72125205/" style = {{width: "40px", height: "40px", display: "flex"}}>
-                        <img src = "https://i.gyazo.com/2c313e06e479ce6530eb9c8f97ebfe58.png" alt = "linkedin" id = "linkedin-phone-icon" sizes = "48x48" className = "phone-icon non-selectable"></img>
+                        <img src = "../../linkedin.webp" alt = "linkedin" id = "linkedin-phone-icon" width = "128" height = "128" className = "phone-icon non-selectable"></img>
                     </a>
                     {/* <p className = "link-text">LinkedIn</p> */}
                 </div>
@@ -41,7 +41,7 @@ class HeaderPhone extends React.Component {
         <header id = "header-phone" key = {"header-phone"}>
             <div id = "header-phone-container">
                 <div id = "header-phone-icon" className = "non-selectable">
-                    <img src = "https://i.gyazo.com/e3f99f53992a9a36f7a0e110ceedd75c.png"  alt = "league" id = "league-phone-icon" className = "phone-icon non-selectable"></img>
+                    <img src = "../../header-icon-transparent.webp"  alt = "league" id = "league-phone-icon" width = "128" height = "128" className = "phone-icon non-selectable"></img>
                     <div id = "header-phone-text">League Library</div>
                 </div>
                 <div id = "menu-toggle" onClick = {() => this.MenuAnimation()}>
