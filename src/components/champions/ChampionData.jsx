@@ -32,16 +32,12 @@ class ChampionData extends React.Component {
             skinBgDiv = d.getElementById("champSkinsBgImg");
 
         window.onload = () => {
-            const champName = d.querySelectorAll(".champion-card-name");
-            for (const [x, div] of Object.entries(d.querySelectorAll(".champion-card"))) {
-
-                // Add event listeners for desktop and mobile respectively
-                ["click", "touchstart"].forEach((event) => {
-                    div.addEventListener(event, async (e) => {
-                        e.preventDefault();
+            d.querySelectorAll(".champion-card").forEach((div, x) => {
+                    div.addEventListener("click", async () => {
                         let counter = this.state.counter;
 
                         // Fetch the champion json the user clicked on
+                        const champName = d.querySelectorAll(".champion-card-name");
                         const response = await fetch(`${cdn + version}/data/en_US/champion/${champName[x].innerText.toLowerCase().capitalize()}.json`);
                         const json = await response.json();
                         Object.keys(json.data).forEach(key => {
@@ -183,8 +179,7 @@ class ChampionData extends React.Component {
                         // Increment counter for the next click(champion)
                         this.setState({counter: counter + 1});
                     });
-                });
-            }
+            })
         }
         return(
             <ChampionMainPage cards = {this.state.cards}/>
