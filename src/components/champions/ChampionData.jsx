@@ -29,12 +29,14 @@ class ChampionData extends React.Component {
         String.prototype.capitalize = () => this.charAt(0).toUpperCase() + this.slice(1);
 
         window.addEventListener("load", () => {
+            let cards = this.state.cards;
             let AllData = this.state.AllData;
 
             for (const [x, div] of Object.entries(d.querySelectorAll(".champion-card"))) {
+
+                // Fetch the champion json the user clicked on and update state
                 div.addEventListener("click", async () => {
-                    // Fetch the champion json the user clicked on
-                    const response = await fetch(`${cdn + version}/data/en_US/champion/${d.querySelectorAll(".champion-card-name")[x].textContent.toLowerCase().capitalize()}.json`);
+                    const response = await fetch(`${cdn + version}/data/en_US/champion/${cards[x].id}.json`);
                     const json = await response.json();
                     Object.keys(json.data).forEach(key => {
                         AllData.push(json.data[key]);
