@@ -30,24 +30,24 @@ class ChampionData extends React.Component {
         let cards = this.state.cards;
         let AllData = this.state.AllData;
 
-        window.onload = () => {
+        // window.onload = () => {
             const LoadAllAPI = async () => {
                 for (const [x, card] of Object.entries(cards)) {
-                    // const response = await fetch(`${cdn + version}/data/en_US/champion/${card.id}.json`);
-                    // const json = await response.json();
-                    // Object.keys(json.data).forEach(key => {
-                    //     AllData.push(json.data[key]);
-                    // });
+                    const response = await fetch(`${cdn + version}/data/en_US/champion/${card.id}.json`);
+                    const json = await response.json();
+                    Object.keys(json.data).forEach(key => {
+                        AllData.push(json.data[key]);
+                    });
 
                     // Assign the parsed data from the API to the DOM
-                    d.querySelector(`#champion-card-${x}`).addEventListener('click', async () => {
+                    d.querySelector(`#champion-card-${x}`).addEventListener('click', () => {
                         // Fetch the json of the champion the user clicked on, in case the loop didn't finish loading it all.
-                        const response = await fetch(`${cdn + version}/data/en_US/champion/${card.id}.json`);
-                        const json = await response.json();
-                        Object.keys(json.data).forEach(key => {
-                            AllData[x] = (json.data[key]);
-                        });
-                        console.log(AllData[x])
+                        // const response = await fetch(`${cdn + version}/data/en_US/champion/${card.id}.json`);
+                        // const json = await response.json();
+                        // Object.keys(json.data).forEach(key => {
+                        //     AllData[x] = (json.data[key]);
+                        // });
+                        // console.log(AllData[x])
 
                         // Assign all the recieved data to objects
                         const champion = {
@@ -174,11 +174,10 @@ class ChampionData extends React.Component {
                                 if (d.body.clientWidth < 1650) div.style.fontSize = "0.7rem";
                         }
                     });
-                        
                 }
             }
             LoadAllAPI();
-        }
+        // }
         return(
             <ChampionMainPage cards = {this.state.cards}/>
         )
