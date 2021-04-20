@@ -5,8 +5,8 @@ class TopContainer extends React.Component {
     render() {
     return(
         <div id = "top-container">
-            <span id = "updated">Last Updated: 2021/04/15</span>
-            <h1 className = "title non-selectable">League Library</h1>
+            <span id = "updated">Last Updated: 2021/04/19</span>
+            <h1 data-testid = "league-title" className = "title non-selectable">League Library</h1>
             <Search />
         </div>
         )
