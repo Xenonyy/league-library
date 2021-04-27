@@ -90,13 +90,13 @@ class ChampionDetailPanel extends React.Component {
     }
     render() {
         return(
-            <div id ="champion-info-panel" style = {{display: "none"}} onScroll = { () => {this.ScrollAnim(); this.BackToTop();}}>
+            <div id ="champion-info-panel" data-testid = "info-panel" style = {{display: "none"}} onScroll = { () => {this.ScrollAnim(); this.BackToTop();}}>
                 <button id = "b2tPanel">
-                    <img src = "https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png" alt = "Scroll To The Top" id = "b2tPanel-img"></img>
+                    <img src = "https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png" srcSet = "https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png, https://i.gyazo.com/25bca84d684ddfe5d7dd4aaec54f92e6.png" alt = "Scroll To The Top" id = "b2tPanel-img"></img>
                 </button>
                 <button className = "close-button" onClick = {() => {this.ClosePanelAnimation(); this.ResetInfo(); this.MouseLeave()}}>X</button>
                 <div id = "champion-detail-image" className = "non-selectable">
-                    <img id = "champBgImg" alt = "Background Splash"/>
+                    <img id = "champBgImg" alt = "Splash Art Background"/>
                     <img id = "champImg" alt = "Splash Art"/>
                 </div>
                 <div id = "champion-detail-name"/>
