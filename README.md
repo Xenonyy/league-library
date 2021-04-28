@@ -1,6 +1,18 @@
 # League Library
 
-This project is based on a game called League of Legends, where you can freely browse all the champions from the game using Riot Games' APIs.
+This project is based on a game called League of Legends, made by Riot Games. The goal of this project was to get experience working with React, APIs and PWAs.
+In this project you can freely browse all the champions from the game using Riot Games' APIs.
+
+Main features:
+- Fully supported for mobile devices with custom layouts and behavior.
+- Full browser support(Tested on Chrome, Firefox, Opera and Microsoft Edge).
+- A welcoming page that explains the purpose and topic of the app.
+- Main page where all the champions from the game(their names and their splash arts) are collected.
+- A search bar that enables searching for champions, in real-time.
+- Clicking on a champion card will bring up a panel with more detailed information about said champion, including lore, abilities and a collection of cosmetic skins.
+- A slideshow of images of all the champions' cosmetic skins.
+
+
 
 ![alt text](https://i.gyazo.com/5ec8d9f237a400fb27fe882fd28898c9.jpg)
 
@@ -34,6 +46,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm test`
+
+Runs all the tests in the project.\
 
 ### `npm run build`
 
