@@ -20,7 +20,7 @@ class Search extends  React.Component {
         // And use length to count # of divs
         const numberOfVisibleDivs = displayShow.length;
 
-        if (numberOfVisibleDivs < 1) noResults.style.display = "inline-grid";
+        if (numberOfVisibleDivs < 1) noResults.style.display = "flex";
         else if (numberOfVisibleDivs > 0) noResults.style.display = "none";
     }
      // Reset search on click
