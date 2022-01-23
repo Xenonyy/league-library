@@ -49,7 +49,7 @@ class ChampionData extends React.Component {
                         // });
                         // console.log(AllData[x])
 
-                        // Assign all the recieved data to objects
+                        // Assign all the recieved data to objects and destructurize it
                         const champion = {
                             name: AllData[x].name,
                             id: AllData[x].id,
@@ -136,7 +136,7 @@ class ChampionData extends React.Component {
                             j = 0;
                         });
 
-                        function ChampionKeyVideo(ability) {
+                        const ChampionKeyVideo = (ability) => {
                             if (key.length === 3) {
                                 d.getElementById("champion-detail-abilities-video").src = `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
                                 d.getElementById("champion-detail-abilities-video-source-webm").src = `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
