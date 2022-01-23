@@ -1,5 +1,6 @@
 import React from 'react';
 import {ChampionAPI} from "../../api/champions";
+import { setVolume } from '../../utils/setVolume';
 import ChampionMainPage from './ChampionMainPage';
 
 const d = document,
@@ -156,12 +157,6 @@ class ChampionData extends React.Component {
                                 d.getElementById("champion-detail-ability-name-phone").innerText = `${x.toUpperCase()} - ${ability.name}`;
                                 ChampionKeyVideo(`${x.toUpperCase()}`);
                             });
-                        }
-                        const setVolume = () => {
-                            const video = d.getElementById("champion-detail-abilities-video");
-                            video.volume = 0.3;
-                            video.addEventListener('mouseenter', function () { this.muted = false });
-                            video.addEventListener('mouseleave', function () { this.muted = true });
                         }
                         setVolume();
 
