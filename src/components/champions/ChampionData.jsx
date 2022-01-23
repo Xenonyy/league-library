@@ -1,10 +1,11 @@
 import React from 'react';
 import {ChampionAPI} from "../../api/champions";
+import { Version } from '../../enums/version';
 import { setVolume } from '../../utils/setVolume';
 import ChampionMainPage from './ChampionMainPage';
 
 const d = document,
-    version = "12.2.1",
+    version = Version.PATCH,
     cdn = "http://ddragon.leagueoflegends.com/cdn/",
     apiSpell = `${cdn + version}/img/spell/`,
     apiPassive = `${cdn + version}/img/passive/`,
