@@ -1,12 +1,13 @@
 import React from 'react';
 import { gsap } from 'gsap';
+import { isMobile } from '../Header/ConditionalHeader';
 
 class WelcomePage extends React.Component {
     ShowPage = () => {
         gsap.to("#welcome-container", {
             duration: 1.5,
             delay: 0.15,
-            y: -1000,
+            y: isMobile ? -950 : -1400,
             autoAlpha: 0,
             ease: "power3.out"
         });
