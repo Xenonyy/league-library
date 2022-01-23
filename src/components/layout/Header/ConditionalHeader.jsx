@@ -19,5 +19,5 @@ function ConditionalHeader() {
 
 	}
 }
-
+export {isMobile};
 export default ConditionalHeader;
