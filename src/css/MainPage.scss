@@ -2,6 +2,9 @@ $default-font: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospac
 $main-font: 'Work Sans', sans-serif;
 $champ-font: Capriola;
 $pink: #d67db5;
+$purple: #560e3eb5;
+$grey: #737373;
+$dark-grey: #191919d9;
 
 %flex-prop {
     display: flex;
@@ -90,24 +93,26 @@ a {
 }
 .champion-card {
     @extend %flex-prop;
-    gap: normal;
-    height: 31em;
-    width: 19em;
+    border: 1px solid #737373;
     margin: 2em 1em 0;
-    @extend %border;
-    border-width: 1px;
+    filter: drop-shadow(2px 4px 6px black);
+    border-radius: 5px;
 }
 .champion-card-name {
     @extend %flex-prop;
     width: 100%;
     flex-flow: column;
-    background-color: rgb(12, 12, 12 / 90%);
+    background-color: $dark-grey;
+    // background-color: rgba(29, 29, 29, .85);
     color: antiquewhite;
     z-index: 1;
-    margin: -10.5em 0 0 0;
+    margin: -2.5em 0 0 0;
     padding: 10px;
 	font-size: 1.1rem;
 	font-family: $champ-font;
+}
+.champion-card-image {
+    transform: scale(1.15);
 }
 .champion-card {
     overflow: hidden;
@@ -206,12 +211,12 @@ a {
     html {font-size: 0.6rem; width: -webkit-fit-content; width: -moz-fit-content; width: fit-content;}
     body {line-height: 1.5em;}
     .title {font-size: 3rem; margin: 0.5em 0 1em;}
-    .champion-container {margin: 1em; padding: 1em;}
+    .champion-container {margin: 1em; padding: .5em;}
     .close-button {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
-    .champion-card {width: 10em; height: 17em; margin: 0.5em;}
+    .champion-card {height: 15.5em; margin: 0.5em; width: 29%;}
     .champion-loading img {position: relative; width: 100%; object-fit: cover;}
     .champion-card-name {margin: -5em 0 0 0; font-size: 0.5rem; padding: 5px;}
-    .champion-loading {height: inherit; width: inherit;}
+    .champion-loading {height: 100%; width: 100%;}
     // img[alt="Loading Art"] {width: 250%; height: 40%;}
     #header-container {width: 98%;}
     #header-icon {left: 0%; width: auto; transform: scale(0.9); -moz-transform: scale(0.9); -o-transform: scale(0.9); -webkit-transform: scale(0.9);}
@@ -253,7 +258,6 @@ a {
     // Welcome Page
     #extra-line-phone {display: block;}
     #enter-button {margin: 1em 0 0;}
-    #welcome-description {padding: 1em;}
     
     // Skins Page
     #champSkinsImg {transform: scale(0.28); -moz-transform: scale(0.28); -o-transform: scale(0.28); -webkit-transform: scale(0.28);}
@@ -271,13 +275,12 @@ a {
     #header-dropdown {padding: 5px;}
     .dropbtn {padding: 0.5em; transform: scale(1); -moz-transform: scale(1); -o-transform: scale(1); -webkit-transform: scale(1);}
     .title {font-size: 3rem; margin: 0.5em 0 1em;}
-    .champion-container {margin: 1em; padding: 1em;}
+    .champion-container {margin: 1em; padding: .5em;}
     .close-button {transform: scale(0.8); -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transform: scale(0.8);}
-    .champion-card {margin: 1em; width: 30%;}
-    .champion-card {width: 10em; height: 15em; margin: 0.5em;}
+    .champion-card {height: 14em; margin: 0.5em; width: 8em;}
     .champion-card-name {padding: 2px; margin: -4em 0 0 0; font-size: 0.5rem;}
     .champion-loading {height: inherit; width: inherit;}
-    .champion-loading img {object-fit: contain; height: auto;}
+    .champion-loading img {object-fit: contain;}
     // img[alt="Loading Art"] {width: 333%; height: 40%;}
     #champion-detail-image {height: 70%; align-items: baseline;}
     #champImg {transform: scale(2.5); -moz-transform: scale(2.5); -o-transform: scale(2.5); -webkit-transform: scale(2.5); margin: 2rem 0 0;}
