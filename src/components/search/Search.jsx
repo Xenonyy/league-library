@@ -11,7 +11,7 @@ class Search extends  React.Component {
                 
         // Loop through all list items, and hide those who don't match the search query
         for (const [i] of Object.entries(div)) {
-            divName[i].innerText.toUpperCase().indexOf(filter) > -1 ? div[i].style.display = "flex" : div[i].style.display = "none";
+            divName[i].innerText.toUpperCase().indexOf(filter) > -1 ? div[i].style.display = "inline-grid" : div[i].style.display = "none";
         }
         // Convert to an array
         const divsArray = [].slice.call(div);
@@ -20,7 +20,7 @@ class Search extends  React.Component {
         // And use length to count # of divs
         const numberOfVisibleDivs = displayShow.length;
 
-        if (numberOfVisibleDivs < 1) noResults.style.display = "flex";
+        if (numberOfVisibleDivs < 1) noResults.style.display = "inline-grid";
         else if (numberOfVisibleDivs > 0) noResults.style.display = "none";
     }
      // Reset search on click
@@ -29,7 +29,7 @@ class Search extends  React.Component {
         
         const div = document.querySelectorAll(".champion-card");
         for (const [index] of Object.entries(div)) {
-            div[index].style.display = "flex";
+            div[index].style.display = "inline-grid";
         }
     }
 	render() {
