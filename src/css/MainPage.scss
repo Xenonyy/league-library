@@ -93,7 +93,7 @@ a {
 }
 .champion-card {
     @extend %flex-prop;
-    border: 1px solid #737373;
+    // border: 1px solid #737373;
     margin: 2em 1em 0;
     filter: drop-shadow(2px 4px 6px black);
     border-radius: 5px;
@@ -103,13 +103,12 @@ a {
     width: 100%;
     flex-flow: column;
     background-color: $dark-grey;
-    // background-color: rgba(29, 29, 29, .85);
     color: antiquewhite;
     z-index: 1;
     margin: -2.5em 0 0 0;
     padding: 10px;
 	font-size: 1.1rem;
-	font-family: $champ-font;
+	font-family: 'Aleo';
 }
 .champion-card-image {
     transform: scale(1.15);
