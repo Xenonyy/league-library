@@ -56,8 +56,9 @@
     filter: drop-shadow(2px 2px 2px black);
 }
 #enter-button:hover {
+    cursor: pointer;
     background-color: #2f2f2f;
-    transform: scale(1.05);
+    transform: scale(1.025);
     transition: transform 0.2s ease-in-out;;
     -webkit-transition: transform 0.2s ease-in-out;
     -moz-transition: transform 0.2s ease-in-out;
