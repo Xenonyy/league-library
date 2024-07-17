@@ -24,7 +24,8 @@ img[alt~='league-icon'] {
   font-size: 1rem;
   font-family: Gabriela;
 }
-#header-container {
+#header-container,
+#header-personal-info {
   @extend %flex-prop;
   width: 100%;
   height: 100%;
@@ -33,58 +34,55 @@ img[alt~='league-icon'] {
   align-items: center;
   justify-content: flex-end;
 }
-#header-email {
+#header-email,
+#header-github {
   @extend %flex-prop;
   // color: whitesmoke;
   color: $pink;
   height: 100%;
+  margin: 0 1em 0 0;
 }
-#header-github {
-  @extend %flex-prop;
-  height: 100%;
-}
+
 #github-icon {
   transform: scale(0.5);
-  left: -4em;
   position: relative;
   filter: invert(1);
-  // SECOND OPTION
   // filter: contrast(0.6);
   // transform: scale(0.8);
 }
 #email-icon {
-  transform: scale(0.5);
-  left: -17em;
+  transform: scale(0.65);
   position: relative;
   filter: invert(1);
 }
 
-a:after {
+.header-personal-link:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 3px;
   content: close-quote;
   display: block;
   height: 2px;
   left: 50%;
-  position: absolute;
+  position: relative;
   background: #fff;
   transition:
     width 0.3s ease 0s,
     left 0.3s ease 0s;
   width: 0;
 }
-a:after {
+.header-personal-link:after {
   background-color: #b82669;
   transition:
     width 0.5s ease 0s,
     left 0.5s ease 0s;
 }
-a:hover:after {
+.header-personal-link:hover:after {
   width: 100%;
   left: 0;
 }
-.dropdown-content a:hover:after {
+.dropdown-content .header-personal-link:hover:after {
   width: 90%;
   left: 15px;
   bottom: 8px;
+  cursor: pointer;
 }
