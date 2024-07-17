@@ -1,89 +1,90 @@
 .header {
-    width: 100%;
-    height: 4em;
-    position: fixed;
-    background-color: black;
-    z-index: 2;
-    // outline: $pink 1px solid;
-    outline: coral 1px solid;
+  width: 100%;
+  height: 4em;
+  position: fixed;
+  background-color: black;
+  z-index: 2;
+  //   outline: $pink 1px solid;
+  outline: coral 1px solid;
 }
 #header-icon {
-    @extend %flex-prop;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    justify-content: flex-start;
-    left: 5%;
-    
+  @extend %flex-prop;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  justify-content: flex-start;
+  left: 5%;
 }
-img[alt~="league-icon"] {
-    transform: scale(0.75);
+img[alt~='league-icon'] {
+  transform: scale(0.75);
 }
 #header-text {
-    @extend %flex-prop;
-    color: whitesmoke;
-    font-size: 1rem;
-    font-family: Gabriela;
+  @extend %flex-prop;
+  color: whitesmoke;
+  font-size: 1rem;
+  font-family: Gabriela;
 }
 #header-container {
-    @extend %flex-prop;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    align-content: space-evenly;
-    align-items: center;
-    justify-content: flex-end;
+  @extend %flex-prop;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  align-content: space-evenly;
+  align-items: center;
+  justify-content: flex-end;
 }
 #header-email {
-    @extend %flex-prop;
-    // color: whitesmoke;
-    color: $pink;
-    height: 100%;
+  @extend %flex-prop;
+  // color: whitesmoke;
+  color: $pink;
+  height: 100%;
 }
 #header-github {
-    @extend %flex-prop;
-    height: 100%;
+  @extend %flex-prop;
+  height: 100%;
 }
 #github-icon {
-    transform: scale(0.5);
-    left: -4em;
-    position: relative;
-    filter: invert(1);
-    // SECOND OPTION
-    // filter: contrast(0.6);
-    // transform: scale(0.8);
+  transform: scale(0.5);
+  left: -4em;
+  position: relative;
+  filter: invert(1);
+  // SECOND OPTION
+  // filter: contrast(0.6);
+  // transform: scale(0.8);
 }
 #email-icon {
-    transform: scale(0.5);
-    left: -17em;
-    position: relative;
-    filter: invert(1);
+  transform: scale(0.5);
+  left: -17em;
+  position: relative;
+  filter: invert(1);
 }
 
-
-a:after {    
-    background: none repeat scroll 0 0 transparent;
-    bottom: 3px;
-    content: close-quote;
-    display: block;
-    height: 2px;
-    left: 50%;
-    position: absolute;
-    background: #fff;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
+a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 3px;
+  content: close-quote;
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition:
+    width 0.3s ease 0s,
+    left 0.3s ease 0s;
+  width: 0;
 }
 a:after {
-    background-color: #b82669;
-    transition: width 0.5s ease 0s, left 0.5s ease 0s;
-
+  background-color: #b82669;
+  transition:
+    width 0.5s ease 0s,
+    left 0.5s ease 0s;
 }
 a:hover:after {
-    width: 100%;
-    left: 0;
+  width: 100%;
+  left: 0;
 }
 .dropdown-content a:hover:after {
-    width: 90%;
-    left: 15px;
-    bottom: 8px;
+  width: 90%;
+  left: 15px;
+  bottom: 8px;
 }
