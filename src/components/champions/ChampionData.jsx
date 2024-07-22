@@ -35,8 +35,8 @@ class ChampionData extends React.Component {
       Object.keys(json.data).forEach(key => {
         AllData.push(json.data[key]);
       });
+      this.setState({ AllData: AllData });
     }
-    this.setState({ AllData: AllData });
   }
   render() {
     // eslint-disable-next-line
