@@ -10,6 +10,11 @@ const TopContainer = () => {
         League Library
       </h1>
       <Search />
+      <span id="api-disclaimer">
+        Disclaimer: Sometimes the API can be slow won't return the data in time.
+        In this case clicking on a character will either return no data or
+        incorrect data.
+      </span>
     </div>
   );
 };
