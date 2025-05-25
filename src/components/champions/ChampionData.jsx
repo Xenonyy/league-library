@@ -29,22 +29,19 @@ class ChampionData extends React.Component {
 
       let allData = [];
       for (const card of cards) {
-        const response = await fetch(
-          `${cdn + version}/data/en_US/champion/${card.id}.json`,
-        );
+        const response = await fetch(`${cdn + version}/data/en_US/champion/${card.id}.json`);
         const json = await response.json();
         Object.keys(json.data).forEach(key => {
           allData.push(json.data[key]);
         });
+        this.setState({ allData: allData });
       }
-      this.setState({ allData: allData });
     };
     fetchData();
   }
   render() {
     // eslint-disable-next-line
-    String.prototype.capitalize = () =>
-      this.charAt(0).toUpperCase() + this.slice(1);
+    String.prototype.capitalize = () => this.charAt(0).toUpperCase() + this.slice(1);
     let cards = this.state.cards;
     let allData = this.state.allData;
 
@@ -81,18 +78,14 @@ class ChampionData extends React.Component {
         d.getElementById('champBgImg').src = `${apiSplash + id}_0.jpg`;
         d.getElementById('champImg').src = `${apiSplash + id}_0.jpg`;
         d.getElementById('champion-detail-name').innerText = name;
-        d.getElementById('champion-detail-title').innerText =
-          title.capitalize();
+        d.getElementById('champion-detail-title').innerText = title.capitalize();
         d.getElementById('champion-detail-description').innerText = blurb;
         d.getElementById('champion-detail-description-full').innerText = lore;
         for (const [key, spell] of Object.entries(spells)) {
-          d.querySelector(`#champion-detail-abilities-${key}-name`).innerText =
-            spell.name;
-          d.querySelector(`#champion-detail-abilities-${key}`).src =
-            apiSpell + spell.img;
+          d.querySelector(`#champion-detail-abilities-${key}-name`).innerText = spell.name;
+          d.querySelector(`#champion-detail-abilities-${key}`).src = apiSpell + spell.img;
         }
-        d.getElementById('champion-detail-abilities-p').src =
-          apiPassive + spells.p.img;
+        d.getElementById('champion-detail-abilities-p').src = apiPassive + spells.p.img;
         for (const skin of skins) {
           const preloadImages = url => {
             new Image().src = url;
@@ -119,11 +112,8 @@ class ChampionData extends React.Component {
               skinDiv.src = `${apiSplash + id}_${skins[j].num}.jpg`;
               skinBgDiv.src = `${apiSplash + id}_${skins[j].num}.jpg`;
               showDivs();
-              if (skins[j].name === 'default')
-                d.getElementById('champion-detail-skins-name').innerText = name;
-              else
-                d.getElementById('champion-detail-skins-name').innerText =
-                  skins[j].name;
+              if (skins[j].name === 'default') d.getElementById('champion-detail-skins-name').innerText = name;
+              else d.getElementById('champion-detail-skins-name').innerText = skins[j].name;
               // Change the skin every 3 seconds with fade out effect
               await timer(3000);
               if (abort === true) {
@@ -139,48 +129,35 @@ class ChampionData extends React.Component {
           }
         }
         slideShow();
-        d.getElementsByClassName('close-button')[0].addEventListener(
-          'click',
-          () => {
-            abort = true;
-            j = 0;
-          },
-        );
+        d.getElementsByClassName('close-button')[0].addEventListener('click', () => {
+          abort = true;
+          j = 0;
+        });
 
         const ChampionKeyVideo = ability => {
           if (key.length === 3) {
             d.getElementById('champion-detail-abilities-video').src =
               `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
-            d.getElementById(
-              'champion-detail-abilities-video-source-webm',
-            ).src = `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
+            d.getElementById('champion-detail-abilities-video-source-webm').src =
+              `${apiSpellImg + key}/ability_0${key}_${ability}1.webm`;
           } else if (key.length === 2) {
             d.getElementById('champion-detail-abilities-video').src =
               `${apiSpellImg}0${key}/ability_00${key}_${ability}1.webm`;
-            d.getElementById(
-              'champion-detail-abilities-video-source-webm',
-            ).src = `${apiSpellImg}0${key}/ability_00${key}_${ability}1.webm`;
+            d.getElementById('champion-detail-abilities-video-source-webm').src =
+              `${apiSpellImg}0${key}/ability_00${key}_${ability}1.webm`;
           } else if (key.length === 1) {
             d.getElementById('champion-detail-abilities-video').src =
               `${apiSpellImg}00${key}/ability_000${key}_${ability}1.webm`;
-            d.getElementById(
-              'champion-detail-abilities-video-source-webm',
-            ).src = `${apiSpellImg}00${key}/ability_000${key}_${ability}1.webm`;
+            d.getElementById('champion-detail-abilities-video-source-webm').src =
+              `${apiSpellImg}00${key}/ability_000${key}_${ability}1.webm`;
           }
         };
         // Show abilities information when hovering
         for (const [x, ability] of Object.entries(spells)) {
-          d.querySelector(
-            `#champion-detail-abilities-${x}-container`,
-          ).addEventListener('mouseenter', function () {
-            d.getElementById(
-              'champion-detail-abilities-extra-detail-container',
-            ).style.display = 'flex';
-            d.getElementById(
-              'champion-detail-abilities-description',
-            ).innerHTML = ability.desc;
-            d.getElementById('champion-detail-ability-name-phone').innerText =
-              `${x.toUpperCase()} - ${ability.name}`;
+          d.querySelector(`#champion-detail-abilities-${x}-container`).addEventListener('mouseenter', function () {
+            d.getElementById('champion-detail-abilities-extra-detail-container').style.display = 'flex';
+            d.getElementById('champion-detail-abilities-description').innerHTML = ability.desc;
+            d.getElementById('champion-detail-ability-name-phone').innerText = `${x.toUpperCase()} - ${ability.name}`;
             ChampionKeyVideo(`${x.toUpperCase()}`);
           });
         }
