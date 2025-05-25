@@ -15,56 +15,59 @@ const d = document,
 class ChampionData extends React.Component {
   constructor() {
     super();
-    this.state = { cards: [], AllData: [] };
+    this.state = { cards: [], allData: [] };
   }
-  async componentDidMount() {
-    const response = await fetch(ChampionAPI);
-    const json = await response.json();
-    let cards = [];
-    Object.keys(json.data).forEach(key => {
-      cards.push(json.data[key]);
-    });
-    this.setState({ cards: cards });
-
-    let AllData = [];
-    for (const card of cards) {
-      const response = await fetch(
-        `${cdn + version}/data/en_US/champion/${card.id}.json`,
-      );
+  componentDidMount() {
+    const fetchData = async () => {
+      const response = await fetch(ChampionAPI);
       const json = await response.json();
+      let cards = [];
       Object.keys(json.data).forEach(key => {
-        AllData.push(json.data[key]);
+        cards.push(json.data[key]);
       });
-      this.setState({ AllData: AllData });
-    }
+      this.setState({ cards: cards });
+
+      let allData = [];
+      for (const card of cards) {
+        const response = await fetch(
+          `${cdn + version}/data/en_US/champion/${card.id}.json`,
+        );
+        const json = await response.json();
+        Object.keys(json.data).forEach(key => {
+          allData.push(json.data[key]);
+        });
+      }
+      this.setState({ allData: allData });
+    };
+    fetchData();
   }
   render() {
     // eslint-disable-next-line
     String.prototype.capitalize = () =>
       this.charAt(0).toUpperCase() + this.slice(1);
     let cards = this.state.cards;
-    let AllData = this.state.AllData;
+    let allData = this.state.allData;
 
     for (const x in cards) {
       d.querySelector(`#champion-card-${x}`)?.addEventListener('click', () => {
         // Assign all the recieved data to objects and destructurize it
         const champion = {
-          name: AllData[x].name,
-          id: AllData[x].id,
-          title: AllData[x].title,
-          key: AllData[x].key,
-          skins: AllData[x].skins,
-          blurb: AllData[x].blurb,
-          lore: AllData[x].lore,
-          spell: AllData[x].spells,
+          name: allData[x].name,
+          id: allData[x].id,
+          title: allData[x].title,
+          key: allData[x].key,
+          skins: allData[x].skins,
+          blurb: allData[x].blurb,
+          lore: allData[x].lore,
+          spell: allData[x].spells,
         };
         const { name, id, title, key, skins, blurb, lore, spell } = champion;
 
         const spells = {
           p: {
-            name: AllData[x].passive.name,
-            desc: AllData[x].passive.description,
-            img: AllData[x].passive.image.full,
+            name: allData[x].passive.name,
+            desc: allData[x].passive.description,
+            img: allData[x].passive.image.full,
           },
         };
 
