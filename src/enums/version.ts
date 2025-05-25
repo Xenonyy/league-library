@@ -1,3 +1,3 @@
 export enum Version {
-  PATCH = '14.4.1',
+  PATCH = '15.10.1',
 }
