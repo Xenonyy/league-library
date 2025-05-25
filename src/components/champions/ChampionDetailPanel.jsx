@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 const ChampionDetailPanel = () => {
@@ -22,10 +22,10 @@ const ChampionDetailPanel = () => {
 
   const ScrollAnim = () => {
     if (timelineRef.current.isActive()) return;
-  
+
     timelineRef.current
       .clear()
-      .to('.abilities-container', {
+      .to(panelRef.current.querySelectorAll('.abilities-container'), {
         translateY: 0,
         stagger: 0.15,
         duration: 1,
@@ -81,23 +81,24 @@ const ChampionDetailPanel = () => {
   const BackToTop = () => {
     const panel = panelRef.current;
     const b2t = b2tRef.current;
-
-    if (panel.scrollTop > 300) {
-      b2t.style.opacity = '1';
-    } else {
-      b2t.style.opacity = '0';
-    }
-
-    const handleClick = () => {
-      panel.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    b2t.removeEventListener('click', handleClick); 
-    b2t.addEventListener('click', handleClick);
+    b2t.style.opacity = panel.scrollTop > 300 ? '1' : '0';
   };
+
+  useEffect(() => {
+    const b2t = b2tRef.current;
+    const handleClick = () => {
+      panelRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    b2t.addEventListener('click', handleClick);
+
+    return () => {
+      b2t.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      timelineRef.current = gsap.timeline({ paused: true });
     }, panelRef);
 
     return () => ctx.revert();
@@ -140,69 +141,58 @@ const ChampionDetailPanel = () => {
       <div id="champion-detail-title" />
       <div id="champion-detail-description-container">
         <span id="champion-detail-description" ref={descRef}></span>
-        <button onClick={()=> OpenInfo()} id="showBtn" ref={showBtnRef}>
+        <button onClick={() => OpenInfo()} id="showBtn" ref={showBtnRef}>
           Show more...
         </button>
-        <span
-          id="champion-detail-description-full"
-          style={{ display: 'none' }}
-          ref={descFullRef}
-        ></span>
+        <span id="champion-detail-description-full" style={{ display: 'none' }} ref={descFullRef}></span>
       </div>
-        <div id="champion-detail-abilities-container">
-          <span id="abilities-text">Abilities</span>
-          <div id="champion-detail-abilities-qwer-container">
-            <div
-              id="champion-detail-abilities-p-container"
-              className="abilities-container"
-              onMouseEnter={() => ExtraPanelAnim()}
-              onClick={() => AbilityNameDivPhone()}
-            >
-              <img 
-                id="champion-detail-abilities-p" 
-                alt="Passive ability"
-                className="champion-detail-ability"
-                 />
-              <span 
-              id="champion-detail-abilities-p-name"
-               className="abilities-name"
-               ></span>
-            </div>
-            <div
-              id="champion-detail-abilities-q-container"
-              className="abilities-container"
-              onMouseEnter={() => ExtraPanelAnim()}
-              onClick={() => AbilityNameDivPhone()}
-            >
-              <img id="champion-detail-abilities-q" alt="Q ability" className="champion-detail-ability" />
-              <span id="champion-detail-abilities-q-name" className="abilities-name"></span>
-            </div>
-            <div
-              id="champion-detail-abilities-w-container"
-              className="abilities-container"
-              onMouseEnter={() => ExtraPanelAnim()}
-              onClick={() => AbilityNameDivPhone()}
-            >
-              <img id="champion-detail-abilities-w" alt="W ability" className="champion-detail-ability" />
-              <span id="champion-detail-abilities-w-name" className="abilities-name"></span>
-            </div>
-            <div
-              id="champion-detail-abilities-e-container"
-              className="abilities-container"
-              onMouseEnter={() => ExtraPanelAnim()}
-              onClick={() => AbilityNameDivPhone()}
-            >
-              <img id="champion-detail-abilities-e" alt="E ability" className="champion-detail-ability" />
-              <span id="champion-detail-abilities-e-name" className="abilities-name"></span>
-            </div>
-            <div
-              id="champion-detail-abilities-r-container"
-              className="abilities-container"
-              onMouseEnter={() => ExtraPanelAnim()}
-              onClick={() => AbilityNameDivPhone()}
-            >
-              <img id="champion-detail-abilities-r" alt="R ability" className="champion-detail-ability" />
-              <span id="champion-detail-abilities-r-name" className="abilities-name"></span>
+      <div id="champion-detail-abilities-container">
+        <span id="abilities-text">Abilities</span>
+        <div id="champion-detail-abilities-qwer-container">
+          <div
+            id="champion-detail-abilities-p-container"
+            className="abilities-container"
+            onMouseEnter={() => ExtraPanelAnim()}
+            onClick={() => AbilityNameDivPhone()}
+          >
+            <img id="champion-detail-abilities-p" alt="Passive ability" className="champion-detail-ability" />
+            <span id="champion-detail-abilities-p-name" className="abilities-name"></span>
+          </div>
+          <div
+            id="champion-detail-abilities-q-container"
+            className="abilities-container"
+            onMouseEnter={() => ExtraPanelAnim()}
+            onClick={() => AbilityNameDivPhone()}
+          >
+            <img id="champion-detail-abilities-q" alt="Q ability" className="champion-detail-ability" />
+            <span id="champion-detail-abilities-q-name" className="abilities-name"></span>
+          </div>
+          <div
+            id="champion-detail-abilities-w-container"
+            className="abilities-container"
+            onMouseEnter={() => ExtraPanelAnim()}
+            onClick={() => AbilityNameDivPhone()}
+          >
+            <img id="champion-detail-abilities-w" alt="W ability" className="champion-detail-ability" />
+            <span id="champion-detail-abilities-w-name" className="abilities-name"></span>
+          </div>
+          <div
+            id="champion-detail-abilities-e-container"
+            className="abilities-container"
+            onMouseEnter={() => ExtraPanelAnim()}
+            onClick={() => AbilityNameDivPhone()}
+          >
+            <img id="champion-detail-abilities-e" alt="E ability" className="champion-detail-ability" />
+            <span id="champion-detail-abilities-e-name" className="abilities-name"></span>
+          </div>
+          <div
+            id="champion-detail-abilities-r-container"
+            className="abilities-container"
+            onMouseEnter={() => ExtraPanelAnim()}
+            onClick={() => AbilityNameDivPhone()}
+          >
+            <img id="champion-detail-abilities-r" alt="R ability" className="champion-detail-ability" />
+            <span id="champion-detail-abilities-r-name" className="abilities-name"></span>
           </div>
         </div>
         <div id="champion-detail-ability-name-phone-container" ref={namePhoneRef}>
@@ -249,7 +239,8 @@ const ChampionDetailPanel = () => {
           </div>
         </div>
       </div>
-    s</div>
+      s
+    </div>
   );
 };
 
