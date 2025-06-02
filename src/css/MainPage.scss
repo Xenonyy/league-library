@@ -1,5 +1,4 @@
-$default-font: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+$default-font: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 $main-font: 'Work Sans', sans-serif;
 $champ-font: Capriola;
 $pink: #d67db5;
@@ -90,7 +89,6 @@ a {
   background-repeat: repeat-y;
   background-blend-mode: lighten;
   min-height: 110vh; // Fix background image not fully covering the page when there are no results from search.
-  display: none;
 }
 
 .champion-container {
@@ -168,7 +166,8 @@ a {
   font-family: 'Aleo';
   font-style: oblique;
   font-weight: 400;
-  margin: 4.5em 0 0;
+  margin: 4em 0 2em;
+  padding: 0em 2em;
 }
 
 #no-results-container {
@@ -198,7 +197,6 @@ a {
 @import '../components/layout/HeaderPhone/HeaderPhone.scss';
 @import '../components/layout/Header/Dropdown';
 @import '../components/champions/InfoPanel.scss';
-@import 'Gsap';
 @import '../components/layout/Footer/Footer.scss';
 @import '../components/search/Search.scss';
 @import '../components/layout/BackToTop/BackToTop.scss';

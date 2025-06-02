@@ -1,69 +1,72 @@
 #welcome-container {
-    height: 100vh;
-    width: 100%;
-    @extend %flex-prop;
-    background-color: #555;
-    background-image: url(../../../background.webp);
-    background-size: cover;
-    position: absolute;
-    z-index: 4;
-    transition: opacity 0.8s;
-    -webkit-transition: opacity 0.8s;
-    -moz-transition: opacity 0.8s;
-    -ms-transition: opacity 0.8s;
+  height: 100vh;
+  width: 100%;
+  @extend %flex-prop;
+  background-color: #555;
+  background-image: url(../../../background.webp);
+  background-size: cover;
+  position: absolute;
+  z-index: 4;
+  transition: opacity 0.8s;
+  -webkit-transition: opacity 0.8s;
+  -moz-transition: opacity 0.8s;
+  -ms-transition: opacity 0.8s;
+  position: 'fixed';
+  top: 0;
+  left: 0;
 }
 .fade {
-    opacity: 0;
+  opacity: 0;
 }
 #welcome-main-container {
-    @extend %flex-prop;
-    @extend %border;
-    flex-flow: column;
-    background-color: #2b2b2b;
-    max-width: 85%;
-    padding: 2em 0;
-    opacity: 0.8;
+  @extend %flex-prop;
+  @extend %border;
+  flex-flow: column;
+  background-color: #2b2b2b;
+  max-width: 85%;
+  padding: 2em 0;
+  opacity: 0.8;
 }
 #welcome-text-container {
-    display: contents;
-    color: whitesmoke;
-    font-size: 1.5rem;
-    font-family: 'Aleo';
-    height: 50%;
-    letter-spacing: 0.5px;
-
+  display: contents;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  font-family: 'Aleo';
+  height: 50%;
+  letter-spacing: 0.5px;
 }
 #welcome-text {
-    filter: drop-shadow(2px 4px 6px black);
-    text-decoration: underline;
+  filter: drop-shadow(2px 4px 6px black);
+  text-decoration: underline;
 }
 #welcome-description {
-    filter: drop-shadow(0px 2px 2px black);
-    font-size: 1.2rem;
-    padding: 1.5em;
+  filter: drop-shadow(0px 2px 2px black);
+  font-size: 1.2rem;
+  padding: 1.5em;
 }
 #enter-container {
-    @extend %flex-prop;
-    width: 100%;
+  @extend %flex-prop;
+  width: 100%;
 }
 #enter-button {
-    @extend %border;
-    font-size: 1rem;
-    padding: 0.5em 0.8em;
-    color: coral;
-    background-color: #1d1d1d;
-    font-family: 'Aleo';
-    filter: drop-shadow(2px 2px 2px black);
+  @extend %border;
+  font-size: 1rem;
+  padding: 0.5em 0.8em;
+  color: coral;
+  background-color: #1d1d1d;
+  font-family: 'Aleo';
+  filter: drop-shadow(2px 2px 2px black);
 }
 #enter-button:hover {
-    cursor: pointer;
-    background-color: #2f2f2f;
-    transform: scale(1.025);
-    transition: transform 0.2s ease-in-out;;
-    -webkit-transition: transform 0.2s ease-in-out;
-    -moz-transition: transform 0.2s ease-in-out;
-    -ms-transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  background-color: #2f2f2f;
+  transform: scale(1.025);
+  transition: transform 0.2s ease-in-out;
+  -webkit-transition: transform 0.2s ease-in-out;
+  -moz-transition: transform 0.2s ease-in-out;
+  -ms-transition: transform 0.2s ease-in-out;
 }
-#welcome-container::-webkit-scrollbar, #extra-line-phone { 
-    display: none;
+#welcome-container::-webkit-scrollbar,
+#extra-line-phone {
+  display: none;
 }
