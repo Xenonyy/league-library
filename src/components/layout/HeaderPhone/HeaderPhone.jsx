@@ -1,16 +1,30 @@
-import React from 'react';
+import { useRef, useState } from 'react';
+import { gsap } from 'gsap';
 
-class HeaderPhone extends React.Component {
-  MenuAnimation = () => {
-    const menu = document.getElementById('menu-toggle');
-    const header_menu = document.getElementById('header-menu');
-    menu.classList.toggle('open');
-    header_menu.classList.toggle('hidden');
-    header_menu.classList.toggle('animation');
+const HeaderPhone = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+    if (!menuOpen) {
+      gsap.to(menuRef.current, {
+        duration: 0.3,
+        autoAlpha: 1,
+        display: 'block',
+      });
+    } else {
+      gsap.to(menuRef.current, {
+        duration: 0.3,
+        autoAlpha: 0,
+        display: 'none',
+      });
+    }
   };
-  render() {
-    return [
-      <div id="header-menu" className="hidden" key={'header-menu'}>
+
+  return (
+    <>
+      <div id="header-menu" className="hidden" ref={menuRef}>
         <div id="contact-phone">
           <div id="project-link-container">
             <div id="src-code-container">
@@ -23,20 +37,11 @@ class HeaderPhone extends React.Component {
               </a>
             </div>
             <div id="contact-container">
-              <p
-                className="link-text"
-                style={{
-                  color: 'coral',
-                  fontSize: '2rem',
-                }}
-              >
+              <p className="link-text" style={{ color: 'coral', fontSize: '2rem' }}>
                 Contact Me
               </p>
-              <a
-                href="tel:+49 175 400 4408"
-                className="header-phone-personal-link"
-              >
-                +49 175 400 4408
+              <a href="tel:+31687320230" className="header-phone-personal-link">
+                +31 687 320230
               </a>
               <a
                 href="mailto:gonda.armand@gmail.com"
@@ -67,20 +72,14 @@ class HeaderPhone extends React.Component {
                 width="128"
                 height="128"
                 className="phone-icon non-selectable"
-              ></img>
+              />
             </a>
             <p className="link-text">GitHub</p>
           </div>
           <div id="header-phone-linkedin">
             <a
               href="https://www.linkedin.com/in/armand-gonda"
-              style={{
-                width: '50px',
-                height: '50px',
-                display: 'flex',
-                zIndex: 2,
-                position: 'relative',
-              }}
+              style={{ width: '50px', height: '50px', display: 'flex', zIndex: 2, position: 'relative' }}
             >
               <img
                 src="../../linkedin.webp"
@@ -89,14 +88,14 @@ class HeaderPhone extends React.Component {
                 width="128"
                 height="128"
                 className="phone-icon non-selectable"
-              ></img>
+              />
             </a>
             <p className="link-text">LinkedIn</p>
           </div>
           <p id="header-phone-copyright">&copy; 2024 Gonda Armand</p>
         </div>
-      </div>,
-      <header id="header-phone" key={'header-phone'}>
+      </div>
+      <header id="header-phone">
         <div id="header-phone-container">
           <div id="header-phone-icon" className="non-selectable">
             <img
@@ -106,24 +105,24 @@ class HeaderPhone extends React.Component {
               width="128"
               height="128"
               className="phone-icon non-selectable"
-            ></img>
+            />
             <div id="header-phone-text">League Library</div>
           </div>
-          <div id="menu-toggle" onClick={() => this.MenuAnimation()}>
-            <div id="hamburger">
+          <div id="menu-toggle" onClick={toggleMenu}>
+            <div id="hamburger" className={menuOpen ? 'hidden' : ''}>
               <span></span>
               <span></span>
               <span></span>
             </div>
-            <div id="cross">
+            <div id="cross" className={menuOpen ? '' : 'hidden'}>
               <span></span>
               <span></span>
             </div>
           </div>
         </div>
-      </header>,
-    ];
-  }
-}
+      </header>
+    </>
+  );
+};
 
 export default HeaderPhone;

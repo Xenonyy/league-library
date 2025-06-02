@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
-function BackToTop() {
+const BackToTopComponent = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ function BackToTop() {
       ></img>
     </button>
   );
-}
+};
 
+const BackToTop = memo(BackToTopComponent);
 export default BackToTop;
