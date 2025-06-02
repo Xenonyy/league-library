@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Version } from '../../enums/version';
 
@@ -80,10 +80,14 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
   }, [champion?.skins?.length]);
 
   useEffect(() => {
-    if (panelRef.current) {
-      gsap.fromTo(panelRef.current, { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.3 });
-      return () => {};
-    }
+    if (!panelRef.current) return;
+    gsap.fromTo(panelRef.current, { autoAlpha: 0, y: -200 }, { autoAlpha: 1, y: 0, duration: 0.3 });
+    gsap.to(panelRef.current.querySelectorAll('.abilities-container'), {
+      y: -200,
+      autoAlpha: 0,
+      duration: 0.1,
+    });
+    return () => {};
   }, []);
 
   const handleOnClose = async () => {
@@ -92,37 +96,40 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
     onClose();
   };
 
-  const timelineRef = useRef(gsap.timeline({ paused: true }));
-
   const ScrollAnim = useCallback(() => {
-    if (panelRef.current && timelineRef.current) {
-      if (timelineRef.current.isActive()) return;
+    if (!panelRef.current) return;
 
-      timelineRef.current
-        .clear()
-        .to(panelRef.current.querySelectorAll('.abilities-container'), {
-          y: 0,
-          stagger: 0.15,
-          duration: 1,
-          autoAlpha: 1,
-        })
-        .play();
+    const panelTop = panelRef.current.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight * 0.75;
+
+    if (panelTop < triggerPoint) {
+      gsap.to(panelRef.current.querySelectorAll('.abilities-container'), {
+        y: 0,
+        stagger: 0.15,
+        duration: 1,
+        autoAlpha: 1,
+      });
     }
   }, []);
 
   const handleAbilityHover = (index, abilityKey) => {
     setHoveredAbility(index);
     setActiveAbility(String(abilityKey).toUpperCase());
-    if (abilityVidContRef.current && abilityDescRef.current) {
-      gsap.to(abilityDescRef.current, { x: 0, duration: 0.7, autoAlpha: 1 });
-      gsap.to(abilityVidContRef.current, { x: 0, duration: 0.7, autoAlpha: 1 });
-    }
   };
 
   useEffect(() => {
-    if (abilityVidContRef.current && abilityDescRef.current) {
-      gsap.to(abilityDescRef.current, { x: 0, duration: 0.7, autoAlpha: 1 });
-      gsap.to(abilityVidContRef.current, { x: 0, duration: 0.7, autoAlpha: 1 });
+    if (abilityDescRef.current && abilityVidContRef.current) {
+      gsap.fromTo(
+        [abilityDescRef.current, abilityVidContRef.current],
+        { autoAlpha: 0, x: -200 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+          stagger: 0.1,
+        },
+      );
     }
   }, [activeAbility]);
 
@@ -174,14 +181,6 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
     return () => {
       b2t.removeEventListener('click', handleClick);
     };
-  }, []);
-
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      timelineRef.current = gsap.timeline({ paused: true });
-    }, panelRef);
-
-    return () => ctx.revert();
   }, []);
 
   return (
