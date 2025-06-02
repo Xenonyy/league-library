@@ -136,7 +136,6 @@
   border-radius: 2px;
   flex-flow: column !important;
   will-change: transform, opacity;
-  padding-bottom: 25px;
 }
 #abilities-text,
 #skins-text {
@@ -168,12 +167,12 @@
   padding: 0 2em;
   height: 2em;
   background-color: #3a3a3a;
-  margin: 3em 1em 1em 0;
+  // margin: 3em 1em 1em 0;
   @extend %border-abilities;
   font-size: 1.3rem;
   color: coral;
   display: none;
-  position: absolute;
+  position: relative;
 }
 #champion-detail-abilities-extra-detail-container {
   @extend %flex-prop;

@@ -223,6 +223,7 @@ a {
   .abilities-container {
     margin: 0.5em;
     width: 200px;
+    padding-bottom: 25px;
   }
 
   .abilities-name {
@@ -519,10 +520,6 @@ a {
 
   #champion-detail-ability-name-phone {
     display: flex;
-  }
-
-  #champion-detail-abilities-extra-detail-container {
-    margin: 1.5em 0;
   }
 
   // Search
