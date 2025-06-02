@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import ChampionDetailPanel from './components/champions/ChampionDetailPanel';
 import ChampionMainPage from './components/champions/ChampionMainPage';
 import WelcomePage from './components/layout/WelcomePage/WelcomePage';
@@ -14,16 +14,16 @@ const App = () => {
   const [skinIndex, setSkinIndex] = useState(0);
   const allData = useChampionData();
   const [searchTerm, setSearchTerm] = useState('');
-  const handleSearch = value => {
+  const handleSearchChange = useCallback(value => {
     setSearchTerm(value);
-  };
+  }, []);
 
   return (
     <>
       {showWelcome && <WelcomePage onFinish={() => setShowWelcome(false)} />}
       <div className="container">
         <ConditionalHeader />
-        <TopContainer onSearchChange={handleSearch} />
+        <TopContainer onSearchChange={handleSearchChange} />
         <div className="champion-container">
           {selectedChampionId !== null && (
             <ChampionDetailPanel
