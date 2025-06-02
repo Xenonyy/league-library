@@ -7,5 +7,5 @@
   color: antiquewhite;
   font-family: $main-font;
   @extend %flex-prop;
-  display: none;
+  display: flex;
 }

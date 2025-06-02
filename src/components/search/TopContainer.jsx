@@ -5,7 +5,7 @@ import Search from './Search';
 const TopContainerComponent = ({ onSearchChange }) => {
   return (
     <div id="top-container">
-      <span id="updated">{`Last Updated: 2025/05/25 | Patch: ${Version.PATCH}`}</span>
+      <span id="updated">{`Last Updated: 2025/06/02 | Patch: ${Version.PATCH}`}</span>
       <h1 data-testid="league-title" className="title non-selectable">
         League Library
       </h1>

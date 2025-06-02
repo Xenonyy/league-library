@@ -1,3 +1,3 @@
 export const Version = {
-  PATCH: '15.10.1',
+  PATCH: '15.11.1',
 };

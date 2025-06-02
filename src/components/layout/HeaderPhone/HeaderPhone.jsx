@@ -92,7 +92,7 @@ const HeaderPhone = () => {
             </a>
             <p className="link-text">LinkedIn</p>
           </div>
-          <p id="header-phone-copyright">&copy; 2024 Gonda Armand</p>
+          <p id="header-phone-copyright">&copy; 2025 Gonda Armand</p>
         </div>
       </div>
       <header id="header-phone">
