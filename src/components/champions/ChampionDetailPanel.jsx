@@ -1,9 +1,12 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Version } from '../../enums/version';
+import { ChampionKeyVideo } from '../../utils/getChampSpellUrl';
+import useSkinSlideshow from '../../hooks/useSkinSlideshow';
 
 const version = Version.PATCH;
 const cdn = 'https://ddragon.leagueoflegends.com/cdn/';
+const abilityKeys = ['q', 'w', 'e', 'r'];
 
 const ChampionDetailPanelComponent = ({ champion, onClose }) => {
   const panelRef = useRef(null);
@@ -16,6 +19,9 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
   const namePhoneRef = useRef(null);
   const abilityDescRef = useRef(null);
   const abilityVidContRef = useRef(null);
+  const skinImgRef = useRef(null);
+  const skinBgImgRef = useRef(null);
+  const scrollRef = useRef(null);
 
   const [skinIndex, setSkinIndex] = useState(0);
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -36,48 +42,14 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
     };
   }, [isPanelOpen]);
 
-  const ChampionKeyVideo = (championKey, abilityKey) => {
-    let correctKey = '0';
-    if (championKey.length === 3) {
-      correctKey = '0';
-    } else if (championKey.length === 2) {
-      correctKey = '00';
-    } else if (championKey.length === 1) {
-      correctKey = '000';
-    }
-    const baseURL = 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/';
-    return `${baseURL}${correctKey}${championKey}/ability_${correctKey}${championKey}_${abilityKey}1.webm`;
-  };
-
-  const defaultSkinImgUrl = champion?.skins?.[skinIndex]
+  const defaultSkinImgUrl = champion.skins?.[skinIndex]
     ? `${cdn}img/champion/splash/${champion.id}_${champion.skins[0].num}.jpg`
     : '';
-  const skinImgUrl = champion?.skins?.[skinIndex]
+  const skinImgUrl = champion.skins?.[skinIndex]
     ? `${cdn}img/champion/splash/${champion.id}_${champion.skins[skinIndex].num}.jpg`
     : '';
 
-  useEffect(() => {
-    if (!champion?.skins?.length) return;
-
-    let isMounted = true;
-    let timeoutId;
-
-    const cycleSkins = () => {
-      timeoutId = setTimeout(() => {
-        if (isMounted) {
-          setSkinIndex(prev => (prev + 1) % champion.skins.length);
-          cycleSkins();
-        }
-      }, 3000);
-    };
-
-    cycleSkins();
-
-    return () => {
-      isMounted = false;
-      clearTimeout(timeoutId);
-    };
-  }, [champion?.skins?.length]);
+  useSkinSlideshow({ champion, skinIndex, setSkinIndex, skinImgRef, skinBgImgRef, cdn });
 
   useEffect(() => {
     if (!panelRef.current) return;
@@ -93,6 +65,9 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
   const handleOnClose = async () => {
     document.body.style.overflow = '';
     await gsap.fromTo(panelRef.current, { autoAlpha: 1, y: 0 }, { autoAlpha: 0, y: -200, duration: 0.3 });
+    if (b2tRef.current) {
+      b2tRef.current.style.opacity = '0';
+    }
     onClose();
   };
 
@@ -111,6 +86,19 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
       });
     }
   }, []);
+
+  const handleScroll = () => {
+    if (scrollRef.current) cancelAnimationFrame(scrollRef.current);
+    scrollRef.current = requestAnimationFrame(() => {
+      ScrollAnim();
+      BackToTop();
+    });
+  };
+
+  const handleCloseButtonClick = () => {
+    handleOnClose();
+    setActiveAbility(null);
+  };
 
   const handleAbilityHover = (index, abilityKey) => {
     setHoveredAbility(index);
@@ -151,12 +139,6 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
 
   const toggleDescription = () => {
     setShowFullDescription(prev => !prev);
-    if (descRef.current && descFullRef.current && showBtnRef.current) {
-      const show = !showFullDescription;
-      descRef.current.style.display = show ? 'none' : 'block';
-      descFullRef.current.style.display = show ? 'contents' : 'none';
-      showBtnRef.current.style.display = show ? 'none' : 'inline';
-    }
   };
 
   const handleVideoEnter = () => {
@@ -184,155 +166,168 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
   }, []);
 
   return (
-    <div
-      ref={panelRef}
-      id="champion-info-panel"
-      data-testid="info-panel"
-      style={{ display: 'block' }}
-      onScroll={() => {
-        ScrollAnim();
-        BackToTop();
-      }}
-    >
-      <button id="b2tPanel" ref={b2tRef}>
-        <img
-          src="https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png"
-          srcSet="https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png, https://i.gyazo.com/25bca84d684ddfe5d7dd4aaec54f92e6.png"
-          alt="Scroll To The Top"
-          id="b2tPanel-img"
-        />
-      </button>
-      <button
-        className="close-button"
-        onClick={() => {
-          handleOnClose();
-          setActiveAbility(null);
-        }}
+    champion !== null && (
+      <div
+        ref={panelRef}
+        id="champion-info-panel"
+        data-testid="info-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="champion-details"
+        style={{ display: 'block' }}
+        onScroll={handleScroll}
       >
-        X
-      </button>
-      <div id="champion-detail-image" className="non-selectable">
-        <img id="champBgImg" alt="Splash Art Background" src={defaultSkinImgUrl} />
-        <img id="champImg" alt="Splash Art" src={defaultSkinImgUrl} />
-      </div>
-
-      <div id="champion-detail-name">{champion.name}</div>
-      <div id="champion-detail-title">{champion.title}</div>
-
-      <div id="champion-detail-description-container">
-        <span id="champion-detail-description" ref={descRef}>
-          {champion.blurb}
-        </span>
-        <button id="showBtn" ref={showBtnRef} onClick={toggleDescription}>
-          Show more...
+        <button id="b2tPanel" ref={b2tRef}>
+          <img
+            src="https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png"
+            srcSet="https://i.gyazo.com/8fde68144b0fe90786b9472cdcad77f1.png, https://i.gyazo.com/25bca84d684ddfe5d7dd4aaec54f92e6.png"
+            alt="Scroll To The Top"
+            id="b2tPanel-img"
+          />
         </button>
-        <span id="champion-detail-description-full" style={{ display: 'none' }} ref={descFullRef}>
-          {champion.lore}
-        </span>
-      </div>
-      <div id="champion-detail-abilities-container">
-        <span id="abilities-text">Abilities</span>
-        <div id="champion-detail-abilities-qwer-container">
-          <div
-            id="champion-detail-abilities-p-container"
-            className="abilities-container"
-            onMouseEnter={() => handleAbilityHover('passive', 'P')}
-            onClick={() => AbilityNameDivPhone()}
-          >
-            <img
-              id="champion-detail-abilities-p"
-              alt="Passive ability"
-              src={`${cdn + version}/img/passive/` + champion?.passive?.image?.full}
-              className="champion-detail-ability"
-            />
-            <span id="champion-detail-abilities-p-name" className="abilities-name">
-              {champion?.passive?.name}
-            </span>
-          </div>
-          {champion.spells.map((spell, i) => (
-            <div
-              key={spell.id}
-              id={`champion-detail-abilities-${['q', 'w', 'e', 'r'][i]}-container`}
-              className="abilities-container"
-              onMouseEnter={() => handleAbilityHover(i, ['q', 'w', 'e', 'r'][i])}
-              onClick={() => AbilityNameDivPhone()}
-            >
-              <img
-                id={`champion-detail-abilities-${['q', 'w', 'e', 'r'][i]}`}
-                alt={`${spell.name} ability`}
-                src={`${cdn}${version}/img/spell/${spell.image.full}`}
-                className="champion-detail-ability"
-              />
-              <span id={`champion-detail-abilities-${['q', 'w', 'e', 'r'][i]}-name`} className="abilities-name">
-                {spell.name}
-              </span>
-            </div>
-          ))}
+        <button className="close-button" onClick={handleCloseButtonClick}>
+          X
+        </button>
+        <div id="champion-detail-image" className="non-selectable">
+          <img id="champBgImg" alt="Splash Art Background" src={defaultSkinImgUrl} />
+          <img id="champImg" alt="Splash Art" src={defaultSkinImgUrl} />
         </div>
 
-        <div id="champion-detail-ability-name-phone-container" ref={namePhoneRef}>
-          {hoveredAbility !== null && (
-            <span id="champion-detail-ability-name-phone" className="abilities-name">
-              {hoveredAbility === 'passive' ? champion.passive.name : champion.spells[hoveredAbility]?.name}
+        <div id="champion-detail-name">{champion.name}</div>
+        <div id="champion-detail-title">{champion.title}</div>
+
+        <div id="champion-detail-description-container">
+          {!showFullDescription ? (
+            <>
+              <span id="champion-detail-description" ref={descRef}>
+                {champion.blurb}
+              </span>
+              <button id="showBtn" ref={showBtnRef} onClick={toggleDescription}>
+                Show more...
+              </button>
+            </>
+          ) : (
+            <span id="champion-detail-description-full" ref={descFullRef}>
+              {champion.lore}
             </span>
           )}
         </div>
-
-        {activeAbility && (
-          <div id="champion-detail-abilities-extra-detail-container" ref={extraDetailRef}>
+        <div id="champion-detail-abilities-container">
+          <span id="abilities-text">Abilities</span>
+          <div id="champion-detail-abilities-qwer-container">
             <div
-              id="champion-detail-abilities-description"
-              ref={abilityDescRef}
-              dangerouslySetInnerHTML={{
-                __html:
-                  hoveredAbility === 'passive'
-                    ? champion.passive.description
-                    : hoveredAbility !== null && champion.spells[hoveredAbility]?.description,
-              }}
-            ></div>
-
-            <div id="champion-detail-abilities-video-container" ref={abilityVidContRef}>
-              <video
-                autoPlay
-                loop
-                muted
-                controls
-                id="champion-detail-abilities-video"
-                className="champion-detail-abilities-videos"
-                ref={videoRef}
-                key={activeAbility}
-                onMouseEnter={handleVideoEnter}
-                onMouseLeave={handleVideoLeave}
-              >
-                <source
-                  id="champion-detail-abilities-video-source-webm"
-                  type="video/webm"
-                  className="champion-detail-abilities-videos"
-                  src={ChampionKeyVideo(champion.key, activeAbility)}
-                />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div id="champion-detail-skins-container">
-        <span id="skins-text">Skins</span>
-        <div id="champion-detail-skins-image-main-container">
-          <div id="champion-detail-skins-image-container">
-            <img id="champSkinsImg" className="non-selectable" alt="Skin Splash Art" src={skinImgUrl} />
-            <img id="champSkinsBgImg" className="non-selectable" alt="Skin Splash Art Background" src={skinImgUrl} />
-            <div id="slideShowEnd" className="non-selectable hide"></div>
-            <div id="champion-detail-skins-name-container">
-              <span id="champion-detail-skins-name" className="non-selectable">
-                {champion.skins[skinIndex]?.name === 'default' ? champion.name : champion.skins[skinIndex]?.name}
+              id="champion-detail-abilities-p-container"
+              className="abilities-container"
+              onMouseEnter={() => handleAbilityHover('passive', 'P')}
+              onClick={() => AbilityNameDivPhone()}
+            >
+              <img
+                id="champion-detail-abilities-p"
+                alt="Passive ability"
+                src={`${cdn + version}/img/passive/` + champion.passive?.image?.full}
+                className="champion-detail-ability"
+              />
+              <span id="champion-detail-abilities-p-name" className="abilities-name">
+                {champion.passive?.name}
               </span>
+            </div>
+            {champion.spells.map((spell, i) => (
+              <div
+                key={spell.id}
+                id={`champion-detail-abilities-${abilityKeys[i]}-container`}
+                className="abilities-container"
+                onMouseEnter={() => handleAbilityHover(i, abilityKeys[i])}
+                onClick={() => AbilityNameDivPhone()}
+              >
+                <img
+                  id={`champion-detail-abilities-${abilityKeys[i]}`}
+                  alt={`${spell.name} ability`}
+                  src={`${cdn}${version}/img/spell/${spell.image.full}`}
+                  className="champion-detail-ability"
+                />
+                <span id={`champion-detail-abilities-${abilityKeys[i]}-name`} className="abilities-name">
+                  {spell.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div id="champion-detail-ability-name-phone-container" ref={namePhoneRef}>
+            {hoveredAbility !== null && (
+              <span id="champion-detail-ability-name-phone" className="abilities-name">
+                {hoveredAbility === 'passive' ? champion.passive.name : champion.spells[hoveredAbility]?.name}
+              </span>
+            )}
+          </div>
+
+          {activeAbility && (
+            <div id="champion-detail-abilities-extra-detail-container" ref={extraDetailRef}>
+              <div
+                id="champion-detail-abilities-description"
+                ref={abilityDescRef}
+                dangerouslySetInnerHTML={{
+                  __html:
+                    hoveredAbility === 'passive'
+                      ? champion.passive.description
+                      : hoveredAbility !== null && champion.spells[hoveredAbility]?.description,
+                }}
+              ></div>
+
+              <div id="champion-detail-abilities-video-container" ref={abilityVidContRef}>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  controls
+                  id="champion-detail-abilities-video"
+                  className="champion-detail-abilities-videos"
+                  ref={videoRef}
+                  key={activeAbility}
+                  onMouseEnter={handleVideoEnter}
+                  onMouseLeave={handleVideoLeave}
+                >
+                  <source
+                    id="champion-detail-abilities-video-source-webm"
+                    type="video/webm"
+                    className="champion-detail-abilities-videos"
+                    src={ChampionKeyVideo(champion.key, activeAbility)}
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div id="champion-detail-skins-container">
+          <span id="skins-text">Skins</span>
+          <div id="champion-detail-skins-image-main-container">
+            <div id="champion-detail-skins-image-container">
+              <img
+                id="champSkinsImg"
+                ref={skinImgRef}
+                className="non-selectable"
+                alt="Skin Splash Art"
+                src={skinImgUrl}
+              />
+              <img
+                id="champSkinsBgImg"
+                ref={skinBgImgRef}
+                className="non-selectable"
+                alt="Skin Splash Art Background"
+                src={skinImgUrl}
+              />
+              <div id="slideShowEnd" className="non-selectable hide"></div>
+              <div id="champion-detail-skins-name-container">
+                <span id="champion-detail-skins-name" className="non-selectable">
+                  {champion.skins[skinIndex]?.name === 'default' ? champion.name : champion.skins[skinIndex]?.name}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 const ChampionDetailPanel = memo(ChampionDetailPanelComponent);
