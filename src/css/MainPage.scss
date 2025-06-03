@@ -73,7 +73,6 @@ a {
   @extend %flex-prop;
   font-size: 5rem;
   color: darkorange;
-  margin: 1em 0;
   font-family: 'Gabriela';
 }
 
@@ -105,7 +104,7 @@ a {
 
 .champion-card {
   @extend %flex-prop;
-  // border: 1px solid #737373;
+  border: 1px solid #737373;
   margin: 2em 1em 0;
   filter: drop-shadow(2px 4px 6px black);
   border-radius: 5px;
@@ -183,12 +182,12 @@ a {
   width: 45%;
   height: inherit;
   background-color: #313131;
-  border: $pink 1px solid;
+  border: darkorange 1px solid;
   border-radius: 15px;
 }
 
 #result-text {
-  color: $pink;
+  color: darkorange;
   font-size: 1.5rem;
   @extend %flex-prop;
 }
@@ -264,10 +263,10 @@ a {
   }
 
   #champImg {
-    transform: scale(2);
-    -moz-transform: scale(2);
-    -o-transform: scale(2);
-    -webkit-transform: scale(2);
+    transform: scale(2.2);
+    -moz-transform: scale(2.2);
+    -o-transform: scale(2.2);
+    -webkit-transform: scale(2.2);
     margin: 0;
   }
 
@@ -286,7 +285,7 @@ a {
   }
 
   .champion-container {
-    margin: 2em 3em 5em;
+    margin: 0em 2em 5em;
   }
 
   .champion-card {
@@ -338,7 +337,6 @@ a {
 
   .title {
     font-size: 3rem;
-    margin: 0.5em 0 1em;
   }
 
   .champion-container {
@@ -624,7 +622,6 @@ a {
 
   .title {
     font-size: 3rem;
-    margin: 0.5em 0 1em;
   }
 
   .champion-container {

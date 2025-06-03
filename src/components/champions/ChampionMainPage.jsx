@@ -16,7 +16,9 @@ const ChampionMainPageComponent = ({ cards = [], onChampionClick, filterText = '
     <>
       {hasLoaded && filteredCards.length === 0 && (
         <div id="no-results-container" style={{ display: 'flex' }}>
-          No champions found.
+          <div id="no-results">
+            <span id="result-text">No champions found.</span>
+          </div>
         </div>
       )}
       {filteredCards.map((champion, i) => (

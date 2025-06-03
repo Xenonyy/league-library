@@ -273,7 +273,7 @@ const ChampionDetailPanelComponent = ({ champion, onClose }) => {
         <div id="champion-detail-ability-name-phone-container" ref={namePhoneRef}>
           {hoveredAbility !== null && (
             <span id="champion-detail-ability-name-phone" className="abilities-name">
-              {champion.spells[hoveredAbility]?.name}
+              {hoveredAbility === 'passive' ? champion.passive.name : champion.spells[hoveredAbility]?.name}
             </span>
           )}
         </div>
