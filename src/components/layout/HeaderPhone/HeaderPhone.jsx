@@ -1,37 +1,23 @@
 import { useRef, useState } from 'react';
-import { gsap } from 'gsap';
 
 const HeaderPhone = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-    if (!menuOpen) {
-      gsap.to(menuRef.current, {
-        duration: 0.3,
-        autoAlpha: 1,
-        display: 'block',
-      });
-    } else {
-      gsap.to(menuRef.current, {
-        duration: 0.3,
-        autoAlpha: 0,
-        display: 'none',
-      });
-    }
+    setMenuOpen(prev => !prev);
   };
 
   return (
     <>
-      <div id="header-menu" className="hidden" ref={menuRef}>
+      <div id="header-menu" className={menuOpen ? 'animation' : 'hidden'} ref={menuRef}>
         <div id="contact-phone">
           <div id="project-link-container">
             <div id="src-code-container">
               <p className="link-text">View the project's source code here:</p>
               <a
                 href="https://github.com/Xenonyy/league-library"
-                style={{ fontSize: '1.5rem', textDecoration: 'underline' }}
+                style={{ fontSize: '1.5rem', textDecoration: 'underline', padding: '1em', zIndex: '10' }}
               >
                 GitHub
               </a>
@@ -108,13 +94,13 @@ const HeaderPhone = () => {
             />
             <div id="header-phone-text">League Library</div>
           </div>
-          <div id="menu-toggle" onClick={toggleMenu}>
-            <div id="hamburger" className={menuOpen ? 'hidden' : ''}>
+          <div id="menu-toggle" onClick={toggleMenu} className={menuOpen ? 'open' : ''}>
+            <div id="hamburger">
               <span></span>
               <span></span>
               <span></span>
             </div>
-            <div id="cross" className={menuOpen ? '' : 'hidden'}>
+            <div id="cross">
               <span></span>
               <span></span>
             </div>
