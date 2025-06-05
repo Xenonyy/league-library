@@ -20,6 +20,8 @@ const useSkinSlideshow = ({ champion, skinIndex, setSkinIndex, skinImgRef, skinB
         img.onload = resolve;
       });
 
+      if (!skinImgRef.current || !skinBgImgRef.current || isCancelled) return;
+
       await gsap.to([skinImgRef.current, skinBgImgRef.current], {
         duration: fadeDuration,
         opacity: 0,
@@ -31,8 +33,10 @@ const useSkinSlideshow = ({ champion, skinIndex, setSkinIndex, skinImgRef, skinB
     };
 
     const fadeInAfterSwitch = async () => {
+      if (!skinImgRef.current || !skinBgImgRef.current || isCancelled) return;
+
       await gsap.fromTo(
-        ['#champSkinsImg', '#champSkinsBgImg'],
+        [skinImgRef.current, skinBgImgRef.current],
         { opacity: 0 },
         { opacity: 1, duration: fadeDuration, ease: 'expoScale(0.5,7,none)' },
       );
