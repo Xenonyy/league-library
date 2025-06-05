@@ -79,14 +79,19 @@
   height: -moz-fit-content;
   height: fit-content;
   height: -webkit-fit-content;
-  background-color: rgb(29, 29, 29);
+  background-color: rgba(29, 29, 29, 0.6);
   color: antiquewhite;
-  margin: 1em 28% 5em;
-  padding: 2em;
+  // margin: 1em 28% 5em;
+  padding: 1.5em;
   font-family: Gabriela;
   letter-spacing: 0.5px;
   @extend %border-abilities;
   border-radius: 5px;
+}
+#champion-detail-description-full {
+  border: none;
+  background: none;
+  padding: 0;
 }
 #showBtn {
   background: none;
